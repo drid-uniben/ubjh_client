@@ -633,10 +633,10 @@ export default function ForAuthorsPage() {
                     <div className="flex items-center gap-3">
                       <Mail className="h-5 w-5" />
                       <a
-                        href="mailto:journalhumanities@uniben.edu"
+                        href="mailto:ubjh@uniben.edu"
                         className="hover:text-journal-rose transition-colors"
                       >
-                        journalhumanities@uniben.edu
+                        ubjh@uniben.edu
                       </a>
                     </div>
                     <div className="text-sm text-journal-rose">

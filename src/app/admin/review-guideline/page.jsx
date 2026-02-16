@@ -300,7 +300,7 @@ export default function ReviewGuideline() {
                         <div className="bg-purple-50 border-l-4 border-purple-600 p-4 md:p-6 rounded">
                             <h2 className="text-lg md:text-xl font-bold text-purple-900 mb-2">Questions or Concerns?</h2>
                             <p className="text-sm md:text-base text-purple-800">
-                                If you have any questions about the review process or need clarification on any aspect of your assignment, please contact the editorial office at <a href="mailto:journal@uniben.edu" className="underline font-medium">journal@uniben.edu</a>
+                                If you have any questions about the review process or need clarification on any aspect of your assignment, please contact the editorial office at <a href="mailto:ubjh@uniben.edu" className="underline font-medium">ubjh@uniben.edu</a>
                             </p>
                         </div>
 

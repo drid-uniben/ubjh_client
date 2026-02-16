@@ -82,7 +82,7 @@ export default function SecondaryHeader() {
                 Policies
               </Link>
               <Link
-                href="mailto:journalhumanities@uniben.edu"
+                href="mailto:ubjh@uniben.edu"
                 className="text-journal-maroon hover:text-journal-maroon-dark font-medium transition-colors whitespace-nowrap hidden sm:block"
               >
                 Contact

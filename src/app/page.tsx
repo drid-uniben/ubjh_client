@@ -66,7 +66,7 @@ export default function HumanitiesJournalHome() {
                   Policies
                 </Link>
                 <Link
-                  href="mailto:journalhumanities@uniben.edu"
+                  href="mailto:ubjh@uniben.edu"
                   className="text-journal-maroon hover:text-journal-maroon-dark font-medium transition-colors hidden sm:block"
                 >
                   Contact

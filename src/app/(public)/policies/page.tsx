@@ -807,7 +807,7 @@ export default function PoliciesPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="mailto:journalhumanities@uniben.edu"
+                  href="mailto:ubjh@uniben.edu"
                   className="inline-flex items-center justify-center gap-2 bg-white text-journal-maroon px-6 py-3 rounded-lg font-bold hover:bg-journal-rose transition-colors"
                 >
                   <Globe className="h-5 w-5" />

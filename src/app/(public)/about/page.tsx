@@ -444,10 +444,10 @@ export default function AboutPage() {
                       <strong className="text-journal-text-dark">Email:</strong>
                       <br />
                       <a
-                        href="mailto:journalhumanities@uniben.edu"
+                        href="mailto:ubjh@uniben.edu"
                         className="text-journal-maroon hover:text-journal-maroon-dark"
                       >
-                        journalhumanities@uniben.edu
+                        ubjh@uniben.edu
                       </a>
                     </div>
                     <div>

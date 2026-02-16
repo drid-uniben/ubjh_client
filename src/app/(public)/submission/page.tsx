@@ -472,7 +472,7 @@ export default function SubmissionPortalPage() {
                     errors.
                   </p>
                   <a
-                    href="mailto:support@uniben.edu"
+                    href="mailto:drid@uniben.edu"
                     className="inline-flex items-center gap-2 text-journal-maroon hover:text-[#7a0018ea] font-semibold"
                   >
                     <Mail className="h-4 w-4" />
@@ -497,11 +497,11 @@ export default function SubmissionPortalPage() {
                     editorial policies? Contact our editorial team.
                   </p>
                   <a
-                    href="mailto:journalhumanities@uniben.edu"
+                    href="mailto:ubjh@uniben.edu"
                     className="inline-flex items-center gap-2 text-journal-mauve hover:text-purple-900 font-semibold"
                   >
                     <Mail className="h-4 w-4" />
-                    journalhumanities@uniben.edu
+                    ubjh@uniben.edu
                   </a>
                 </div>
               </div>
