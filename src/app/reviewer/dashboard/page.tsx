@@ -60,7 +60,7 @@ const ReviewerDashboard: React.FC = () => {
       <ReviewerLayout>
         <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100 flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#7A0019] border-t-transparent mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-journal-maroon border-t-transparent mx-auto mb-4"></div>
             <p className="text-gray-600">Loading dashboard...</p>
           </div>
         </div>
@@ -78,7 +78,7 @@ const ReviewerDashboard: React.FC = () => {
             <p className="text-gray-600 mb-4">{error}</p>
             <button
               onClick={handleRefresh}
-              className="bg-[#7A0019] text-white px-4 py-2 rounded-lg hover:bg-[#5A0A1A] transition-colors"
+              className="bg-journal-maroon text-white px-4 py-2 rounded-lg hover:bg-journal-maroon-dark transition-colors"
             >
               Retry
             </button>
@@ -129,14 +129,14 @@ const ReviewerDashboard: React.FC = () => {
 
           {/* Statistics Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
-            <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 border-l-4 border-l-[#7A0019]">
+            <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 border-l-4 border-l-journal-maroon">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs md:text-sm font-medium text-gray-600">Total Assigned</p>
-                  <p className="text-xl md:text-2xl font-bold text-[#7A0019]">{statistics.totalAssigned}</p>
+                  <p className="text-xl md:text-2xl font-bold text-journal-maroon">{statistics.totalAssigned}</p>
                 </div>
-                <div className="bg-[#FFE9EE] p-2 md:p-3 rounded-lg">
-                  <TrendingUp className="w-5 h-5 md:w-8 md:h-8 text-[#7A0019]" />
+                <div className="bg-journal-rose p-2 md:p-3 rounded-lg">
+                  <TrendingUp className="w-5 h-5 md:w-8 md:h-8 text-journal-maroon" />
                 </div>
               </div>
             </div>
@@ -182,7 +182,7 @@ const ReviewerDashboard: React.FC = () => {
           <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 text-center">
               <div className="p-4 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg">
-                <p className="text-xl md:text-2xl font-bold text-[#7A0019]">
+                <p className="text-xl md:text-2xl font-bold text-journal-maroon">
                   {Math.round((statistics.completed / (statistics.totalAssigned || 1)) * 100)}%
                 </p>
                 <p className="text-xs md:text-sm text-gray-600 mt-1">Completion Rate</p>

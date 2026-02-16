@@ -197,7 +197,7 @@ export default function OverrideDecisionPage() {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-gray-50">
-        <Loader2 className="h-8 w-8 animate-spin text-[#7A0019]" />
+        <Loader2 className="h-8 w-8 animate-spin text-journal-maroon" />
       </div>
     );
   }
@@ -271,7 +271,7 @@ export default function OverrideDecisionPage() {
               className="pl-10 pr-4 py-3 w-full"
             />
             {isSearching && (
-              <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 animate-spin text-[#7A0019]" />
+              <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 animate-spin text-journal-maroon" />
             )}
           </div>
 

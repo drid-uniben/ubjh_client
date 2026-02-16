@@ -118,7 +118,7 @@ export function PublicationConfirmationModals({
         >
           Go Back
         </Button>
-        <Button onClick={handleNext} className="bg-[#7A0019] hover:bg-[#5A0A1A]">
+        <Button onClick={handleNext} className="bg-journal-maroon hover:bg-journal-maroon-dark">
           {confirmedOptions.doiEnabled ? "Confirm DOI Registration" : "Proceed Without DOI"}
         </Button>
       </DialogFooter>
@@ -158,7 +158,7 @@ export function PublicationConfirmationModals({
         <Button variant="outline" onClick={handleBack}>
           Go Back
         </Button>
-        <Button onClick={handleNext} className="bg-[#7A0019] hover:bg-[#5A0A1A]">
+        <Button onClick={handleNext} className="bg-journal-maroon hover:bg-journal-maroon-dark">
           {confirmedOptions.internetArchiveEnabled ? "Confirm Archive Upload" : "Proceed Without Archive"}
         </Button>
       </DialogFooter>
@@ -198,7 +198,7 @@ export function PublicationConfirmationModals({
         <Button variant="outline" onClick={handleBack}>
           Go Back
         </Button>
-        <Button onClick={handleNext} className="bg-[#7A0019] hover:bg-[#5A0A1A]">
+        <Button onClick={handleNext} className="bg-journal-maroon hover:bg-journal-maroon-dark">
           {confirmedOptions.emailNotificationEnabled ? "Confirm Email Notification" : "Proceed Without Notification"}
         </Button>
       </DialogFooter>

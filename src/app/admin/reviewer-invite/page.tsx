@@ -302,7 +302,7 @@ export default function ReviewerInvitationsPage() {
     return (
       <AdminLayout>
         <div className="flex justify-center items-center h-64">
-          <RefreshCw className="h-8 w-8 animate-spin text-[#7A0019]" />
+          <RefreshCw className="h-8 w-8 animate-spin text-journal-maroon" />
         </div>
       </AdminLayout>
     );
@@ -324,7 +324,7 @@ export default function ReviewerInvitationsPage() {
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
             <Button 
               onClick={() => setShowInviteDialog(true)}
-              className="bg-[#7A0019] hover:bg-[#5A0A1A] text-white"
+              className="bg-journal-maroon hover:bg-journal-maroon-dark text-white"
             >
               <Mail className="mr-2 h-4 w-4" />
               Invite Reviewer
@@ -333,7 +333,7 @@ export default function ReviewerInvitationsPage() {
             <Button 
               onClick={() => setShowAddReviewerDialog(true)}
               variant="outline"
-              className="border-[#7A0019] text-[#7A0019] hover:bg-[#FFE9EE]"
+              className="border-journal-maroon text-journal-maroon hover:bg-journal-rose"
             >
               <UserPlus className="mr-2 h-4 w-4" />
               Add Reviewer
@@ -343,9 +343,9 @@ export default function ReviewerInvitationsPage() {
 
         {/* Invitations Card */}
         <Card className="shadow-lg border border-gray-200">
-          <CardHeader className="bg-gradient-to-r from-[#FAF7F8] to-white border-b border-gray-200">
+          <CardHeader className="bg-gradient-to-r from-journal-off-white to-white border-b border-gray-200">
             <CardTitle className="text-xl text-gray-900 flex items-center gap-2">
-              <Mail className="h-5 w-5 text-[#7A0019]" />
+              <Mail className="h-5 w-5 text-journal-maroon" />
               Reviewer Invitations
             </CardTitle>
           </CardHeader>
@@ -371,7 +371,7 @@ export default function ReviewerInvitationsPage() {
                     </tr>
                   ) : (
                     invitations.map((invitation) => (
-                      <tr key={invitation?.id} className="border-b hover:bg-[#FFE9EE] transition-colors">
+                      <tr key={invitation?.id} className="border-b hover:bg-journal-rose transition-colors">
                         <td className="px-4 py-3 font-medium text-gray-900">{invitation?.email}</td>
                         <td className="px-4 py-3">
                           <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusBadgeClass(invitation?.status)}`}>
@@ -385,7 +385,7 @@ export default function ReviewerInvitationsPage() {
                         <td className="px-4 py-3 text-gray-600 hidden sm:table-cell">{invitation?.expires || 'N/A'}</td>
                         <td className="px-4 py-3">
                           {invitation?.assignedFaculty ? (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#FFE9EE] text-[#7A0019]">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-journal-rose text-journal-maroon">
                               {invitation.assignedFaculty}
                             </span>
                           ) : (
@@ -471,7 +471,7 @@ export default function ReviewerInvitationsPage() {
                 <Button type="button" variant="outline" onClick={() => setShowInviteDialog(false)}>
                   Cancel
                 </Button>
-                <Button type="submit" disabled={isSubmitting} className="bg-[#7A0019] hover:bg-[#5A0A1A]">
+                <Button type="submit" disabled={isSubmitting} className="bg-journal-maroon hover:bg-journal-maroon-dark">
                   {isSubmitting ? "Sending..." : "Send Invitation"}
                 </Button>
               </DialogFooter>
@@ -580,7 +580,7 @@ export default function ReviewerInvitationsPage() {
                 <Button type="button" variant="outline" onClick={() => setShowAddReviewerDialog(false)}>
                   Cancel
                 </Button>
-                <Button type="submit" disabled={isSubmitting} className="bg-[#7A0019] hover:bg-[#5A0A1A]">
+                <Button type="submit" disabled={isSubmitting} className="bg-journal-maroon hover:bg-journal-maroon-dark">
                   {isSubmitting ? "Creating..." : "Create Profile"}
                 </Button>
               </DialogFooter>
@@ -600,7 +600,7 @@ export default function ReviewerInvitationsPage() {
           <DialogContent className="sm:max-w-2xl max-h-[80vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
-                <Building2 className="h-5 w-5 text-[#7A0019]" />
+                <Building2 className="h-5 w-5 text-journal-maroon" />
                 Assign Faculty
               </DialogTitle>
               <DialogDescription>
@@ -621,7 +621,7 @@ export default function ReviewerInvitationsPage() {
                 {facultiesForAssign.map((faculty) => (
                   <div
                     key={faculty.faculty}
-                    className="border border-gray-200 rounded-lg overflow-hidden hover:border-[#7A0019] transition-colors"
+                    className="border border-gray-200 rounded-lg overflow-hidden hover:border-journal-maroon transition-colors"
                   >
                     <div className="flex items-center justify-between p-4 bg-white">
                       <div className="flex-1">
@@ -639,7 +639,7 @@ export default function ReviewerInvitationsPage() {
                             handleAssignFaculty(faculty.faculty);
                           }}
                           disabled={assigningFaculty}
-                          className="bg-[#7A0019] hover:bg-[#5A0A1A] text-white text-sm"
+                          className="bg-journal-maroon hover:bg-journal-maroon-dark text-white text-sm"
                           size="sm"
                         >
                           {assigningFaculty && selectedFacultyForAssign === faculty.faculty ? (
@@ -657,7 +657,7 @@ export default function ReviewerInvitationsPage() {
                           )}
                           variant="outline"
                           size="sm"
-                          className="text-gray-600 hover:text-[#7A0019]"
+                          className="text-gray-600 hover:text-journal-maroon"
                         >
                           {expandedFaculty === faculty.faculty ? (
                             <ChevronDown className="h-4 w-4" />
@@ -679,7 +679,7 @@ export default function ReviewerInvitationsPage() {
                               key={idx}
                               className="text-xs text-gray-600 flex items-center gap-2"
                             >
-                              <span className="w-1.5 h-1.5 bg-[#7A0019] rounded-full"></span>
+                              <span className="w-1.5 h-1.5 bg-journal-maroon rounded-full"></span>
                               {dept}
                             </li>
                           ))}

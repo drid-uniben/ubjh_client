@@ -101,7 +101,7 @@ export default function ArticleDetailPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-white">
-        <header className="bg-[#7A0019] text-white shadow-lg sticky top-0 z-50">
+        <header className="bg-journal-maroon text-white shadow-lg sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-20">
               <div className="flex items-center gap-4">
@@ -118,14 +118,14 @@ export default function ArticleDetailPage() {
                   <h1 className="text-xl font-bold tracking-tight">
                     UNIBEN Journal of Humanities
                   </h1>
-                  <p className="text-sm text-[#FFE9EE] font-medium">
+                  <p className="text-sm text-journal-rose font-medium">
                     Article View
                   </p>
                 </div>
               </div>
               <Link
                 href="/current-issue"
-                className="text-white hover:text-[#FFE9EE] font-semibold"
+                className="text-white hover:text-journal-rose font-semibold"
               >
                 ← Back to Issue
               </Link>
@@ -134,8 +134,8 @@ export default function ArticleDetailPage() {
         </header>
         <div className="flex justify-center items-center py-20">
           <div className="flex flex-col items-center space-y-4">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#7A0019]"></div>
-            <p className="text-[#7A0019] font-medium">Loading article...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-journal-maroon"></div>
+            <p className="text-journal-maroon font-medium">Loading article...</p>
           </div>
         </div>
         <Footer />
@@ -146,7 +146,7 @@ export default function ArticleDetailPage() {
   if (error) {
     return (
       <div className="min-h-screen bg-white">
-        <header className="bg-[#7A0019] text-white shadow-lg sticky top-0 z-50">
+        <header className="bg-journal-maroon text-white shadow-lg sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-20">
               <div className="flex items-center gap-4">
@@ -163,14 +163,14 @@ export default function ArticleDetailPage() {
                   <h1 className="text-xl font-bold tracking-tight">
                     UNIBEN Journal of Humanities
                   </h1>
-                  <p className="text-sm text-[#FFE9EE] font-medium">
+                  <p className="text-sm text-journal-rose font-medium">
                     Article View
                   </p>
                 </div>
               </div>
               <Link
                 href="/current-issue"
-                className="text-white hover:text-[#FFE9EE] font-semibold"
+                className="text-white hover:text-journal-rose font-semibold"
               >
                 ← Back to Issue
               </Link>
@@ -188,7 +188,7 @@ export default function ArticleDetailPage() {
   if (articleNotFound) {
     return (
       <div className="min-h-screen bg-white">
-        <header className="bg-[#7A0019] text-white shadow-lg sticky top-0 z-50">
+        <header className="bg-journal-maroon text-white shadow-lg sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-20">
               <div className="flex items-center gap-4">
@@ -205,14 +205,14 @@ export default function ArticleDetailPage() {
                   <h1 className="text-xl font-bold tracking-tight">
                     UNIBEN Journal of Humanities
                   </h1>
-                  <p className="text-sm text-[#FFE9EE] font-medium">
+                  <p className="text-sm text-journal-rose font-medium">
                     Article View
                   </p>
                 </div>
               </div>
               <Link
                 href="/current-issue"
-                className="text-white hover:text-[#FFE9EE] font-semibold"
+                className="text-white hover:text-journal-rose font-semibold"
               >
                 ← Back to Issue
               </Link>
@@ -238,7 +238,7 @@ export default function ArticleDetailPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-[#7A0019] text-white shadow-lg sticky top-0 z-50">
+      <header className="bg-journal-maroon text-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center gap-4">
@@ -255,14 +255,14 @@ export default function ArticleDetailPage() {
                 <h1 className="text-xl font-bold tracking-tight">
                   UNIBEN Journal of Humanities
                 </h1>
-                <p className="text-sm text-[#FFE9EE] font-medium">
+                <p className="text-sm text-journal-rose font-medium">
                   Article View
                 </p>
               </div>
             </div>
             <Link
               href="/current-issue"
-              className="text-white hover:text-[#FFE9EE] font-semibold"
+              className="text-white hover:text-journal-rose font-semibold"
             >
               ← Back to Issue
             </Link>
@@ -271,19 +271,19 @@ export default function ArticleDetailPage() {
       </header>
 
       {/* Breadcrumb */}
-      <nav className="bg-[#FAF7F8] border-b border-[#EAD3D9] py-3">
+      <nav className="bg-journal-off-white border-b border-journal-mauve py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-gray-600">
             <Link
               href="/"
-              className="hover:text-[#7A0019]"
+              className="hover:text-journal-maroon"
             >
               Home
             </Link>
             <ChevronRight className="h-4 w-4" />
             <Link
               href="/current-issue"
-              className="hover:text-[#7A0019]"
+              className="hover:text-journal-maroon"
             >
               Volume {volume.volumeNumber}, Issue {issue.issueNumber} ({new Date(publishDate).getFullYear()})
             </Link>
@@ -301,7 +301,7 @@ export default function ArticleDetailPage() {
             {/* Article Header */}
             <div className="mb-8">
               <div className="flex flex-wrap items-center gap-3 mb-6">
-                <span className="inline-flex items-center px-3 py-1 bg-[#FFE9EE] border border-[#E6B6C2] text-[#5A0A1A] rounded-full text-xs font-bold uppercase">
+                <span className="inline-flex items-center px-3 py-1 bg-journal-rose border border-[#E6B6C2] text-journal-maroon-dark rounded-full text-xs font-bold uppercase">
                   {articleType}
                 </span>
                 <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold">
@@ -312,7 +312,7 @@ export default function ArticleDetailPage() {
                 </span>
               </div>
 
-              <h1 className="text-4xl font-bold text-[#212121] mb-6 leading-tight font-serif">
+              <h1 className="text-4xl font-bold text-journal-text-dark mb-6 leading-tight font-serif">
                 {title}
               </h1>
 
@@ -325,7 +325,7 @@ export default function ArticleDetailPage() {
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold text-[#212121]">
+                        <span className="font-semibold text-journal-text-dark">
                           {auth.name}
                         </span>
                       </div>
@@ -336,7 +336,7 @@ export default function ArticleDetailPage() {
                           href={`https://orcid.org/${auth.orcid}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[#7A0019] hover:text-[#5A0A1A]"
+                          className="text-journal-maroon hover:text-journal-maroon-dark"
                           aria-label="ORCID"
                         >
                           <Globe className="h-4 w-4" />
@@ -348,7 +348,7 @@ export default function ArticleDetailPage() {
               </div>
 
               {/* Publication Metadata */}
-              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6 pb-6 border-b-2 border-[#EAD3D9]">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6 pb-6 border-b-2 border-journal-mauve">
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
                   <span>
@@ -368,7 +368,7 @@ export default function ArticleDetailPage() {
                   </code>
                   <button
                     onClick={copyDOI}
-                    className="inline-flex items-center gap-1 text-[#7A0019] hover:text-[#5A0A1A] text-sm font-semibold"
+                    className="inline-flex items-center gap-1 text-journal-maroon hover:text-journal-maroon-dark text-sm font-semibold"
                     aria-label="Copy DOI"
                   >
                     {copiedDOI ? (
@@ -388,11 +388,11 @@ export default function ArticleDetailPage() {
 
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-3 mb-8">
-                <button className="inline-flex items-center gap-2 bg-[#7A0019] text-white px-6 py-3 rounded-lg hover:bg-[#5A0A1A] transition-colors font-semibold">
+                <button className="inline-flex items-center gap-2 bg-journal-maroon text-white px-6 py-3 rounded-lg hover:bg-journal-maroon-dark transition-colors font-semibold">
                   <Download className="h-5 w-5" />
                   Download PDF
                 </button>
-                <button className="inline-flex items-center gap-2 border-2 border-[#7A0019] text-[#7A0019] px-6 py-3 rounded-lg hover:bg-[#FFE9EE] transition-colors font-semibold">
+                <button className="inline-flex items-center gap-2 border-2 border-journal-maroon text-journal-maroon px-6 py-3 rounded-lg hover:bg-journal-rose transition-colors font-semibold">
                   <Quote className="h-5 w-5" />
                   Cite Article
                 </button>
@@ -413,19 +413,19 @@ export default function ArticleDetailPage() {
 
             {/* Abstract */}
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-[#7A0019] mb-4 font-serif">
+              <h2 className="text-2xl font-bold text-journal-maroon mb-4 font-serif">
                 Abstract
               </h2>
               <p className="text-gray-700 leading-relaxed mb-6">
                 {abstract}
               </p>
-              <div className="bg-[#FAF7F8] rounded-lg p-4">
-                <h3 className="font-semibold text-[#212121] mb-2">Keywords:</h3>
+              <div className="bg-journal-off-white rounded-lg p-4">
+                <h3 className="font-semibold text-journal-text-dark mb-2">Keywords:</h3>
                 <div className="flex flex-wrap gap-2">
                   {keywords.map((keyword, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-white border border-[#EAD3D9] text-gray-700 rounded-full text-sm"
+                      className="px-3 py-1 bg-white border border-journal-mauve text-gray-700 rounded-full text-sm"
                     >
                       {keyword}
                     </span>
@@ -436,8 +436,8 @@ export default function ArticleDetailPage() {
 
             {/* Article Sections Navigation */}
             <section className="mb-8">
-              <div className="bg-white border-2 border-[#EAD3D9] rounded-xl p-6">
-                <h2 className="text-xl font-bold text-[#7A0019] mb-4">
+              <div className="bg-white border-2 border-journal-mauve rounded-xl p-6">
+                <h2 className="text-xl font-bold text-journal-maroon mb-4">
                   Article Sections
                 </h2>
                 <nav className="space-y-2">
@@ -452,18 +452,18 @@ export default function ArticleDetailPage() {
                   ].map((section, idx) => (
                     <button
                       key={idx}
-                      className="w-full text-left px-4 py-2 rounded-lg hover:bg-[#FAF7F8] text-gray-700 hover:text-[#7A0019] transition-colors flex items-center justify-between group"
+                      className="w-full text-left px-4 py-2 rounded-lg hover:bg-journal-off-white text-gray-700 hover:text-journal-maroon transition-colors flex items-center justify-between group"
                     >
                       <span>{section}</span>
                       <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </button>
                   ))}
                 </nav>
-                <div className="mt-6 pt-6 border-t border-[#EAD3D9]">
+                <div className="mt-6 pt-6 border-t border-journal-mauve">
                   <p className="text-sm text-gray-600 mb-3">
                     <strong>Full article available in PDF format</strong>
                   </p>
-                  <button className="inline-flex items-center gap-2 bg-[#7A0019] text-white px-6 py-2 rounded-lg hover:bg-[#5A0A1A] transition-colors font-semibold text-sm">
+                  <button className="inline-flex items-center gap-2 bg-journal-maroon text-white px-6 py-2 rounded-lg hover:bg-journal-maroon-dark transition-colors font-semibold text-sm">
                     <FileText className="h-4 w-4" />
                     View Full Text PDF
                   </button>
@@ -473,10 +473,10 @@ export default function ArticleDetailPage() {
 
             {/* How to Cite */}
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-[#7A0019] mb-4 font-serif">
+              <h2 className="text-2xl font-bold text-journal-maroon mb-4 font-serif">
                 How to Cite This Article
               </h2>
-              <div className="bg-white border-2 border-[#EAD3D9] rounded-xl p-6">
+              <div className="bg-white border-2 border-journal-mauve rounded-xl p-6">
                 <div className="flex gap-2 mb-4">
                   {["APA", "MLA", "Chicago", "Harvard"].map((format) => (
                     <button
@@ -484,7 +484,7 @@ export default function ArticleDetailPage() {
                       onClick={() => setCitationFormat(format)}
                       className={`px-4 py-2 rounded-lg font-semibold text-sm transition-colors ${
                         citationFormat === format
-                          ? "bg-[#7A0019] text-white"
+                          ? "bg-journal-maroon text-white"
                           : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                       }`}
                     >
@@ -492,21 +492,21 @@ export default function ArticleDetailPage() {
                     </button>
                   ))}
                 </div>
-                <div className="bg-[#FAF7F8] rounded-lg p-4 mb-4">
+                <div className="bg-journal-off-white rounded-lg p-4 mb-4">
                   <p className="text-sm text-gray-700 font-mono leading-relaxed">
                     {citations[citationFormat as keyof typeof citations]}
                   </p>
                 </div>
                 <div className="flex gap-3">
-                  <button className="inline-flex items-center gap-2 bg-[#7A0019] text-white px-4 py-2 rounded-lg hover:bg-[#5A0A1A] transition-colors font-semibold text-sm">
+                  <button className="inline-flex items-center gap-2 bg-journal-maroon text-white px-4 py-2 rounded-lg hover:bg-journal-maroon-dark transition-colors font-semibold text-sm">
                     <Copy className="h-4 w-4" />
                     Copy Citation
                   </button>
-                  <button className="inline-flex items-center gap-2 border-2 border-[#7A0019] text-[#7A0019] px-4 py-2 rounded-lg hover:bg-[#FFE9EE] transition-colors font-semibold text-sm">
+                  <button className="inline-flex items-center gap-2 border-2 border-journal-maroon text-journal-maroon px-4 py-2 rounded-lg hover:bg-journal-rose transition-colors font-semibold text-sm">
                     <Download className="h-4 w-4" />
                     Export BibTeX
                   </button>
-                  <button className="inline-flex items-center gap-2 border-2 border-[#7A0019] text-[#7A0019] px-4 py-2 rounded-lg hover:bg-[#FFE9EE] transition-colors font-semibold text-sm">
+                  <button className="inline-flex items-center gap-2 border-2 border-journal-maroon text-journal-maroon px-4 py-2 rounded-lg hover:bg-journal-rose transition-colors font-semibold text-sm">
                     <Download className="h-4 w-4" />
                     Export RIS
                   </button>
@@ -517,28 +517,28 @@ export default function ArticleDetailPage() {
             {/* Declarations */}
             {/* Assuming these fields are not directly available in PublishedArticle for now */}
             {/* <section className="mb-8">
-              <h2 className="text-2xl font-bold text-[#7A0019] mb-4 font-serif">
+              <h2 className="text-2xl font-bold text-journal-maroon mb-4 font-serif">
                 Declarations
               </h2>
               <div className="space-y-4">
-                <div className="bg-white border-2 border-[#EAD3D9] rounded-xl p-6">
-                  <h3 className="font-semibold text-[#212121] mb-2">
+                <div className="bg-white border-2 border-journal-mauve rounded-xl p-6">
+                  <h3 className="font-semibold text-journal-text-dark mb-2">
                     Funding
                   </h3>
                   <p className="text-gray-700 text-sm leading-relaxed">
                     {article.funding}
                   </p>
                 </div>
-                <div className="bg-white border-2 border-[#EAD3D9] rounded-xl p-6">
-                  <h3 className="font-semibold text-[#212121] mb-2">
+                <div className="bg-white border-2 border-journal-mauve rounded-xl p-6">
+                  <h3 className="font-semibold text-journal-text-dark mb-2">
                     Conflict of Interest
                   </h3>
                   <p className="text-gray-700 text-sm leading-relaxed">
                     {article.conflictOfInterest}
                   </p>
                 </div>
-                <div className="bg-white border-2 border-[#EAD3D9] rounded-xl p-6">
-                  <h3 className="font-semibold text-[#212121] mb-2">
+                <div className="bg-white border-2 border-journal-mauve rounded-xl p-6">
+                  <h3 className="font-semibold text-journal-text-dark mb-2">
                     Data Availability
                   </h3>
                   <p className="text-gray-700 text-sm leading-relaxed">
@@ -582,8 +582,8 @@ export default function ArticleDetailPage() {
             <div className="sticky top-24 space-y-6">
 
               {/* Related Articles */}
-              <div className="bg-[#FAF7F8] border-2 border-[#EAD3D9] rounded-xl p-6">
-                <h3 className="text-lg font-bold text-[#7A0019] mb-4">
+              <div className="bg-journal-off-white border-2 border-journal-mauve rounded-xl p-6">
+                <h3 className="text-lg font-bold text-journal-maroon mb-4">
                   Related Articles
                 </h3>
                 <div className="space-y-4">
@@ -593,7 +593,7 @@ export default function ArticleDetailPage() {
                       href={`/articles/${related.id}`}
                       className="block group"
                     >
-                      <h4 className="text-sm font-semibold text-[#212121] group-hover:text-[#7A0019] transition-colors mb-1 leading-tight">
+                      <h4 className="text-sm font-semibold text-journal-text-dark group-hover:text-journal-maroon transition-colors mb-1 leading-tight">
                         {related.title}
                       </h4>
                       <p className="text-xs text-gray-600">
@@ -604,7 +604,7 @@ export default function ArticleDetailPage() {
                 </div>
                 <Link
                   href="/current-issue"
-                  className="inline-flex items-center gap-1 text-[#7A0019] hover:text-[#5A0A1A] font-semibold text-sm mt-4"
+                  className="inline-flex items-center gap-1 text-journal-maroon hover:text-journal-maroon-dark font-semibold text-sm mt-4"
                 >
                   View all articles
                   <ChevronRight className="h-4 w-4" />
@@ -612,8 +612,8 @@ export default function ArticleDetailPage() {
               </div>
 
               {/* Issue Info */}
-              <div className="bg-white border-2 border-[#EAD3D9] rounded-xl p-6">
-                <h3 className="text-lg font-bold text-[#7A0019] mb-4">
+              <div className="bg-white border-2 border-journal-mauve rounded-xl p-6">
+                <h3 className="text-lg font-bold text-journal-maroon mb-4">
                   Published In
                 </h3>
                 <div className="mb-4">
@@ -633,7 +633,7 @@ export default function ArticleDetailPage() {
                 </div>
                 <Link
                   href="/current-issue"
-                  className="inline-flex items-center gap-2 bg-[#7A0019] text-white px-4 py-2 rounded-lg hover:bg-[#5A0A1A] transition-colors font-semibold text-sm w-full justify-center"
+                  className="inline-flex items-center gap-2 bg-journal-maroon text-white px-4 py-2 rounded-lg hover:bg-journal-maroon-dark transition-colors font-semibold text-sm w-full justify-center"
                 >
                   <BookOpen className="h-4 w-4" />
                   View Full Issue

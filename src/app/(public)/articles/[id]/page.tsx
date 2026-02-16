@@ -115,8 +115,8 @@ export default function ArticleDetailPage() {
         <Header />
         <div className="flex justify-center items-center py-20">
           <div className="flex flex-col items-center space-y-4">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#7A0019]"></div>
-            <p className="text-[#7A0019] font-medium">Loading article...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-journal-maroon"></div>
+            <p className="text-journal-maroon font-medium">Loading article...</p>
           </div>
         </div>
         <Footer />
@@ -165,12 +165,12 @@ export default function ArticleDetailPage() {
       <Header />
 
       {/* Breadcrumb */}
-      <nav className="bg-[#FAF7F8] border-b border-[#EAD3D9] py-3">
+      <nav className="bg-journal-off-white border-b border-journal-mauve py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-[#7A0019]">Home</Link>
+            <Link href="/" className="hover:text-journal-maroon">Home</Link>
             <ChevronRight className="h-4 w-4" />
-            <Link href={issueLink} className="hover:text-[#7A0019]">
+            <Link href={issueLink} className="hover:text-journal-maroon">
               Volume {volume?.volumeNumber || '?'}, Issue {issue?.issueNumber || '?'} ({new Date(publishDate).getFullYear()})
             </Link>
             <ChevronRight className="h-4 w-4" />
@@ -186,7 +186,7 @@ export default function ArticleDetailPage() {
           <div className="lg:col-span-2">
             <div className="mb-8">
               <div className="flex flex-wrap items-center gap-3 mb-6">
-                <span className="inline-flex items-center px-3 py-1 bg-[#FFE9EE] border border-[#E6B6C2] text-[#5A0A1A] rounded-full text-xs font-bold uppercase">
+                <span className="inline-flex items-center px-3 py-1 bg-journal-rose border border-[#E6B6C2] text-journal-maroon-dark rounded-full text-xs font-bold uppercase">
                   {normalizeType(articleType)}
                 </span>
                 <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold">
@@ -197,7 +197,7 @@ export default function ArticleDetailPage() {
                 </span>
               </div>
 
-              <h1 className="text-4xl font-bold text-[#212121] mb-6 leading-tight font-serif">
+              <h1 className="text-4xl font-bold text-journal-text-dark mb-6 leading-tight font-serif">
                 {title}
               </h1>
 
@@ -206,14 +206,14 @@ export default function ArticleDetailPage() {
                   <div key={idx} className="flex items-start gap-3 mb-3 flex-wrap">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold text-[#212121]">{auth.name}</span>
+                        <span className="font-semibold text-journal-text-dark">{auth.name}</span>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6 pb-6 border-b-2 border-[#EAD3D9]">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6 pb-6 border-b-2 border-journal-mauve">
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
                   <span>
@@ -226,7 +226,7 @@ export default function ArticleDetailPage() {
                 <div className="flex items-center gap-3 mb-6">
                   <span className="text-sm font-semibold text-gray-700">DOI:</span>
                   <code className="px-3 py-1 bg-gray-100 rounded font-mono text-sm">{doi}</code>
-                  <button onClick={copyDOI} className="inline-flex items-center gap-1 text-[#7A0019] hover:text-[#5A0A1A] text-sm font-semibold">
+                  <button onClick={copyDOI} className="inline-flex items-center gap-1 text-journal-maroon hover:text-journal-maroon-dark text-sm font-semibold">
                     {copiedDOI ? <><Check className="h-4 w-4" /> Copied!</> : <><Copy className="h-4 w-4" /> Copy</>}
                   </button>
                 </div>
@@ -234,13 +234,13 @@ export default function ArticleDetailPage() {
 
               <div className="flex flex-wrap gap-3 mb-8">
                 {pdfFile && (
-                  <a href={pdfFile} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#7A0019] text-white px-6 py-3 rounded-lg hover:bg-[#5A0A1A] transition-colors font-semibold">
+                  <a href={pdfFile} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-journal-maroon text-white px-6 py-3 rounded-lg hover:bg-journal-maroon-dark transition-colors font-semibold">
                     <Download className="h-5 w-5" /> Download PDF
                   </a>
                 )}
                 <button 
                   onClick={handleShareArticle}
-                  className="inline-flex items-center gap-2 bg-transparent border-2 border-[#7A0019] text-[#7A0019] px-6 py-3 rounded-lg hover:bg-[#7A0019] hover:text-white transition-all font-semibold"
+                  className="inline-flex items-center gap-2 bg-transparent border-2 border-journal-maroon text-journal-maroon px-6 py-3 rounded-lg hover:bg-journal-maroon hover:text-white transition-all font-semibold"
                 >
                   {copiedLink ? <Check className="h-5 w-5" /> : <Share2 className="h-5 w-5" />}
                   Share Article
@@ -249,14 +249,14 @@ export default function ArticleDetailPage() {
             </div>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-[#7A0019] mb-4 font-serif">Abstract</h2>
+              <h2 className="text-2xl font-bold text-journal-maroon mb-4 font-serif">Abstract</h2>
               <p className="text-gray-700 leading-relaxed mb-6">{abstract}</p>
               {keywords && keywords.length > 0 && (
-                <div className="bg-[#FAF7F8] rounded-lg p-4">
-                  <h3 className="font-semibold text-[#212121] mb-2">Keywords:</h3>
+                <div className="bg-journal-off-white rounded-lg p-4">
+                  <h3 className="font-semibold text-journal-text-dark mb-2">Keywords:</h3>
                   <div className="flex flex-wrap gap-2">
                     {keywords.map((keyword, idx) => (
-                      <span key={idx} className="px-3 py-1 bg-white border border-[#EAD3D9] text-gray-700 rounded-full text-sm">
+                      <span key={idx} className="px-3 py-1 bg-white border border-journal-mauve text-gray-700 rounded-full text-sm">
                         {keyword}
                       </span>
                     ))}
@@ -266,22 +266,22 @@ export default function ArticleDetailPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-[#7A0019] mb-4 font-serif">How to Cite This Article</h2>
-              <div className="bg-white border-2 border-[#EAD3D9] rounded-xl p-6">
+              <h2 className="text-2xl font-bold text-journal-maroon mb-4 font-serif">How to Cite This Article</h2>
+              <div className="bg-white border-2 border-journal-mauve rounded-xl p-6">
                 <div className="flex gap-2 mb-4">
                   {["APA", "MLA", "Chicago", "Harvard"].map((format) => (
                     <button
                       key={format}
                       onClick={() => setCitationFormat(format)}
                       className={`px-4 py-2 rounded-lg font-semibold text-sm transition-colors ${
-                        citationFormat === format ? "bg-[#7A0019] text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        citationFormat === format ? "bg-journal-maroon text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                       }`}
                     >
                       {format}
                     </button>
                   ))}
                 </div>
-                <div className="bg-[#FAF7F8] rounded-lg p-4 mb-4">
+                <div className="bg-journal-off-white rounded-lg p-4 mb-4">
                   <p className="text-sm text-gray-700 font-mono leading-relaxed">
                     {generateCitation(citationFormat)}
                   </p>
@@ -307,15 +307,15 @@ export default function ArticleDetailPage() {
 
           <div className="lg:col-span-1">
             <div className="sticky top-24 space-y-6">
-              <div className="bg-white border-2 border-[#EAD3D9] rounded-xl p-6">
-                <h3 className="text-lg font-bold text-[#7A0019] mb-4">Published In</h3>
+              <div className="bg-white border-2 border-journal-mauve rounded-xl p-6">
+                <h3 className="text-lg font-bold text-journal-maroon mb-4">Published In</h3>
                 <div className="mb-4 text-sm text-gray-600">
                   <p className="mb-1"><strong>Journal:</strong> UNIBEN Journal of Humanities</p>
                   <p className="mb-1"><strong>Volume/Issue:</strong> {volume?.volumeNumber || '?'}({issue?.issueNumber || '?'})</p>
                   <p className="mb-1"><strong>Year:</strong> {new Date(publishDate).getFullYear()}</p>
                   {pages && <p><strong>Pages:</strong> {pages.start}-{pages.end}</p>}
                 </div>
-                <Link href={issueLink} className="inline-flex items-center gap-2 bg-[#7A0019] text-white px-4 py-2 rounded-lg hover:bg-[#5A0A1A] transition-all font-semibold text-sm w-full justify-center">
+                <Link href={issueLink} className="inline-flex items-center gap-2 bg-journal-maroon text-white px-4 py-2 rounded-lg hover:bg-journal-maroon-dark transition-all font-semibold text-sm w-full justify-center">
                   <BookOpen className="h-4 w-4" /> View Full Issue
                 </Link>
               </div>

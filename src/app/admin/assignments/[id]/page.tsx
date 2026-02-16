@@ -330,7 +330,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
       <AdminLayout>
         <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100 flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#7A0019] border-t-transparent mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-journal-maroon border-t-transparent mx-auto mb-4"></div>
             <p className="text-gray-600">Loading review...</p>
           </div>
         </div>
@@ -415,7 +415,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
               <Link 
                 href="/admin/review-guideline" 
                 target="_blank" 
-                className="bg-gray-100 px-4 py-2 rounded-lg text-[#7A0019] hover:text-[#5A0A1A] text-sm font-medium hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
+                className="bg-gray-100 px-4 py-2 rounded-lg text-journal-maroon hover:text-journal-maroon-dark text-sm font-medium hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
               >
                 <Eye className="w-4 h-4" />
                 Review Guidelines
@@ -506,7 +506,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
 
           {/* Manuscript Details */}
           <div className="bg-white rounded-lg shadow-md p-4 md:p-6 mb-6">
-            <h2 className="text-lg md:text-xl font-bold text-[#7A0019] mb-4 border-b pb-2">Manuscript Details</h2>
+            <h2 className="text-lg md:text-xl font-bold text-journal-maroon mb-4 border-b pb-2">Manuscript Details</h2>
             
             <div className="mb-6">
               <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2">{reviewData.manuscript.title}</h3>
@@ -515,7 +515,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6">
               <div className="bg-gray-50 rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
-                  <FileText className="w-5 h-5 text-[#7A0019]" />
+                  <FileText className="w-5 h-5 text-journal-maroon" />
                   <h4 className="font-semibold text-gray-700">Manuscript Information</h4>
                 </div>
                 <div className="space-y-2">
@@ -561,7 +561,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
                     className="w-full"
                   >
                     <h4 className="font-semibold text-gray-700 mb-2">Manuscript to be Reviewed</h4>
-                    <div className="inline-flex items-center px-4 py-2 bg-[#7A0019] text-white rounded-lg hover:bg-[#5A0A1A] transition-colors text-sm">
+                    <div className="inline-flex items-center px-4 py-2 bg-journal-maroon text-white rounded-lg hover:bg-journal-maroon-dark transition-colors text-sm">
                       <FileText className="w-4 h-4 mr-2" />
                       Click here to View Manuscript PDF
                     </div>
@@ -574,13 +574,13 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
           {/* Review Scoring Section */}
           <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
-              <h2 className="text-lg md:text-xl font-bold text-[#7A0019]">
+              <h2 className="text-lg md:text-xl font-bold text-journal-maroon">
                 {isCompleted ? 'Your Review Scores' : 'Manuscript Scoring'}
               </h2>
               {isCompleted && (
                 <div className="text-right">
                   <div className="text-sm text-gray-600">Total Score</div>
-                  <div className="text-xl md:text-2xl font-bold text-[#7A0019]">
+                  <div className="text-xl md:text-2xl font-bold text-journal-maroon">
                     {reviewData.totalScore}/{calculateMaxTotalScore()}
                   </div>
                 </div>
@@ -604,12 +604,12 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
                     <div className="flex items-center md:ml-4">
                       {isCompleted ? (
                         <div className="text-right">
-                          <div className="text-base md:text-lg font-bold text-[#7A0019]">
+                          <div className="text-base md:text-lg font-bold text-journal-maroon">
                             {reviewData.scores[criteria.id]}/{criteria.maxScore}
                           </div>
                           <div className="w-20 md:w-24 bg-gray-200 rounded-full h-2 mt-1">
                             <div 
-                              className="bg-[#7A0019] rounded-full h-2" 
+                              className="bg-journal-maroon rounded-full h-2" 
                               style={{ 
                                 width: `${(reviewData.scores[criteria.id] / criteria.maxScore) * 100}%` 
                               }}
@@ -629,7 +629,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
                               isNaN(score) ? 0 : Math.min(score, criteria.maxScore)
                             );
                           }}
-                          className="w-16 md:w-20 p-2 border rounded text-center focus:outline-none focus:ring-2 focus:ring-[#7A0019]"
+                          className="w-16 md:w-20 p-2 border rounded text-center focus:outline-none focus:ring-2 focus:ring-journal-maroon"
                           placeholder={`0-${criteria.maxScore}`}
                         />
                       )}
@@ -639,7 +639,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
                   {!isCompleted && (
                     <div className="bg-gray-200 rounded-full h-2 mt-3">
                       <div 
-                        className="bg-[#7A0019] rounded-full h-2 transition-all duration-300" 
+                        className="bg-journal-maroon rounded-full h-2 transition-all duration-300" 
                         style={{ 
                           width: `${criteria.scoreGiven 
                             ? (criteria.scoreGiven / criteria.maxScore) * 100 
@@ -656,7 +656,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
             {!isCompleted && (
               <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-4 mb-6 flex justify-between items-center">
                 <span className="font-bold text-base md:text-lg text-gray-800">Total Score</span>
-                <span className="text-xl md:text-2xl font-bold text-[#7A0019]">
+                <span className="text-xl md:text-2xl font-bold text-journal-maroon">
                   {calculateTotalScore()}/{calculateMaxTotalScore()}
                 </span>
               </div>
@@ -681,7 +681,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
                 <select
                   value={reviewDecision}
                   onChange={(e) => setReviewDecision(e.target.value)}
-                  className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7A0019]"
+                  className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-journal-maroon"
                 >
                   <option value="">Select a decision...</option>
                   <option value="publishable">Publishable</option>
@@ -711,7 +711,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
                   id="comments-author"
                   value={commentsForAuthor}
                   onChange={(e) => setCommentsForAuthor(e.target.value)}
-                  className="w-full h-32 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7A0019] resize-vertical text-sm md:text-base"
+                  className="w-full h-32 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-journal-maroon resize-vertical text-sm md:text-base"
                   placeholder="Provide detailed comments for the author..."
                 />
               )}
@@ -735,7 +735,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
                   id="comments-editor"
                   value={confidentialComments}
                   onChange={(e) => setConfidentialComments(e.target.value)}
-                  className="w-full h-32 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7A0019] resize-vertical text-sm md:text-base"
+                  className="w-full h-32 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-journal-maroon resize-vertical text-sm md:text-base"
                   placeholder="Confidential comments for the editor only..."
                 />
               )}
@@ -743,7 +743,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
 
             {/* Action Buttons */}
             {!isCompleted && (
-              <div className="bg-blue-50 border border-[#7A0019] rounded-lg p-4 mb-6 text-sm text-[#7A0019]">
+              <div className="bg-blue-50 border border-journal-maroon rounded-lg p-4 mb-6 text-sm text-journal-maroon">
                 <p><strong>Note:</strong> You can only submit the review after filling all the fields. However, you can save your progress at any time and come back later to continue.</p>
               </div>
             )}
@@ -769,7 +769,7 @@ const [conflictingReviews, setConflictingReviews] = useState<ConflictingReview[]
                 <button 
                   onClick={handleSubmit}
                   disabled={submitting || isSubmitDisabled}
-                  className="flex-1 bg-[#7A0019] text-white py-3 px-4 rounded-lg hover:bg-[#5A0A1A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm md:text-base"
+                  className="flex-1 bg-journal-maroon text-white py-3 px-4 rounded-lg hover:bg-journal-maroon-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm md:text-base"
                 >
                   {submitting ? (
                     <>

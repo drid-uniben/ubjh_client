@@ -45,41 +45,41 @@ export default function HumanitiesJournalHome() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header/Navigation */}
-      <header className="bg-[#7A0019] text-white shadow-lg sticky top-0 z-50">
+      <header className="bg-journal-maroon text-white shadow-lg sticky top-0 z-50">
         <Header/>
 
         {/* Secondary Navigation */}
-        <div className="bg-[#F2E9EC] border-b border-[#EAD3D9]">
+        <div className="bg-journal-blush border-b border-journal-mauve">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between py-3">
               <div className="flex items-center gap-6 text-sm">
                 <Link
                   href="/editorial-board"
-                  className="text-[#7A0019] hover:text-[#5A0A1A] font-medium transition-colors"
+                  className="text-journal-maroon hover:text-journal-maroon-dark font-medium transition-colors"
                 >
                   Editorial Board
                 </Link>
                 <Link
                   href="/policies"
-                  className="text-[#7A0019] hover:text-[#5A0A1A] font-medium transition-colors"
+                  className="text-journal-maroon hover:text-journal-maroon-dark font-medium transition-colors"
                 >
                   Policies
                 </Link>
                 <Link
                   href="mailto:journalhumanities@uniben.edu"
-                  className="text-[#7A0019] hover:text-[#5A0A1A] font-medium transition-colors hidden sm:block"
+                  className="text-journal-maroon hover:text-journal-maroon-dark font-medium transition-colors hidden sm:block"
                 >
                   Contact
                 </Link>
               </div>
               <div className="flex items-center gap-4">
                 <ArticleSearch 
-                  inputClassName="border-2 border-[#7A0019] focus-within:ring-2 focus-within:ring-[#7A0019]/20 w-48 md:w-80"
+                  inputClassName="border-2 border-journal-maroon focus-within:ring-2 focus-within:ring-journal-maroon/20 w-48 md:w-80"
                   placeholder="Quick search articles..."
                 />
                 <Link 
                   href="/search"
-                  className="hidden md:flex flex-col items-center justify-center text-[#7A0019] hover:bg-[#7A0019] hover:text-white px-3 py-1.5 rounded-lg border border-[#7A0019] transition-all group"
+                  className="hidden md:flex flex-col items-center justify-center text-journal-maroon hover:bg-journal-maroon hover:text-white px-3 py-1.5 rounded-lg border border-journal-maroon transition-all group"
                 >
                   <span className="text-[10px] font-black uppercase tracking-tighter leading-none">Advanced</span>
                   <span className="text-[10px] font-black uppercase tracking-tighter leading-none">Search</span>
@@ -91,7 +91,7 @@ export default function HumanitiesJournalHome() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#7A0019] to-[#5A0A1A] text-white py-20">
+      <section className="relative bg-gradient-to-br from-journal-maroon to-journal-maroon-dark text-white py-20">
         <div className="absolute inset-0 opacity-10">
           <Image
             src="/academic-pattern.png"
@@ -109,10 +109,10 @@ export default function HumanitiesJournalHome() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-serif">
               Journal of Humanities
             </h2>
-            <p className="text-xl mb-8 text-[#FFE9EE] leading-relaxed">
+            <p className="text-xl mb-8 text-journal-rose leading-relaxed">
               Advancing scholarship in the humanities with African and global perspectives
             </p>
-            <p className="text-xl mb-8 text-[#FFE9EE] leading-relaxed">
+            <p className="text-xl mb-8 text-journal-rose leading-relaxed">
               Publishing peer-reviewed scholarship in law & society, history,
               languages, culture, philosophy, arts, and environmental
               humanities.
@@ -134,14 +134,14 @@ export default function HumanitiesJournalHome() {
             <div className="block md:flex gap-4">
               <Link
                 href="/submission"
-                className="inline-flex mb-4 md:mb-0 items-center gap-2 text-sm md:text-md bg-white text-[#7A0019] px-4 py-4 md:px-8 md:py-4 rounded-full font-bold hover:bg-[#FFE9EE] transition-all shadow-xl hover:shadow-2xl hover:scale-105"
+                className="inline-flex mb-4 md:mb-0 items-center gap-2 text-sm md:text-md bg-white text-journal-maroon px-4 py-4 md:px-8 md:py-4 rounded-full font-bold hover:bg-journal-rose transition-all shadow-xl hover:shadow-2xl hover:scale-105"
               >
                 <FileText className="h-5 w-5" />
                 Submit Your Manuscript
               </Link>
               <Link
                 href="/current-issue"
-                className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-[#7A0019] transition-all"
+                className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-journal-maroon transition-all"
               >
                 <BookOpen className="h-5 w-5" />
                 Browse Current Issue
@@ -153,11 +153,11 @@ export default function HumanitiesJournalHome() {
 
       {/* Latest from Current Issue Section */}
       {(isLoading || (currentIssueData && currentIssueData.articles.length > 0)) && (
-        <section className="py-16 bg-[#FAF7F8]">
+        <section className="py-16 bg-journal-off-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-10">
               <div>
-                <h2 className="text-3xl font-bold text-[#7A0019] mb-2 font-serif">
+                <h2 className="text-3xl font-bold text-journal-maroon mb-2 font-serif">
                   Latest from Current Issue
                 </h2>
                 {!isLoading && currentIssueData && (
@@ -168,7 +168,7 @@ export default function HumanitiesJournalHome() {
               </div>
               <Link
                 href="/current-issue"
-                className="text-[#7A0019] font-bold hover:text-[#5A0A1A] flex items-center gap-2 transition-colors"
+                className="text-journal-maroon font-bold hover:text-journal-maroon-dark flex items-center gap-2 transition-colors"
               >
                 View Full Issue
                 <ChevronRight className="h-5 w-5" />
@@ -179,7 +179,7 @@ export default function HumanitiesJournalHome() {
               {isLoading ? (
                 // Skeleton Loaders
                 Array.from({ length: 2 }).map((_, i) => (
-                  <div key={i} className="animate-pulse bg-white border-2 border-[#EAD3D9] rounded-2xl p-8 shadow-sm">
+                  <div key={i} className="animate-pulse bg-white border-2 border-journal-mauve rounded-2xl p-8 shadow-sm">
                     <div className="h-4 bg-gray-200 rounded w-1/4 mb-4"></div>
                     <div className="h-8 bg-gray-200 rounded w-full mb-4"></div>
                     <div className="h-4 bg-gray-200 rounded w-1/2 mb-6"></div>
@@ -192,24 +192,24 @@ export default function HumanitiesJournalHome() {
                   <Link
                     key={article._id}
                     href={`/articles/${article._id}`}
-                    className="group bg-white border-2 border-[#EAD3D9] rounded-2xl p-8 shadow-sm hover:shadow-xl hover:border-[#7A0019] transition-all flex flex-col"
+                    className="group bg-white border-2 border-journal-mauve rounded-2xl p-8 shadow-sm hover:shadow-xl hover:border-journal-maroon transition-all flex flex-col"
                   >
                     <div className="mb-4">
-                      <span className="inline-flex items-center px-3 py-1 bg-[#FFE9EE] border border-[#E6B6C2] text-[#5A0A1A] rounded-full text-[10px] font-bold uppercase tracking-wider">
+                      <span className="inline-flex items-center px-3 py-1 bg-journal-rose border border-[#E6B6C2] text-journal-maroon-dark rounded-full text-[10px] font-bold uppercase tracking-wider">
                         {article.articleType.replace(/_/g, " ")}
                       </span>
                     </div>
-                    <h3 className="text-2xl font-bold text-[#212121] group-hover:text-[#7A0019] transition-colors mb-4 font-serif leading-tight">
+                    <h3 className="text-2xl font-bold text-journal-text-dark group-hover:text-journal-maroon transition-colors mb-4 font-serif leading-tight">
                       {article.title}
                     </h3>
                     <div className="flex items-center gap-2 text-gray-700 mb-4 font-medium">
-                      <Users className="h-4 w-4 flex-shrink-0 text-[#7A0019]" />
+                      <Users className="h-4 w-4 flex-shrink-0 text-journal-maroon" />
                       <span className="line-clamp-1">{article.author.name}</span>
                     </div>
                     <p className="text-gray-600 line-clamp-3 leading-relaxed mb-6">
                       {article.abstract}
                     </p>
-                    <div className="mt-auto flex items-center text-[#7A0019] font-bold text-sm">
+                    <div className="mt-auto flex items-center text-journal-maroon font-bold text-sm">
                       Read Full Article
                       <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -226,7 +226,7 @@ export default function HumanitiesJournalHome() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-[#7A0019] mb-6 font-serif">
+              <h2 className="text-3xl font-bold text-journal-maroon mb-6 font-serif">
                 About the Journal
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
@@ -243,7 +243,7 @@ export default function HumanitiesJournalHome() {
               </p>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-[#7A0019] font-semibold hover:text-[#5A0A1A] text-lg"
+                className="inline-flex items-center gap-2 text-journal-maroon font-semibold hover:text-journal-maroon-dark text-lg"
               >
                 Learn More About Our Mission
                 <ChevronRight className="h-5 w-5" />
@@ -262,10 +262,10 @@ export default function HumanitiesJournalHome() {
       </section>
 
       {/* Why Publish With Us */}
-      <section className="py-16 bg-[#FAF7F8]">
+      <section className="py-16 bg-journal-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#7A0019] mb-4 font-serif">
+            <h2 className="text-3xl font-bold text-journal-maroon mb-4 font-serif">
               Why Publish With Us
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -277,9 +277,9 @@ export default function HumanitiesJournalHome() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <CheckCircle className="h-10 w-10 text-[#7A0019]" />
+                <CheckCircle className="h-10 w-10 text-journal-maroon" />
               </div>
-              <h3 className="text-xl font-bold text-[#212121] mb-2">
+              <h3 className="text-xl font-bold text-journal-text-dark mb-2">
                 No APCs
               </h3>
               <p className="text-gray-600">
@@ -289,9 +289,9 @@ export default function HumanitiesJournalHome() {
 
             <div className="text-center">
               <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <Clock className="h-10 w-10 text-[#7A0019]" />
+                <Clock className="h-10 w-10 text-journal-maroon" />
               </div>
-              <h3 className="text-xl font-bold text-[#212121] mb-2">
+              <h3 className="text-xl font-bold text-journal-text-dark mb-2">
                 Fast Review
               </h3>
               <p className="text-gray-600">
@@ -301,9 +301,9 @@ export default function HumanitiesJournalHome() {
 
             <div className="text-center">
               <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <Globe className="h-10 w-10 text-[#7A0019]" />
+                <Globe className="h-10 w-10 text-journal-maroon" />
               </div>
-              <h3 className="text-xl font-bold text-[#212121] mb-2">
+              <h3 className="text-xl font-bold text-journal-text-dark mb-2">
                 Global Reach
               </h3>
               <p className="text-gray-600">
@@ -313,9 +313,9 @@ export default function HumanitiesJournalHome() {
 
             <div className="text-center">
               <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <Shield className="h-10 w-10 text-[#7A0019]" />
+                <Shield className="h-10 w-10 text-journal-maroon" />
               </div>
-              <h3 className="text-xl font-bold text-[#212121] mb-2">
+              <h3 className="text-xl font-bold text-journal-text-dark mb-2">
                 Preserved Forever
               </h3>
               <p className="text-gray-600">
@@ -331,7 +331,7 @@ export default function HumanitiesJournalHome() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="block md:flex items-center justify-between mb-10">
             <div>
-              <h2 className="text-3xl font-bold text-[#7A0019] mb-2 font-serif">
+              <h2 className="text-3xl font-bold text-journal-maroon mb-2 font-serif">
                 Editorial Leadership
               </h2>
               <p className="text-gray-600 mb-4">
@@ -340,7 +340,7 @@ export default function HumanitiesJournalHome() {
             </div>
             <Link
               href="/editorial-board"
-              className="text-[#7A0019] font-semibold hover:text-[#5A0A1A] flex items-center gap-2"
+              className="text-journal-maroon font-semibold hover:text-journal-maroon-dark flex items-center gap-2"
             >
               View Full Board
               <ChevronRight className="h-5 w-5" />
@@ -349,7 +349,7 @@ export default function HumanitiesJournalHome() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Editor-in-Chief Card */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-[#7A0019]">
+            <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-journal-maroon">
               <div className="w-20 h-24 bg-gray-200 rounded-full mx-auto mb-4">
                 <Image
                   src="/editor-chiefff.png"
@@ -360,10 +360,10 @@ export default function HumanitiesJournalHome() {
                 />
               </div>
               <div className="text-center mt-4">
-                <p className="text-sm text-[#7A0019] font-bold mb-1">
+                <p className="text-sm text-journal-maroon font-bold mb-1">
                   EDITOR-IN-CHIEF
                 </p>
-                <h3 className="text-lg font-bold text-[#212121] mb-1">
+                <h3 className="text-lg font-bold text-journal-text-dark mb-1">
                   Professor Edoba B. Omoregie, SAN.
                 </h3>
                 <p className="text-sm text-gray-600 mb-3">
@@ -373,7 +373,7 @@ export default function HumanitiesJournalHome() {
             </div>
 
             {/* Managing Editor */}
-            <div className="bg-white rounded-xl p-6 shadow-md border border-[#EAD3D9] hover:border-[#7A0019] transition-colors">
+            <div className="bg-white rounded-xl p-6 shadow-md border border-journal-mauve hover:border-journal-maroon transition-colors">
               <div className="w-24 h-22 bg-gray-200 rounded-full mx-auto mb-4">
                 <Image
                   src="/managing-editorrr.png"
@@ -384,10 +384,10 @@ export default function HumanitiesJournalHome() {
                 />
               </div>
               <div className="text-center">
-                <p className="text-sm text-[#7A0019] font-bold mb-1">
+                <p className="text-sm text-journal-maroon font-bold mb-1">
                   MANAGING EDITOR
                 </p>
-                <h3 className="text-lg font-bold text-[#212121] mb-1">
+                <h3 className="text-lg font-bold text-journal-text-dark mb-1">
                   Prof. Ngozi Finette Unuigbe
                 </h3>
                 <p className="text-sm text-gray-600 mb-3">
@@ -399,7 +399,7 @@ export default function HumanitiesJournalHome() {
             </div>
 
             {/* Librarian */}
-            <div className="bg-white rounded-xl p-6 shadow-md border border-[#EAD3D9] hover:border-[#7A0019] transition-colors">
+            <div className="bg-white rounded-xl p-6 shadow-md border border-journal-mauve hover:border-journal-maroon transition-colors">
               <div className="w-20 h-24 bg-gray-200 rounded-full mx-auto mb-4">
                 <Image
                   src="/librarian.png"
@@ -410,10 +410,10 @@ export default function HumanitiesJournalHome() {
                 />
               </div>
               <div className="text-center">
-                <p className="text-sm text-[#7A0019] font-bold mb-1">
+                <p className="text-sm text-journal-maroon font-bold mb-1">
                   ASSOCIATE EDITOR
                 </p>
-                <h3 className="text-lg font-bold text-[#212121] mb-1">
+                <h3 className="text-lg font-bold text-journal-text-dark mb-1">
                   Professor Jane Igie Aba
                 </h3>
                 <p className="text-sm text-gray-600 mb-3">

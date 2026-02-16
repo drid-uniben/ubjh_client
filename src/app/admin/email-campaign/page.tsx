@@ -210,7 +210,7 @@ const handlePreview = async () => {
           <Card className="lg:col-span-1">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-[#7A0019]" />
+                <Users className="h-5 w-5 text-journal-maroon" />
                 Recipients ({selectedRecipients.size} selected)
               </CardTitle>
             </CardHeader>
@@ -274,7 +274,7 @@ const handlePreview = async () => {
               <div className="border rounded-lg max-h-96 overflow-y-auto">
                 {isLoading ? (
                   <div className="p-4 text-center">
-                    <Loader2 className="h-6 w-6 animate-spin mx-auto text-[#7A0019]" />
+                    <Loader2 className="h-6 w-6 animate-spin mx-auto text-journal-maroon" />
                   </div>
                 ) : recipients.length === 0 ? (
                   <div className="p-4 text-center text-gray-500">
@@ -285,7 +285,7 @@ const handlePreview = async () => {
                     <div
                       key={recipient.userId}
                       className={`p-3 border-b cursor-pointer hover:bg-gray-50 ${
-                        selectedRecipients.has(recipient.userId) ? "bg-[#FFE9EE]" : ""
+                        selectedRecipients.has(recipient.userId) ? "bg-journal-rose" : ""
                       }`}
                       onClick={() => toggleRecipient(recipient.userId)}
                     >
@@ -301,7 +301,7 @@ const handlePreview = async () => {
                         </div>
                         {selectedRecipients.has(recipient.userId) && (
                           <div className="ml-2 flex-shrink-0">
-                            <div className="w-5 h-5 bg-[#7A0019] rounded-full flex items-center justify-center">
+                            <div className="w-5 h-5 bg-journal-maroon rounded-full flex items-center justify-center">
                               <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                               </svg>
@@ -320,7 +320,7 @@ const handlePreview = async () => {
           <Card className="lg:col-span-2">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Mail className="h-5 w-5 text-[#7A0019]" />
+                <Mail className="h-5 w-5 text-journal-maroon" />
                 Compose Email
               </CardTitle>
             </CardHeader>
@@ -451,7 +451,7 @@ const handlePreview = async () => {
                 <Button
                   onClick={handleSend}
                   disabled={selectedRecipients.size === 0 || !subject || !bodyContent || isSending}
-                  className="bg-[#7A0019] hover:bg-[#5A0A1A]"
+                  className="bg-journal-maroon hover:bg-journal-maroon-dark"
                 >
                   {isSending ? (
                     <>

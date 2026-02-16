@@ -223,7 +223,7 @@ export default function PublicationsManagementPage() {
     return (
       <AdminLayout> 
         <div className="flex justify-center items-center h-64">
-          <RefreshCw className="h-8 w-8 animate-spin text-[#7A0019]" />
+          <RefreshCw className="h-8 w-8 animate-spin text-journal-maroon" />
         </div>
       </AdminLayout> 
     );
@@ -233,8 +233,8 @@ export default function PublicationsManagementPage() {
     <AdminLayout> 
       <div className="space-y-6 p-4 md:p-6">
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#7A0019]/10 to-purple-50 p-6 rounded-xl border border-[#7A0019]/20">
-          <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#7A0019] to-purple-600 bg-clip-text text-transparent">
+        <div className="bg-gradient-to-r from-journal-maroon/10 to-purple-50 p-6 rounded-xl border border-journal-maroon/20">
+          <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-journal-maroon to-purple-600 bg-clip-text text-transparent">
             Publication Management
           </h1>
           <p className="text-gray-600 mt-1">
@@ -252,7 +252,7 @@ export default function PublicationsManagementPage() {
           {/* Pending Articles */}
           <TabsContent value="pending" className="space-y-4">
             {pendingArticles.length === 0 ? (
-              <Card className="border-[#7A0019]/20">
+              <Card className="border-journal-maroon/20">
                 <CardContent className="text-center py-12">
                   <CheckCircle className="h-16 w-16 text-gray-300 mx-auto mb-4" />
                   <p className="text-gray-500 text-lg">No pending publications</p>
@@ -266,12 +266,12 @@ export default function PublicationsManagementPage() {
                 {pendingArticles.map((article) => (
                   <Card
                     key={article._id}
-                    className="border-[#7A0019]/20 hover:shadow-lg transition-shadow"
+                    className="border-journal-maroon/20 hover:shadow-lg transition-shadow"
                   >
                     <CardContent className="p-6">
                       <div className="flex flex-col lg:flex-row gap-4 justify-between">
                         <div className="flex-1">
-                          <h3 className="text-lg font-bold text-[#7A0019] mb-2">
+                          <h3 className="text-lg font-bold text-journal-maroon mb-2">
                             {article.title}
                           </h3>
                           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-3">
@@ -298,7 +298,7 @@ export default function PublicationsManagementPage() {
                         <div className="flex lg:flex-col gap-2">
                           <Button
                             onClick={() => handlePublishClick(article)}
-                            className="bg-gradient-to-r from-[#7A0019] to-[#5A0A1A] hover:from-[#5A0A1A] hover:to-[#7A0019] text-white"
+                            className="bg-gradient-to-r from-journal-maroon to-journal-maroon-dark hover:from-journal-maroon-dark hover:to-journal-maroon text-white"
                           >
                             <Upload className="mr-2 h-4 w-4" />
                             Publish
@@ -314,11 +314,11 @@ export default function PublicationsManagementPage() {
 
           {/* Manual Upload */}
           <TabsContent value="manual">
-            <Card className="border-[#7A0019]/20">
+            <Card className="border-journal-maroon/20">
               <CardContent className="p-6">
                 <div className="text-center py-8">
-                  <FileText className="h-16 w-16 text-[#7A0019] mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-[#7A0019] mb-2">
+                  <FileText className="h-16 w-16 text-journal-maroon mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-journal-maroon mb-2">
                     Manual Article Upload
                   </h3>
                   <p className="text-gray-600 mb-6">
@@ -327,7 +327,7 @@ export default function PublicationsManagementPage() {
                   </p>
                   <Button
                     onClick={() => router.push("/admin/articles/publication/manual")}
-                    className="bg-gradient-to-r from-[#7A0019] to-[#5A0A1A] hover:from-[#5A0A1A] hover:to-[#7A0019] text-white"
+                    className="bg-gradient-to-r from-journal-maroon to-journal-maroon-dark hover:from-journal-maroon-dark hover:to-journal-maroon text-white"
                   >
                     <Upload className="mr-2 h-4 w-4" />
                     Upload Article
@@ -342,7 +342,7 @@ export default function PublicationsManagementPage() {
         <Dialog open={showPublishDialog} onOpenChange={setShowPublishDialog}>
           <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
             <DialogHeader>
-              <DialogTitle className="text-xl bg-gradient-to-r from-[#7A0019] to-purple-600 bg-clip-text text-transparent">
+              <DialogTitle className="text-xl bg-gradient-to-r from-journal-maroon to-purple-600 bg-clip-text text-transparent">
                 Publish Article
               </DialogTitle>
               <DialogDescription>
@@ -351,8 +351,8 @@ export default function PublicationsManagementPage() {
             </DialogHeader>
 
           {selectedArticle && (
-            <div className="bg-[#7A0019]/5 rounded-lg p-4 mb-4">
-              <p className="font-semibold text-sm text-[#7A0019] mb-1">
+            <div className="bg-journal-maroon/5 rounded-lg p-4 mb-4">
+              <p className="font-semibold text-sm text-journal-maroon mb-1">
                 {selectedArticle.title}
               </p>
               <p className="text-xs text-gray-600">
@@ -383,7 +383,7 @@ export default function PublicationsManagementPage() {
                   }
                   required
                 >
-                  <SelectTrigger className="border-[#7A0019]/20">
+                  <SelectTrigger className="border-journal-maroon/20">
                     <SelectValue placeholder="Select volume" />
                   </SelectTrigger>
                   <SelectContent>
@@ -406,7 +406,7 @@ export default function PublicationsManagementPage() {
                   disabled={!publishForm.volumeId}
                   required
                 >
-                  <SelectTrigger className="border-[#7A0019]/20">
+                  <SelectTrigger className="border-journal-maroon/20">
                     <SelectValue
                       placeholder={
                         publishForm.volumeId
@@ -435,7 +435,7 @@ export default function PublicationsManagementPage() {
                 }
                 required
               >
-                <SelectTrigger className="border-[#7A0019]/20">
+                <SelectTrigger className="border-journal-maroon/20">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -462,7 +462,7 @@ export default function PublicationsManagementPage() {
                       pageStart: e.target.value,
                     }))
                   }
-                  className="border-[#7A0019]/20"
+                  className="border-journal-maroon/20"
                 />
               </div>
 
@@ -479,7 +479,7 @@ export default function PublicationsManagementPage() {
                       pageEnd: e.target.value,
                     }))
                   }
-                  className="border-[#7A0019]/20"
+                  className="border-journal-maroon/20"
                 />
               </div>
             </div>
@@ -495,7 +495,7 @@ export default function PublicationsManagementPage() {
                     publishDate: e.target.value,
                   }))
                 }
-                className="border-[#7A0019]/20"
+                className="border-journal-maroon/20"
                 required
               />
             </div>
@@ -512,7 +512,7 @@ export default function PublicationsManagementPage() {
                     customDOI: e.target.value,
                   }))
                 }
-                className="border-[#7A0019]/20"
+                className="border-journal-maroon/20"
               />
               <p className="text-xs text-gray-500">
                 Leave empty for optional automatic DOI generation via Crossref
@@ -612,7 +612,7 @@ export default function PublicationsManagementPage() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-gradient-to-r from-[#7A0019] to-[#5A0A1A]"
+                className="bg-gradient-to-r from-journal-maroon to-journal-maroon-dark"
               >
                 Continue to Confirmation
               </Button>

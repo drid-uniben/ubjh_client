@@ -82,19 +82,19 @@ function SearchContent() {
       <Header />
 
       {/* 🔍 Search Section */}
-      <section className="bg-[#7A0019] text-white py-10">
+      <section className="bg-journal-maroon text-white py-10">
         <div className="max-w-5xl mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold mb-2">
             Search Research Articles
           </h1>
-          <p className="text-[#FFE9EE] text-lg mb-6">
+          <p className="text-journal-rose text-lg mb-6">
             Discover knowledge from UNIBEN Journal
           </p>
 
           <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col md:flex-row gap-3 items-stretch">
             {/* Search Input */}
-            <div className="flex items-center gap-2 flex-1 border-2 border-[#7A0019]/30 rounded-lg px-3 py-2">
-              <Search className="text-[#7A0019]" />
+            <div className="flex items-center gap-2 flex-1 border-2 border-journal-maroon/30 rounded-lg px-3 py-2">
+              <Search className="text-journal-maroon" />
               <input
                 type="text"
                 placeholder="Search by title, author, keywords or DOI..."
@@ -107,7 +107,7 @@ function SearchContent() {
             {/* Filters Button */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="inline-flex items-center justify-center gap-2 border-2 border-[#7A0019] text-[#7A0019] px-4 py-2 rounded-lg hover:bg-[#7A0019] hover:text-white transition-all font-semibold"
+              className="inline-flex items-center justify-center gap-2 border-2 border-journal-maroon text-journal-maroon px-4 py-2 rounded-lg hover:bg-journal-maroon hover:text-white transition-all font-semibold"
             >
               <Filter className="h-5 w-5" />
               Advanced Filters
@@ -116,9 +116,9 @@ function SearchContent() {
 
           {/* Advanced Filters */}
           {showFilters && (
-            <div className="mt-4 bg-white rounded-xl shadow-lg p-5 text-gray-800 border border-[#7A0019]/20">
+            <div className="mt-4 bg-white rounded-xl shadow-lg p-5 text-gray-800 border border-journal-maroon/20">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="font-bold text-lg text-[#7A0019] flex items-center gap-2">
+                <h3 className="font-bold text-lg text-journal-maroon flex items-center gap-2">
                   <Filter className="h-5 w-5" />
                   Advanced Filters
                 </h3>
@@ -128,7 +128,7 @@ function SearchContent() {
                     setFilterVolumeNumber("");
                     setFilterIssueNumber("");
                   }}
-                  className="text-xs text-[#7A0019] font-bold hover:underline"
+                  className="text-xs text-journal-maroon font-bold hover:underline"
                 >
                   Clear All
                 </button>
@@ -137,13 +137,13 @@ function SearchContent() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Article Type */}
                 <div>
-                  <label className="block text-sm font-semibold mb-1 text-[#7A0019]">
+                  <label className="block text-sm font-semibold mb-1 text-journal-maroon">
                     Article Type
                   </label>
                   <select
                     value={filterType}
                     onChange={(e) => setFilterType(e.target.value)}
-                    className="w-full px-3 py-2 border-2 border-[#7A0019]/30 rounded-lg focus:ring-2 focus:ring-[#7A0019]"
+                    className="w-full px-3 py-2 border-2 border-journal-maroon/30 rounded-lg focus:ring-2 focus:ring-journal-maroon"
                   >
                     <option value="">All Types</option>
                     <option value="research_article">Research Article</option>
@@ -156,7 +156,7 @@ function SearchContent() {
 
                 {/* Volume Number */}
                 <div>
-                  <label className="block text-sm font-semibold mb-1 text-[#7A0019]">
+                  <label className="block text-sm font-semibold mb-1 text-journal-maroon">
                     Volume Number
                   </label>
                   <input
@@ -165,13 +165,13 @@ function SearchContent() {
                     placeholder="e.g. 5"
                     value={filterVolumeNumber}
                     onChange={(e) => setFilterVolumeNumber(e.target.value)}
-                    className="w-full px-3 py-2 border-2 border-[#7A0019]/30 rounded-lg focus:ring-2 focus:ring-[#7A0019]"
+                    className="w-full px-3 py-2 border-2 border-journal-maroon/30 rounded-lg focus:ring-2 focus:ring-journal-maroon"
                   />
                 </div>
 
                 {/* Issue Number */}
                 <div>
-                  <label className="block text-sm font-semibold mb-1 text-[#7A0019]">
+                  <label className="block text-sm font-semibold mb-1 text-journal-maroon">
                     Issue Number
                   </label>
                   <input
@@ -180,7 +180,7 @@ function SearchContent() {
                     placeholder="e.g. 2"
                     value={filterIssueNumber}
                     onChange={(e) => setFilterIssueNumber(e.target.value)}
-                    className="w-full px-3 py-2 border-2 border-[#7A0019]/30 rounded-lg focus:ring-2 focus:ring-[#7A0019]"
+                    className="w-full px-3 py-2 border-2 border-journal-maroon/30 rounded-lg focus:ring-2 focus:ring-journal-maroon"
                   />
                 </div>
               </div>
@@ -192,13 +192,13 @@ function SearchContent() {
       {/* 📰 Results Section */}
       <section className="py-10">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-lg font-bold text-[#7A0019] mb-2">
+          <h2 className="text-lg font-bold text-journal-maroon mb-2">
             Search Results
           </h2>
           
           {isLoading && (
             <div className="flex items-center gap-2 text-gray-600">
-              <Loader className="h-5 w-5 animate-spin text-[#7A0019]" />
+              <Loader className="h-5 w-5 animate-spin text-journal-maroon" />
               Searching database...
             </div>
           )}
@@ -232,15 +232,15 @@ function SearchContent() {
                 <Link
                   key={article._id}
                   href={`/articles/${article._id}`}
-                  className="block bg-white border-2 border-[#7A0019]/20 rounded-xl p-5 hover:border-[#7A0019] hover:shadow-xl transition-all"
+                  className="block bg-white border-2 border-journal-maroon/20 rounded-xl p-5 hover:border-journal-maroon hover:shadow-xl transition-all"
                 >
                   <div className="flex flex-wrap justify-between items-start gap-3 mb-3">
-                    <span className="inline-flex px-3 py-1 bg-[#7A0019] text-white text-xs font-bold rounded-full capitalize">
+                    <span className="inline-flex px-3 py-1 bg-journal-maroon text-white text-xs font-bold rounded-full capitalize">
                       {article.articleType.replace(/_/g, " ")}
                     </span>
                     <span className="text-sm text-gray-600 font-medium">{issueLabel}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-[#7A0019] mb-2 hover:underline">
+                  <h3 className="text-xl font-bold text-journal-maroon mb-2 hover:underline">
                     {article.title}
                   </h3>
                   <p className="text-gray-700 text-sm mb-2 font-medium">
@@ -279,7 +279,7 @@ export default function SearchPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
-        <Loader className="h-8 w-8 animate-spin text-[#7A0019]" />
+        <Loader className="h-8 w-8 animate-spin text-journal-maroon" />
       </div>
     }>
       <SearchContent />

@@ -153,7 +153,7 @@ const ReviewerAssignments: React.FC = () => {
       <ReviewerLayout>
         <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100 flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#7A0019] border-t-transparent mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-journal-maroon border-t-transparent mx-auto mb-4"></div>
             <p className="text-gray-600">Loading assignments...</p>
           </div>
         </div>
@@ -170,7 +170,7 @@ const ReviewerAssignments: React.FC = () => {
             <p className="text-red-600 mb-4">{error}</p>
             <button
               onClick={fetchData}
-              className="bg-[#7A0019] text-white px-4 py-2 rounded-lg hover:bg-[#5A0A1A] transition-colors"
+              className="bg-journal-maroon text-white px-4 py-2 rounded-lg hover:bg-journal-maroon-dark transition-colors"
             >
               Retry
             </button>
@@ -269,7 +269,7 @@ const ReviewerAssignments: React.FC = () => {
                         onClick={() => setFilter(filterOption as 'all' | 'pending' | 'overdue' | 'reconciliation')}
                         className={`px-3 py-1 rounded-full text-xs md:text-sm font-medium transition-colors ${
                           filter === filterOption
-                            ? 'bg-[#7A0019] text-white'
+                            ? 'bg-journal-maroon text-white'
                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                         }`}
                       >
@@ -286,7 +286,7 @@ const ReviewerAssignments: React.FC = () => {
                   placeholder="Search manuscripts..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent w-full"
+                  className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent w-full"
                 />
               </div>
             </div>
@@ -361,7 +361,7 @@ const ReviewerAssignments: React.FC = () => {
                                 <span>Score: {assignment.totalScore}/100</span>
                                 <div className="ml-3 w-20 md:w-24 bg-gray-200 rounded-full h-2">
                                   <div
-                                    className="bg-[#7A0019] rounded-full h-2"
+                                    className="bg-journal-maroon rounded-full h-2"
                                     style={{ width: `${assignment.totalScore}%` }}
                                   ></div>
                                 </div>
@@ -373,7 +373,7 @@ const ReviewerAssignments: React.FC = () => {
                         <div className="flex flex-col sm:flex-row lg:flex-col gap-2 lg:ml-6">
                           <Link
                             href={`/reviewer/assignments/${assignment._id}`}
-                            className="inline-flex items-center justify-center px-4 py-2 bg-[#7A0019] text-white rounded-lg hover:bg-[#5A0A1A] transition-colors text-sm font-medium"
+                            className="inline-flex items-center justify-center px-4 py-2 bg-journal-maroon text-white rounded-lg hover:bg-journal-maroon-dark transition-colors text-sm font-medium"
                           >
                             <Eye className="w-4 h-4 mr-2" />
                             {assignment.status === 'in_progress' ? 'Continue Review' : assignment.status === 'completed' ? 'View Review' : 'Start Review'}

@@ -138,7 +138,7 @@ export default function ReviewerRegisterPage({ params }: ReviewerRegisterPagePro
     <div className="flex justify-center items-center min-h-screen bg-gray-50 py-8">
       <Card className="w-full max-w-lg">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center text-[#7A0019]">
+          <CardTitle className="text-2xl font-bold text-center text-journal-maroon">
             Complete Reviewer Profile
           </CardTitle>
           <CardDescription className="text-center">
@@ -230,7 +230,7 @@ export default function ReviewerRegisterPage({ params }: ReviewerRegisterPagePro
 
             <Button 
               type="submit" 
-              className="w-full bg-[#7A0019] hover:bg-[#5A0A1A]" 
+              className="w-full bg-journal-maroon hover:bg-journal-maroon-dark" 
               disabled={isLoading}
             >
               {isLoading ? "Submitting..." : "Complete Registration"}

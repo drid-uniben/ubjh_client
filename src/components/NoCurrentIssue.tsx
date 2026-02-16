@@ -3,7 +3,7 @@ import { BookOpen } from 'lucide-react';
 
 const NoCurrentIssue: React.FC = () => {
   return (
-    <div className="text-center py-20 bg-white rounded-3xl shadow-lg border-2 border-[#EAD3D9]">
+    <div className="text-center py-20 bg-white rounded-3xl shadow-lg border-2 border-journal-mauve">
       <BookOpen className="h-20 w-20 text-gray-300 mx-auto mb-6" />
       <h3 className="text-3xl font-bold text-gray-700 mb-3 font-serif">
         No Current Issue Available

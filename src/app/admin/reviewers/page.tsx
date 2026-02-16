@@ -162,7 +162,7 @@ export default function ManuscriptReviewersPage() {
       case 'pending':
         return 'bg-yellow-100 text-yellow-800';
       case 'added':
-        return 'bg-[#FFE9EE] text-[#7A0019]';
+        return 'bg-journal-rose text-journal-maroon';
       case 'expired':
         return 'bg-red-100 text-red-800';
       default:
@@ -205,7 +205,7 @@ export default function ManuscriptReviewersPage() {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-gray-50">
-        <Loader2 className="h-8 w-8 animate-spin text-[#7A0019]" />
+        <Loader2 className="h-8 w-8 animate-spin text-journal-maroon" />
       </div>
     );
   }
@@ -237,7 +237,7 @@ export default function ManuscriptReviewersPage() {
 
               <div className="bg-white px-3 py-2 rounded-lg shadow-sm border w-full sm:w-auto">
                 <div className="flex items-center space-x-2">
-                  <Users className="h-5 w-5 text-[#7A0019]" />
+                  <Users className="h-5 w-5 text-journal-maroon" />
                   <span className="text-sm font-medium text-gray-700">
                     {pagination.count} Reviewers
                   </span>
@@ -289,7 +289,7 @@ export default function ManuscriptReviewersPage() {
                 <input
                   type="text"
                   placeholder="Search by name, email, or faculty..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7A0019] focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-journal-maroon focus:border-transparent"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -297,7 +297,7 @@ export default function ManuscriptReviewersPage() {
               <div className="flex items-center gap-2">
                 <Filter className="h-5 w-5 text-gray-400 flex-shrink-0" />
                 <select
-                  className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#7A0019] flex-1 sm:flex-none"
+                  className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-journal-maroon flex-1 sm:flex-none"
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
                 >
@@ -314,7 +314,7 @@ export default function ManuscriptReviewersPage() {
           {/* Reviewers List */}
           {isLoading ? (
             <div className="flex justify-center items-center h-64">
-              <Loader2 className="h-8 w-8 animate-spin text-[#7A0019]" />
+              <Loader2 className="h-8 w-8 animate-spin text-journal-maroon" />
             </div>
           ) : (
             <div className="bg-white shadow rounded-lg overflow-hidden">
@@ -336,8 +336,8 @@ export default function ManuscriptReviewersPage() {
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div className="flex items-start gap-4 min-w-0">
-                          <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#FFE9EE] flex items-center justify-center flex-shrink-0">
-                            <User className="h-6 w-6 text-[#7A0019]" />
+                          <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-journal-rose flex items-center justify-center flex-shrink-0">
+                            <User className="h-6 w-6 text-journal-maroon" />
                           </div>
                           <div className="min-w-0 flex-1">
                             <div className="flex flex-wrap items-center gap-2">
@@ -416,7 +416,7 @@ export default function ManuscriptReviewersPage() {
 
             {isLoadingDetails ? (
               <div className="flex justify-center items-center h-64">
-                <Loader2 className="h-8 w-8 animate-spin text-[#7A0019]" />
+                <Loader2 className="h-8 w-8 animate-spin text-journal-maroon" />
               </div>
             ) : selectedReviewer ? (
               <div className="p-4 sm:p-6 space-y-6 overflow-y-auto max-h-[calc(100vh-200px)]">
@@ -424,8 +424,8 @@ export default function ManuscriptReviewersPage() {
                 <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
                   <div className="flex flex-col sm:flex-row gap-6">
                     <div className="flex-shrink-0">
-                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-[#FFE9EE] flex items-center justify-center">
-                        <User className="h-8 w-8 sm:h-10 sm:w-10 text-[#7A0019]" />
+                      <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-journal-rose flex items-center justify-center">
+                        <User className="h-8 w-8 sm:h-10 sm:w-10 text-journal-maroon" />
                       </div>
                     </div>
                     <div className="min-w-0 flex-1">
@@ -486,8 +486,8 @@ export default function ManuscriptReviewersPage() {
                   </div>
                   <div className="bg-white border rounded-lg p-4">
                     <div className="flex items-center gap-3">
-                      <div className="flex-shrink-0 bg-[#FFE9EE] rounded-md p-2">
-                        <Award className="h-6 w-6 text-[#7A0019]" />
+                      <div className="flex-shrink-0 bg-journal-rose rounded-md p-2">
+                        <Award className="h-6 w-6 text-journal-maroon" />
                       </div>
                       <div className="min-w-0">
                         <p className="text-xs sm:text-sm font-medium text-gray-500">Completion Rate</p>

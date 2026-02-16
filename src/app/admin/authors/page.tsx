@@ -162,7 +162,7 @@ useEffect(() => {
     return (
       <AdminLayout>
         <div className="flex justify-center items-center h-64">
-          <RefreshCw className="h-8 w-8 animate-spin text-[#7A0019]" />
+          <RefreshCw className="h-8 w-8 animate-spin text-journal-maroon" />
         </div>
       </AdminLayout>
     );
@@ -183,7 +183,7 @@ useEffect(() => {
           <Button 
             onClick={fetchAuthors}
             variant="outline"
-            className="border-[#7A0019] text-[#7A0019] hover:bg-[#FFE9EE]"
+            className="border-journal-maroon text-journal-maroon hover:bg-journal-rose"
           >
             <RefreshCw className="h-4 w-4 mr-2" />
             Refresh
@@ -192,10 +192,10 @@ useEffect(() => {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Card className="border-l-4 border-l-[#7A0019]">
+          <Card className="border-l-4 border-l-journal-maroon">
             <CardHeader className="pb-2">
               <CardDescription>Total Authors</CardDescription>
-              <CardTitle className="text-3xl text-[#7A0019]">{authors.length}</CardTitle>
+              <CardTitle className="text-3xl text-journal-maroon">{authors.length}</CardTitle>
             </CardHeader>
           </Card>
           
@@ -220,9 +220,9 @@ useEffect(() => {
 
         {/* Authors Table */}
         <Card className="shadow-lg border border-gray-200">
-          <CardHeader className="bg-gradient-to-r from-[#FAF7F8] to-white border-b border-gray-200">
+          <CardHeader className="bg-gradient-to-r from-journal-off-white to-white border-b border-gray-200">
             <CardTitle className="text-xl text-gray-900 flex items-center gap-2">
-              <User className="h-5 w-5 text-[#7A0019]" />
+              <User className="h-5 w-5 text-journal-maroon" />
               Author List
             </CardTitle>
           </CardHeader>
@@ -248,10 +248,10 @@ useEffect(() => {
                     </tr>
                   ) : (
                     authors.map((author) => (
-                      <tr key={author._id} className="border-b hover:bg-[#FFE9EE] transition-colors">
+                      <tr key={author._id} className="border-b hover:bg-journal-rose transition-colors">
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-full bg-[#7A0019] text-white flex items-center justify-center text-xs font-bold">
+                            <div className="w-8 h-8 rounded-full bg-journal-maroon text-white flex items-center justify-center text-xs font-bold">
                               {author.name?.charAt(0).toUpperCase() || 'A'}
                             </div>
                             <span className="font-medium text-gray-900">{author.name || 'N/A'}</span>
@@ -354,7 +354,7 @@ useEffect(() => {
           <DialogContent className="sm:max-w-3xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
-                <User className="h-5 w-5 text-[#7A0019]" />
+                <User className="h-5 w-5 text-journal-maroon" />
                 Author Details
               </DialogTitle>
               <DialogDescription>
@@ -365,10 +365,10 @@ useEffect(() => {
             {selectedAuthor && (
               <div className="space-y-6 py-4">
                 {/* Author Info Card */}
-                <Card className="bg-gradient-to-br from-[#FAF7F8] to-white border-[#7A0019]">
+                <Card className="bg-gradient-to-br from-journal-off-white to-white border-journal-maroon">
                   <CardContent className="pt-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-16 h-16 rounded-full bg-[#7A0019] text-white flex items-center justify-center text-2xl font-bold">
+                      <div className="w-16 h-16 rounded-full bg-journal-maroon text-white flex items-center justify-center text-2xl font-bold">
                         {selectedAuthor.name?.charAt(0).toUpperCase() || 'A'}
                       </div>
                       <div className="flex-1 space-y-3">
@@ -433,13 +433,13 @@ useEffect(() => {
                 {/* Manuscripts Section */}
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                    <FileText className="h-5 w-5 text-[#7A0019]" />
+                    <FileText className="h-5 w-5 text-journal-maroon" />
                     Manuscripts ({authorManuscripts.length})
                   </h4>
                   
                   {loadingDetails ? (
                     <div className="flex justify-center items-center py-8">
-                      <Loader2 className="h-8 w-8 animate-spin text-[#7A0019]" />
+                      <Loader2 className="h-8 w-8 animate-spin text-journal-maroon" />
                     </div>
                   ) : authorManuscripts.length === 0 ? (
                     <Card>

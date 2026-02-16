@@ -224,7 +224,7 @@ export default function ManuscriptReviewsPage() {
           setSortOrder('desc');
         }
       }}
-      className="inline-flex items-center gap-1 hover:text-[#7A0019] transition-colors"
+      className="inline-flex items-center gap-1 hover:text-journal-maroon transition-colors"
     >
       {label}
       {sortBy === column && (
@@ -236,7 +236,7 @@ export default function ManuscriptReviewsPage() {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-gray-50">
-        <Loader2 className="h-8 w-8 animate-spin text-[#7A0019]" />
+        <Loader2 className="h-8 w-8 animate-spin text-journal-maroon" />
       </div>
     );
   }
@@ -288,7 +288,7 @@ export default function ManuscriptReviewsPage() {
                   <p className="text-xs sm:text-sm font-medium text-gray-600 truncate">Total</p>
                   <p className="text-lg sm:text-2xl font-bold text-gray-900">{statistics.totalWithReviews}</p>
                 </div>
-                <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-[#7A0019] flex-shrink-0 opacity-50" />
+                <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-journal-maroon flex-shrink-0 opacity-50" />
               </div>
             </div>
 
@@ -342,7 +342,7 @@ export default function ManuscriptReviewsPage() {
               <input
                 type="text"
                 placeholder="Search manuscripts or submitters..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#7A0019] focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-journal-maroon focus:border-transparent"
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
@@ -394,7 +394,7 @@ export default function ManuscriptReviewsPage() {
         {/* Loading State */}
         {isLoading && (
           <div className="flex items-center justify-center py-12">
-            <Loader2 className="h-8 w-8 animate-spin text-[#7A0019]" />
+            <Loader2 className="h-8 w-8 animate-spin text-journal-maroon" />
             <span className="ml-3 text-gray-600 text-sm sm:text-base">Loading manuscripts...</span>
           </div>
         )}
@@ -475,7 +475,7 @@ export default function ManuscriptReviewsPage() {
                               </div>
                               <div className="w-full bg-gray-200 rounded-full h-2">
                                 <div 
-                                  className="bg-[#7A0019] h-2 rounded-full transition-all"
+                                  className="bg-journal-maroon h-2 rounded-full transition-all"
                                   style={{ 
                                     width: `${manuscript.totalReviews > 0 ? (manuscript.completedReviews / manuscript.totalReviews) * 100 : 0}%` 
                                   }}
@@ -495,7 +495,7 @@ export default function ManuscriptReviewsPage() {
                             onClick={() => handleViewDetails(manuscript._id)}
                             size="sm"
                             variant="outline"
-                            className="border-[#7A0019] text-[#7A0019] hover:bg-[#FFE9EE]"
+                            className="border-journal-maroon text-journal-maroon hover:bg-journal-rose"
                           >
                             <Eye size={14} className="mr-1" />
                             View
@@ -550,7 +550,7 @@ export default function ManuscriptReviewsPage() {
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2">
                           <div 
-                            className="bg-[#7A0019] h-2 rounded-full transition-all"
+                            className="bg-journal-maroon h-2 rounded-full transition-all"
                             style={{ 
                               width: `${manuscript.totalReviews > 0 ? (manuscript.completedReviews / manuscript.totalReviews) * 100 : 0}%` 
                             }}
@@ -567,7 +567,7 @@ export default function ManuscriptReviewsPage() {
                           onClick={() => handleViewDetails(manuscript._id)}
                           size="sm"
                           variant="outline"
-                          className="border-[#7A0019] text-[#7A0019] hover:bg-[#FFE9EE]"
+                          className="border-journal-maroon text-journal-maroon hover:bg-journal-rose"
                         >
                           <Eye size={14} />
                         </Button>

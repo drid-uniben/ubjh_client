@@ -109,7 +109,7 @@ const CompletedReviews: React.FC = () => {
       <ReviewerLayout>
         <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100 flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#7A0019] border-t-transparent mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-journal-maroon border-t-transparent mx-auto mb-4"></div>
             <p className="text-gray-600">Loading completed reviews...</p>
           </div>
         </div>
@@ -127,7 +127,7 @@ const CompletedReviews: React.FC = () => {
             </div>
             <button
               onClick={fetchCompletedReviews}
-              className="bg-[#7A0019] text-white px-4 py-2 rounded-lg hover:bg-[#5A0A1A] transition-colors"
+              className="bg-journal-maroon text-white px-4 py-2 rounded-lg hover:bg-journal-maroon-dark transition-colors"
             >
               Retry
             </button>
@@ -178,10 +178,10 @@ const CompletedReviews: React.FC = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs md:text-sm font-medium text-gray-600">Regular Reviews</p>
-                  <p className="text-xl md:text-2xl font-bold text-[#7A0019]">{reviewTypeStats.human}</p>
+                  <p className="text-xl md:text-2xl font-bold text-journal-maroon">{reviewTypeStats.human}</p>
                 </div>
-                <div className="bg-[#FFE9EE] p-2 md:p-3 rounded-lg">
-                  <FileText className="w-5 h-5 md:w-6 md:h-6 text-[#7A0019]" />
+                <div className="bg-journal-rose p-2 md:p-3 rounded-lg">
+                  <FileText className="w-5 h-5 md:w-6 md:h-6 text-journal-maroon" />
                 </div>
               </div>
             </div>
@@ -210,7 +210,7 @@ const CompletedReviews: React.FC = () => {
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as 'recent' | 'score' | 'title')}
-                    className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#7A0019] focus:border-transparent text-sm w-full sm:w-auto"
+                    className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-journal-maroon focus:border-transparent text-sm w-full sm:w-auto"
                   >
                     <option value="recent">Sort by Recent</option>
                     <option value="score">Sort by Score</option>
@@ -225,7 +225,7 @@ const CompletedReviews: React.FC = () => {
                       onClick={() => setFilterType(type as 'all' | 'human' | 'reconciliation')}
                       className={`px-3 py-1 rounded-full text-xs md:text-sm font-medium transition-colors ${
                         filterType === type
-                          ? 'bg-[#7A0019] text-white'
+                          ? 'bg-journal-maroon text-white'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
@@ -242,7 +242,7 @@ const CompletedReviews: React.FC = () => {
                   placeholder="Search completed reviews..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent w-full"
+                  className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent w-full"
                 />
               </div>
             </div>
@@ -326,12 +326,12 @@ const CompletedReviews: React.FC = () => {
                         {/* Score Breakdown */}
                         <div className="bg-gray-50 rounded-lg p-3 md:p-4 mb-4">
                           <div className="flex items-center mb-3">
-                            <BarChart3 className="w-4 h-4 mr-2 text-[#7A0019]" />
+                            <BarChart3 className="w-4 h-4 mr-2 text-journal-maroon" />
                             <span className="text-xs md:text-sm font-medium text-gray-700">Score Breakdown</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
                             <div
-                              className="bg-gradient-to-r from-[#7A0019] to-blue-500 rounded-full h-3 transition-all duration-500"
+                              className="bg-gradient-to-r from-journal-maroon to-blue-500 rounded-full h-3 transition-all duration-500"
                               style={{ width: `${review.totalScore}%` }}
                             ></div>
                           </div>
@@ -363,7 +363,7 @@ const CompletedReviews: React.FC = () => {
                       <div className="flex flex-col gap-2 lg:ml-6">
                         <Link
                           href={`/reviewer/assignments/${review._id}`}
-                          className="inline-flex items-center justify-center px-4 py-2 bg-[#7A0019] text-white rounded-lg hover:bg-[#5A0A1A] transition-colors text-sm font-medium"
+                          className="inline-flex items-center justify-center px-4 py-2 bg-journal-maroon text-white rounded-lg hover:bg-journal-maroon-dark transition-colors text-sm font-medium"
                         >
                           <Eye className="w-4 h-4 mr-2" />
                           View Details

@@ -234,7 +234,7 @@ export default function ManualArticleUploadPage() {
     return (
       <AdminLayout>
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#7A0019]"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-journal-maroon"></div>
         </div>
       </AdminLayout>
     );
@@ -252,7 +252,7 @@ export default function ManualArticleUploadPage() {
             <ArrowLeft className="h-5 w-5 text-gray-600" />
           </Link>
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#7A0019] to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-journal-maroon to-purple-600 bg-clip-text text-transparent">
               Manual Article Upload
             </h1>
             <p className="text-gray-600 mt-1">
@@ -270,9 +270,9 @@ export default function ManualArticleUploadPage() {
           )}
 
           {/* Basic Information */}
-          <Card className="border-[#7A0019]/20">
+          <Card className="border-journal-maroon/20">
             <CardContent className="p-6 space-y-4">
-              <h2 className="text-lg font-bold text-[#7A0019]">
+              <h2 className="text-lg font-bold text-journal-maroon">
                 Article Information
               </h2>
 
@@ -284,7 +284,7 @@ export default function ManualArticleUploadPage() {
                   value={formData.title}
                   onChange={handleInputChange}
                   placeholder="Article title"
-                  className="border-[#7A0019]/20"
+                  className="border-journal-maroon/20"
                   required
                 />
               </div>
@@ -296,7 +296,7 @@ export default function ManualArticleUploadPage() {
                   value={formData.abstract}
                   onChange={handleInputChange}
                   placeholder="Article abstract"
-                  className="border-[#7A0019]/20 min-h-32"
+                  className="border-journal-maroon/20 min-h-32"
                   required
                 />
               </div>
@@ -309,7 +309,7 @@ export default function ManualArticleUploadPage() {
                   value={formData.keywords}
                   onChange={handleInputChange}
                   placeholder="keyword1, keyword2, keyword3"
-                  className="border-[#7A0019]/20"
+                  className="border-journal-maroon/20"
                 />
               </div>
 
@@ -321,7 +321,7 @@ export default function ManualArticleUploadPage() {
                     setFormData((prev) => ({ ...prev, articleType: value }))
                   }
                 >
-                  <SelectTrigger className="border-[#7A0019]/20">
+                  <SelectTrigger className="border-journal-maroon/20">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -343,7 +343,7 @@ export default function ManualArticleUploadPage() {
                   }
                   required
                 >
-                  <SelectTrigger className="border-[#7A0019]/20">
+                  <SelectTrigger className="border-journal-maroon/20">
                     <SelectValue placeholder="Select primary author" />
                   </SelectTrigger>
                   <SelectContent>
@@ -358,7 +358,7 @@ export default function ManualArticleUploadPage() {
 
               <div className="space-y-2">
                 <Label>Co-Authors (Optional)</Label>
-                <div className="border border-[#7A0019]/20 rounded-lg p-3 space-y-2 max-h-48 overflow-y-auto bg-gray-50">
+                <div className="border border-journal-maroon/20 rounded-lg p-3 space-y-2 max-h-48 overflow-y-auto bg-gray-50">
                   {authors.map((author) => (
                     <div key={author._id} className="flex items-center gap-2">
                       <input
@@ -400,9 +400,9 @@ export default function ManualArticleUploadPage() {
               </div>
             </CardContent>
           </Card>
-          <Card className="border-[#7A0019]/20">
+          <Card className="border-journal-maroon/20">
             <CardContent className="p-6 space-y-4">
-              <h2 className="text-lg font-bold text-[#7A0019]">
+              <h2 className="text-lg font-bold text-journal-maroon">
                 Publication Details
               </h2>
 
@@ -420,7 +420,7 @@ export default function ManualArticleUploadPage() {
                     }
                     required
                   >
-                    <SelectTrigger className="border-[#7A0019]/20">
+                    <SelectTrigger className="border-journal-maroon/20">
                       <SelectValue placeholder="Select volume" />
                     </SelectTrigger>
                     <SelectContent>
@@ -443,7 +443,7 @@ export default function ManualArticleUploadPage() {
                     disabled={!formData.volumeId}
                     required
                   >
-                    <SelectTrigger className="border-[#7A0019]/20">
+                    <SelectTrigger className="border-journal-maroon/20">
                       <SelectValue
                         placeholder={
                           formData.volumeId ? "Select issue" : "Select volume first"
@@ -471,7 +471,7 @@ export default function ManualArticleUploadPage() {
                     placeholder="1"
                     value={formData.pageStart}
                     onChange={handleInputChange}
-                    className="border-[#7A0019]/20"
+                    className="border-journal-maroon/20"
                   />
                 </div>
 
@@ -484,7 +484,7 @@ export default function ManualArticleUploadPage() {
                     placeholder="20"
                     value={formData.pageEnd}
                     onChange={handleInputChange}
-                    className="border-[#7A0019]/20"
+                    className="border-journal-maroon/20"
                   />
                 </div>
               </div>
@@ -496,7 +496,7 @@ export default function ManualArticleUploadPage() {
                   name="publishDate"
                   value={formData.publishDate}
                   onChange={handleInputChange}
-                  className="border-[#7A0019]/20"
+                  className="border-journal-maroon/20"
                   required
                 />
               </div>
@@ -509,18 +509,18 @@ export default function ManualArticleUploadPage() {
                   placeholder="10.xxxx/custom.doi"
                   value={formData.customDOI}
                   onChange={handleInputChange}
-                  className="border-[#7A0019]/20"
+                  className="border-journal-maroon/20"
                 />
               </div>
             </CardContent>
           </Card>
 
           {/* PDF Upload */}
-          <Card className="border-[#7A0019]/20">
+          <Card className="border-journal-maroon/20">
             <CardContent className="p-6 space-y-4">
-              <h2 className="text-lg font-bold text-[#7A0019]">PDF File</h2>
+              <h2 className="text-lg font-bold text-journal-maroon">PDF File</h2>
 
-              <div className="border-2 border-dashed border-[#7A0019]/20 rounded-lg p-8 text-center">
+              <div className="border-2 border-dashed border-journal-maroon/20 rounded-lg p-8 text-center">
                 <Upload className="h-12 w-12 text-gray-300 mx-auto mb-4" />
                 <label className="cursor-pointer">
                   <input
@@ -531,7 +531,7 @@ export default function ManualArticleUploadPage() {
                     required
                   />
                   <div className="text-center">
-                    <p className="font-semibold text-[#7A0019]">
+                    <p className="font-semibold text-journal-maroon">
                       Click to upload PDF
                     </p>
                     <p className="text-sm text-gray-500 mt-1">
@@ -551,9 +551,9 @@ export default function ManualArticleUploadPage() {
           </Card>
 
           {/* Publication Options */}
-          <Card className="border-[#7A0019]/20">
+          <Card className="border-journal-maroon/20">
             <CardContent className="p-6 space-y-4">
-              <h2 className="text-lg font-bold text-[#7A0019]">
+              <h2 className="text-lg font-bold text-journal-maroon">
                 Publication Options
               </h2>
 
@@ -658,7 +658,7 @@ export default function ManualArticleUploadPage() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="bg-gradient-to-r from-[#7A0019] to-[#5A0A1A]"
+              className="bg-gradient-to-r from-journal-maroon to-journal-maroon-dark"
             >
               Continue to Confirmation
             </Button>
@@ -669,7 +669,7 @@ export default function ManualArticleUploadPage() {
         <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
           <DialogContent className="sm:max-w-[600px]">
             <DialogHeader>
-              <DialogTitle className="text-xl bg-gradient-to-r from-[#7A0019] to-purple-600 bg-clip-text text-transparent">
+              <DialogTitle className="text-xl bg-gradient-to-r from-journal-maroon to-purple-600 bg-clip-text text-transparent">
                 Confirm Article Publication
               </DialogTitle>
               <DialogDescription>

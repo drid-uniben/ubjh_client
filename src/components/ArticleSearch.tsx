@@ -74,11 +74,11 @@ export default function ArticleSearch({
 
   return (
     <div className={`relative ${className}`} ref={containerRef}>
-      <div className={`flex items-center gap-2 px-3 py-2 rounded-full border-2 border-[#7A0019] transition-all bg-transparent focus-within:bg-white/5 ${inputClassName}`}>
+      <div className={`flex items-center gap-2 px-3 py-2 rounded-full border-2 border-journal-maroon transition-all bg-transparent focus-within:bg-white/5 ${inputClassName}`}>
         {isSearching ? (
-          <Loader2 className="h-4 w-4 animate-spin text-[#7A0019]" />
+          <Loader2 className="h-4 w-4 animate-spin text-journal-maroon" />
         ) : (
-          <Search className="h-4 w-4 text-[#7A0019]" />
+          <Search className="h-4 w-4 text-journal-maroon" />
         )}
         <input
           type="text"
@@ -86,21 +86,21 @@ export default function ArticleSearch({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => query.length >= 2 && setShowResults(true)}
-          className="bg-transparent border-none outline-none w-full text-sm placeholder-[#7A0019]/60 text-[#7A0019] font-medium"
+          className="bg-transparent border-none outline-none w-full text-sm placeholder-journal-maroon/60 text-journal-maroon font-medium"
         />
       </div>
 
       {/* Search Results Dropdown */}
       {showResults && (
-        <div className={`absolute top-full mt-2 w-80 md:w-96 bg-white rounded-xl shadow-2xl border border-[#EAD3D9] max-h-96 overflow-y-auto z-50 ${dropdownClassName}`}>
+        <div className={`absolute top-full mt-2 w-80 md:w-96 bg-white rounded-xl shadow-2xl border border-journal-mauve max-h-96 overflow-y-auto z-50 ${dropdownClassName}`}>
           {isSearching ? (
             <div className="p-8 text-center text-gray-500">
-              <Loader2 className="animate-spin h-8 w-8 text-[#7A0019] mx-auto mb-2" />
+              <Loader2 className="animate-spin h-8 w-8 text-journal-maroon mx-auto mb-2" />
               <p className="text-xs font-medium">Searching database...</p>
             </div>
           ) : results.length > 0 ? (
             <div className="divide-y divide-gray-100">
-              <div className="p-2 bg-[#FAF7F8] text-[10px] font-bold text-[#7A0019] uppercase tracking-widest">
+              <div className="p-2 bg-journal-off-white text-[10px] font-bold text-journal-maroon uppercase tracking-widest">
                 Matching Articles
               </div>
               {results.map((article) => (
@@ -111,16 +111,16 @@ export default function ArticleSearch({
                     setShowResults(false);
                     setQuery("");
                   }}
-                  className="block p-4 hover:bg-[#FFE9EE] transition-colors group"
+                  className="block p-4 hover:bg-journal-rose transition-colors group"
                 >
-                  <h4 className="font-bold text-[#212121] text-sm line-clamp-2 mb-1 group-hover:text-[#7A0019]">
+                  <h4 className="font-bold text-journal-text-dark text-sm line-clamp-2 mb-1 group-hover:text-journal-maroon">
                     {article.title}
                   </h4>
                   <div className="flex items-center justify-between gap-2">
                     <p className="text-[10px] text-gray-500 font-medium">
                       {article.author?.name} • Vol {article.volume?.volumeNumber}
                     </p>
-                    <span className="text-[9px] font-bold text-[#7A0019] uppercase">
+                    <span className="text-[9px] font-bold text-journal-maroon uppercase">
                       {article.articleType.replace("_", " ")}
                     </span>
                   </div>
@@ -132,7 +132,7 @@ export default function ArticleSearch({
                   setShowResults(false);
                   setQuery("");
                 }}
-                className="block p-4 text-center text-sm text-white bg-[#7A0019] hover:bg-[#5A0A1A] font-bold transition-colors"
+                className="block p-4 text-center text-sm text-white bg-journal-maroon hover:bg-journal-maroon-dark font-bold transition-colors"
               >
                 View all results for &quot;{query}&quot;
               </Link>
@@ -143,7 +143,7 @@ export default function ArticleSearch({
               No articles found for &quot;{query}&quot;
               <Link 
                 href="/search"
-                className="block mt-2 text-[#7A0019] font-bold hover:underline"
+                className="block mt-2 text-journal-maroon font-bold hover:underline"
               >
                 Try Advanced Search
               </Link>

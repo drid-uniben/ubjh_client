@@ -98,7 +98,7 @@ export default function ManuscriptDetailPage() {
           {/* Back button */}
           <div className="mb-6">
             <Button
-              className="inline-flex items-center text-sm font-medium text-[#7A0019] hover:bg-gray-100 bg-transparent"
+              className="inline-flex items-center text-sm font-medium text-journal-maroon hover:bg-gray-100 bg-transparent"
               onClick={() => router.back()}
             >
               <ArrowLeft className="h-4 w-4 mr-1" /> Back to Manuscripts
@@ -120,13 +120,13 @@ export default function ManuscriptDetailPage() {
           
           {isLoading ? (
             <div className="flex justify-center items-center h-64">
-              <Loader2 className="h-8 w-8 animate-spin text-[#7A0019]" />
+              <Loader2 className="h-8 w-8 animate-spin text-journal-maroon" />
             </div>
           ) : manuscript ? (
             <>
               <div className="bg-white shadow overflow-hidden rounded-lg border border-gray-200">
                 {/* Header Section */}
-                <div className="px-4 py-5 sm:px-6 bg-gradient-to-r from-[#FAF7F8] to-white border-b border-gray-200">
+                <div className="px-4 py-5 sm:px-6 bg-gradient-to-r from-journal-off-white to-white border-b border-gray-200">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                     <div>
                       <h3 className="text-lg leading-6 font-medium text-gray-900">
@@ -154,7 +154,7 @@ export default function ManuscriptDetailPage() {
                   {/* Submitter Information */}
                   <div className="mb-8">
                     <h4 className="text-lg font-medium text-gray-900 mb-4 flex items-center gap-2">
-                      <User className="h-5 w-5 text-[#7A0019]" />
+                      <User className="h-5 w-5 text-journal-maroon" />
                       Submitter Information
                     </h4>
                     <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
@@ -179,7 +179,7 @@ export default function ManuscriptDetailPage() {
                   {/* Manuscript Details */}
                   <div className="mb-8">
                     <h4 className="text-lg font-medium text-gray-900 mb-4 flex items-center gap-2">
-                      <FileText className="h-5 w-5 text-[#7A0019]" />
+                      <FileText className="h-5 w-5 text-journal-maroon" />
                       Manuscript Details
                     </h4>
                     
@@ -202,7 +202,7 @@ export default function ManuscriptDetailPage() {
                           {manuscript.keywords.map((keyword, index) => (
                             <span
                               key={index}
-                              className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#FFE9EE] text-[#7A0019] border border-[#E6B6C2]"
+                              className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-journal-rose text-journal-maroon border border-[#E6B6C2]"
                             >
                               {keyword}
                             </span>
@@ -216,7 +216,7 @@ export default function ManuscriptDetailPage() {
                   {manuscript.coAuthors && manuscript.coAuthors.length > 0 && (
                     <div className="mb-8">
                       <h4 className="text-lg font-medium text-gray-900 mb-4 flex items-center gap-2">
-                        <User className="h-5 w-5 text-[#7A0019]" />
+                        <User className="h-5 w-5 text-journal-maroon" />
                         Co-Authors
                       </h4>
                       <div className="bg-gray-50 rounded-md border border-gray-200 overflow-hidden">
@@ -252,7 +252,7 @@ export default function ManuscriptDetailPage() {
                   {manuscript.pdfFile && (
                     <div className="mb-8">
                       <h4 className="text-lg font-medium text-gray-900 mb-4 flex items-center gap-2">
-                        <FileText className="h-5 w-5 text-[#7A0019]" />
+                        <FileText className="h-5 w-5 text-journal-maroon" />
                         Manuscript File
                       </h4>
                       <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
@@ -265,7 +265,7 @@ export default function ManuscriptDetailPage() {
                             href={manuscript.pdfFile}
                             target="_blank"
                             rel="noopener noreferrer" 
-                            className="text-sm font-medium text-[#7A0019] hover:text-[#5A0A1A] flex items-center gap-1"
+                            className="text-sm font-medium text-journal-maroon hover:text-journal-maroon-dark flex items-center gap-1"
                           >
                             View Document
                             <BookOpen className="h-4 w-4" />
@@ -322,7 +322,7 @@ export default function ManuscriptDetailPage() {
                   {/* Timeline Information */}
                   <div className="mb-8">
                     <h4 className="text-lg font-medium text-gray-900 mb-4 flex items-center gap-2">
-                      <Clock className="h-5 w-5 text-[#7A0019]" />
+                      <Clock className="h-5 w-5 text-journal-maroon" />
                       Timeline
                     </h4>
                     <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
@@ -356,7 +356,7 @@ export default function ManuscriptDetailPage() {
               <div className="mt-6">
                 <Button
                   onClick={() => router.push('/admin/manuscripts')}
-                  className="bg-[#7A0019] hover:bg-[#5A0A1A] text-white"
+                  className="bg-journal-maroon hover:bg-journal-maroon-dark text-white"
                 >
                   Return to Manuscripts
                 </Button>

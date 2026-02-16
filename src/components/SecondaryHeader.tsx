@@ -63,7 +63,7 @@ export default function SecondaryHeader() {
   }, [searchQuery]);
 
   return (
-    <div className="bg-[#F2E9EC] border-b border-[#EAD3D9] sticky top-20 z-40">
+    <div className="bg-journal-blush border-b border-journal-mauve sticky top-20 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-3">
           {/* Links Section */}
@@ -71,19 +71,19 @@ export default function SecondaryHeader() {
             <div className="flex items-center gap-4 md:gap-6 text-sm">
               <Link
                 href="/editorial-board"
-                className="text-[#7A0019] hover:text-[#5A0A1A] font-medium transition-colors whitespace-nowrap"
+                className="text-journal-maroon hover:text-journal-maroon-dark font-medium transition-colors whitespace-nowrap"
               >
                 Editorial Board
               </Link>
               <Link
                 href="/policies"
-                className="text-[#7A0019] hover:text-[#5A0A1A] font-medium transition-colors whitespace-nowrap"
+                className="text-journal-maroon hover:text-journal-maroon-dark font-medium transition-colors whitespace-nowrap"
               >
                 Policies
               </Link>
               <Link
                 href="mailto:journalhumanities@uniben.edu"
-                className="text-[#7A0019] hover:text-[#5A0A1A] font-medium transition-colors whitespace-nowrap hidden sm:block"
+                className="text-journal-maroon hover:text-journal-maroon-dark font-medium transition-colors whitespace-nowrap hidden sm:block"
               >
                 Contact
               </Link>
@@ -99,10 +99,10 @@ export default function SecondaryHeader() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => searchQuery.length >= 2 && setShowResults(true)}
-                className="w-64 px-4 py-2 pl-10 rounded-full border border-[#5A0A1A] focus:outline-none focus:ring-2 focus:ring-[#7A0019] text-black text-sm transition-all"
+                className="w-64 px-4 py-2 pl-10 rounded-full border border-journal-maroon-dark focus:outline-none focus:ring-2 focus:ring-journal-maroon text-black text-sm transition-all"
               />
               {isSearching ? (
-                <Loader2 className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#7A0019] animate-spin" />
+                <Loader2 className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-journal-maroon animate-spin" />
               ) : (
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               )}
@@ -113,7 +113,7 @@ export default function SecondaryHeader() {
               {!showMobileSearch ? (
                 <button
                   onClick={() => setShowMobileSearch(true)}
-                  className="p-2 text-[#7A0019] ml-auto"
+                  className="p-2 text-journal-maroon ml-auto"
                   aria-label="Open search"
                 >
                   <Search className="h-5 w-5" />
@@ -126,14 +126,14 @@ export default function SecondaryHeader() {
                       placeholder="Search articles..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full px-4 py-2 pl-10 rounded-full border border-[#5A0A1A] focus:outline-none focus:ring-2 focus:ring-[#7A0019] text-black text-sm"
+                      className="w-full px-4 py-2 pl-10 rounded-full border border-journal-maroon-dark focus:outline-none focus:ring-2 focus:ring-journal-maroon text-black text-sm"
                       autoFocus
                     />
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                   </div>
                   <button
                     onClick={() => setShowMobileSearch(false)}
-                    className="p-2 text-[#7A0019]"
+                    className="p-2 text-journal-maroon"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -146,7 +146,7 @@ export default function SecondaryHeader() {
               <div className="absolute top-full right-0 md:right-8 mt-1 w-full md:w-96 bg-white rounded-lg shadow-xl border border-gray-200 max-h-[70vh] overflow-y-auto z-50">
                 {isSearching ? (
                   <div className="p-4 text-center text-gray-500">
-                    <Loader2 className="animate-spin h-6 w-6 border-b-2 border-[#7A0019] mx-auto" />
+                    <Loader2 className="animate-spin h-6 w-6 border-b-2 border-journal-maroon mx-auto" />
                   </div>
                 ) : searchResults.length > 0 ? (
                   <div className="divide-y divide-gray-100">
@@ -159,7 +159,7 @@ export default function SecondaryHeader() {
                           setSearchQuery("");
                           setShowMobileSearch(false);
                         }}
-                        className="block p-4 hover:bg-[#FAF7F8] transition-colors"
+                        className="block p-4 hover:bg-journal-off-white transition-colors"
                       >
                         <h4 className="font-semibold text-gray-900 text-sm line-clamp-2 mb-1">
                           {article.title}
@@ -176,7 +176,7 @@ export default function SecondaryHeader() {
                         setSearchQuery("");
                         setShowMobileSearch(false);
                       }}
-                      className="block p-3 text-center text-sm text-[#7A0019] hover:bg-gray-50 font-bold"
+                      className="block p-3 text-center text-sm text-journal-maroon hover:bg-gray-50 font-bold"
                     >
                       View all results
                     </Link>

@@ -222,7 +222,7 @@ export default function ManuscriptReviewDetailsPage() {
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div 
-                  className="bg-[#7A0019] h-2 rounded-full transition-all"
+                  className="bg-journal-maroon h-2 rounded-full transition-all"
                   style={{ width: `${percentage}%` }}
                 />
               </div>
@@ -232,7 +232,7 @@ export default function ManuscriptReviewDetailsPage() {
         <div className="pt-3 border-t">
           <div className="flex justify-between items-center">
             <span className="text-sm font-semibold text-gray-900">Total Score</span>
-            <span className="text-lg font-bold text-[#7A0019]">
+            <span className="text-lg font-bold text-journal-maroon">
               {review.totalScore}/100
             </span>
           </div>
@@ -353,7 +353,7 @@ export default function ManuscriptReviewDetailsPage() {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-gray-50">
-        <Loader2 className="h-8 w-8 animate-spin text-[#7A0019]" />
+        <Loader2 className="h-8 w-8 animate-spin text-journal-maroon" />
       </div>
     );
   }
@@ -362,7 +362,7 @@ export default function ManuscriptReviewDetailsPage() {
     return (
       <AdminLayout>
         <div className="flex items-center justify-center py-12">
-          <Loader2 className="h-8 w-8 animate-spin text-[#7A0019]" />
+          <Loader2 className="h-8 w-8 animate-spin text-journal-maroon" />
           <span className="ml-3 text-gray-600">Loading details...</span>
         </div>
       </AdminLayout>
@@ -416,7 +416,7 @@ export default function ManuscriptReviewDetailsPage() {
 
         {/* Manuscript Overview */}
         <div className="bg-white border rounded-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-[#7A0019] to-[#5A0014] text-white p-4 sm:p-6">
+          <div className="bg-gradient-to-r from-journal-maroon to-[#5A0014] text-white p-4 sm:p-6">
             <h1 className="text-xl sm:text-2xl font-bold mb-2">
               {details.manuscript.title}
             </h1>
@@ -533,7 +533,7 @@ export default function ManuscriptReviewDetailsPage() {
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3">
               <div 
-                className="bg-gradient-to-r from-[#7A0019] to-[#5A0014] h-3 rounded-full transition-all"
+                className="bg-gradient-to-r from-journal-maroon to-[#5A0014] h-3 rounded-full transition-all"
                 style={{ 
                   width: `${details.reviewSummary.totalReviews > 0 ? (details.reviewSummary.completedReviews / details.reviewSummary.totalReviews) * 100 : 0}%` 
                 }}

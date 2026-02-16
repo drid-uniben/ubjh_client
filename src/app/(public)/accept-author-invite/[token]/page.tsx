@@ -111,7 +111,7 @@ export default function AuthorRegisterPage({ params }: AuthorRegisterPageProps) 
       <div className="flex justify-center items-center min-h-screen bg-gray-50">
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center text-[#7A0019]">
+            <CardTitle className="text-2xl font-bold text-center text-journal-maroon">
               Registration Complete
             </CardTitle>
           </CardHeader>
@@ -133,7 +133,7 @@ export default function AuthorRegisterPage({ params }: AuthorRegisterPageProps) 
     <div className="flex justify-center items-center min-h-screen bg-gray-50 py-8">
       <Card className="w-full max-w-lg">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center text-[#7A0019]">
+          <CardTitle className="text-2xl font-bold text-center text-journal-maroon">
             Complete Author Profile
           </CardTitle>
           <CardDescription className="text-center">
@@ -221,7 +221,7 @@ export default function AuthorRegisterPage({ params }: AuthorRegisterPageProps) 
                 <strong>Don&apos;t have an ORCID iD?</strong> It&apos;s free and takes 2 minutes to register:
               </p>
               <ol className="text-sm text-amber-700 space-y-1 ml-4 list-decimal">
-                <li>Visit <a href="https://orcid.org/register" target="_blank" rel="noopener noreferrer" className="text-[#7A0019] underline font-medium">https://orcid.org/register</a></li>
+                <li>Visit <a href="https://orcid.org/register" target="_blank" rel="noopener noreferrer" className="text-journal-maroon underline font-medium">https://orcid.org/register</a></li>
                 <li>Fill in your basic information (name, email, password)</li>
                 <li>Set your visibility preferences</li>
                 <li>Copy your 16-digit ORCID iD (format: 0000-0000-0000-0000)</li>
@@ -231,7 +231,7 @@ export default function AuthorRegisterPage({ params }: AuthorRegisterPageProps) 
                 href="https://orcid.org/register"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-3 text-sm text-[#7A0019] hover:text-[#5A0A1A] font-semibold"
+                className="inline-flex items-center gap-2 mt-3 text-sm text-journal-maroon hover:text-journal-maroon-dark font-semibold"
               >
                 Register for ORCID iD
                 <ExternalLink className="h-4 w-4" />
@@ -240,7 +240,7 @@ export default function AuthorRegisterPage({ params }: AuthorRegisterPageProps) 
 
             <Button
               type="submit"
-              className="w-full bg-[#7A0019] hover:bg-[#5A0A1A]"
+              className="w-full bg-journal-maroon hover:bg-journal-maroon-dark"
               disabled={isLoading}
             >
               {isLoading ? 'Submitting...' : 'Complete Registration'}

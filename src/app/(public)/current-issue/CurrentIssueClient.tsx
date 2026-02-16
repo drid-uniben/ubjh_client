@@ -72,7 +72,7 @@ export default function CurrentIssueClient({ issueId, volumeId }: CurrentIssueCl
       <div className="min-h-screen bg-white">
         <Header />
         <div className="flex justify-center items-center py-40">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#7A0019]"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-journal-maroon"></div>
         </div>
         <Footer />
       </div>
@@ -142,7 +142,7 @@ export default function CurrentIssueClient({ issueId, volumeId }: CurrentIssueCl
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Header />
-      <section className="bg-gradient-to-br from-[#7A0019] to-[#5A0A1A] text-white py-12">
+      <section className="bg-gradient-to-br from-journal-maroon to-journal-maroon-dark text-white py-12">
         <div className=" mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 items-start">
             <div className="md:col-span-1">
@@ -164,35 +164,35 @@ export default function CurrentIssueClient({ issueId, volumeId }: CurrentIssueCl
               <h1 className="text-4xl font-bold mb-4 font-serif">
                 Volume {volume?.volumeNumber || '?'}, Issue {issue.issueNumber} ({publishYear})
               </h1>
-              <p className="text-xl text-[#FFE9EE] mb-6">
+              <p className="text-xl text-journal-rose mb-6">
                 Published: {publishMonthYear}
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                   <div className="text-3xl font-bold mb-1">{totalArticles}</div>
-                  <div className="text-sm text-[#FFE9EE]">Articles</div>
+                  <div className="text-sm text-journal-rose">Articles</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                   <div className="text-3xl font-bold mb-1">{totalPages}</div>
-                  <div className="text-sm text-[#FFE9EE]">Pages</div>
+                  <div className="text-sm text-journal-rose">Pages</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                   <div className="text-3xl font-bold mb-1">100%</div>
-                  <div className="text-sm text-[#FFE9EE]">Open Access</div>
+                  <div className="text-sm text-journal-rose">Open Access</div>
                 </div>
               </div>
               <div className="flex flex-wrap gap-3">
                 <button 
                   onClick={handleShareIssue}
-                  className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#7A0019] transition-all"
+                  className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-journal-maroon transition-all"
                 >
                   {copiedLink ? <Check className="h-5 w-5" /> : <Share2 className="h-5 w-5" />}
                   Share Issue
                 </button>
               </div>
               <div className="mt-6 pt-6 border-t border-white/20">
-                <p className="text-sm text-[#FFE9EE]">
+                <p className="text-sm text-journal-rose">
                   <strong>ISSN:</strong> eISSN: 3121-763X (Online)
                 </p>
               </div>
@@ -201,11 +201,11 @@ export default function CurrentIssueClient({ issueId, volumeId }: CurrentIssueCl
         </div>
       </section>
 
-      <section className="bg-[#FAF7F8] border-b-2 border-[#EAD3D9] py-6">
+      <section className="bg-journal-off-white border-b-2 border-journal-mauve py-6">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
-              <h2 className="text-lg font-bold text-[#212121] mb-1">Table of Contents</h2>
+              <h2 className="text-lg font-bold text-journal-text-dark mb-1">Table of Contents</h2>
               <p className="text-sm text-gray-600">
                 Showing {filteredArticles.length} of {articles.length} articles
               </p>
@@ -215,7 +215,7 @@ export default function CurrentIssueClient({ issueId, volumeId }: CurrentIssueCl
               <select
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
-                className="px-4 py-2 border-2 border-[#EAD3D9] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7A0019] font-medium"
+                className="px-4 py-2 border-2 border-journal-mauve rounded-lg focus:outline-none focus:ring-2 focus:ring-journal-maroon font-medium"
               >
                 {articleTypes.map((type) => (
                   <option key={type} value={type}>
@@ -234,18 +234,18 @@ export default function CurrentIssueClient({ issueId, volumeId }: CurrentIssueCl
             <Link
               href={`/articles/${article._id}`}
               key={article._id}
-              className="block bg-white border-2 border-[#EAD3D9] rounded-xl overflow-hidden hover:shadow-xl hover:border-[#7A0019] transition-all transform hover:scale-[1.02]"
+              className="block bg-white border-2 border-journal-mauve rounded-xl overflow-hidden hover:shadow-xl hover:border-journal-maroon transition-all transform hover:scale-[1.02]"
             >
               <div className="p-8">
                 <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <span className="inline-flex items-center px-3 py-1 bg-[#FFE9EE] border border-[#E6B6C2] text-[#5A0A1A] rounded-full text-xs font-bold uppercase">
+                  <span className="inline-flex items-center px-3 py-1 bg-journal-rose border border-[#E6B6C2] text-journal-maroon-dark rounded-full text-xs font-bold uppercase">
                     {normalizeType(article.articleType)}
                   </span>
                   <span className="text-sm text-gray-500">
                     Pages {article.pages?.start}-{article.pages?.end}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold text-[#212121] mb-4 group-hover:text-[#7A0019] transition-colors font-serif leading-tight">
+                <h3 className="text-2xl font-bold text-journal-text-dark mb-4 group-hover:text-journal-maroon transition-colors font-serif leading-tight">
                   {index + 1}. {article.title}
                 </h3>
                 <div className="mb-4">
@@ -258,7 +258,7 @@ export default function CurrentIssueClient({ issueId, volumeId }: CurrentIssueCl
                   </div>
                 </div>
                 <div className="mb-4">
-                  <h4 className="font-semibold text-[#212121] mb-2">Abstract</h4>
+                  <h4 className="font-semibold text-journal-text-dark mb-2">Abstract</h4>
                   <p className="text-gray-700 leading-relaxed">
                     {(article.abstract || "").split(" ").slice(0, 20).join(" ") + "..."}
                   </p>

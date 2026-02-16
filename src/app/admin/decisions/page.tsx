@@ -94,7 +94,7 @@ export default function DecisionsPage() {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-gray-50">
-        <Loader2 className="h-8 w-8 animate-spin text-[#7A0019]" />
+        <Loader2 className="h-8 w-8 animate-spin text-journal-maroon" />
       </div>
     );
   }
@@ -119,7 +119,7 @@ export default function DecisionsPage() {
         {/* Loading State */}
         {isLoading && (
           <div className="flex items-center justify-center py-12">
-            <Loader2 className="h-8 w-8 animate-spin text-[#7A0019]" />
+            <Loader2 className="h-8 w-8 animate-spin text-journal-maroon" />
           </div>
         )}
 
@@ -333,7 +333,7 @@ export default function DecisionsPage() {
                 <select
                   value={decision}
                   onChange={(e) => setDecision(e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent"
                 >
                   <option value="approved">Approve for Publication</option>
                   <option value="rejected">Reject</option>
@@ -350,7 +350,7 @@ export default function DecisionsPage() {
                   value={feedback}
                   onChange={(e) => setFeedback(e.target.value)}
                   rows={6}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent"
                   placeholder="This is the '𝗖𝗼𝗺𝗺𝗲𝗻𝘁 𝗙𝗿𝗼𝗺 𝗔𝘂𝘁𝗵𝗼𝗿' that the author will recieve as feedback in his mail and dashboard, so you should make a detailed and constructive comment using all the '𝗖𝗼𝗺𝗺𝗲𝗻𝘁𝘀 𝗙𝗼𝗿 𝗔𝘂𝘁𝗵𝗼𝗿' review comments made by all the reviewers organized into one.  If the decision is a '𝗿𝗲𝗾𝘂𝗲𝘀𝘁 𝗳𝗼𝗿 𝗺𝗶𝗻𝗼𝗿' or '𝗺𝗮𝗷𝗼𝗿 𝗿𝗲𝘃𝗶𝘀𝗶𝗼𝗻' then you should use/copy the '𝗖𝗼𝗺𝗺𝗲𝗻𝘁 𝗙𝗼𝗿 𝗔𝘂𝘁𝗵𝗼𝗿' review comment of the reviewer who gave the review decision you are following."
                 />
               </div>
@@ -370,7 +370,7 @@ export default function DecisionsPage() {
                   className={`flex-1 ${
                     decision === 'approved' ? 'bg-green-600 hover:bg-green-700' :
                     decision === 'rejected' ? 'bg-red-600 hover:bg-red-700' :
-                    'bg-[#7A0019] hover:bg-[#5A0A1A]'
+                    'bg-journal-maroon hover:bg-journal-maroon-dark'
                   }`}
                 >
                   {isSubmitting ? (

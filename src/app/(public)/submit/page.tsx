@@ -337,7 +337,7 @@ export default function ManuscriptSubmissionPage() {
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <header className="bg-[#7A0019] text-white shadow-lg">
+        <header className="bg-journal-maroon text-white shadow-lg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-20">
               <div className="flex items-center gap-4">
@@ -372,9 +372,9 @@ export default function ManuscriptSubmissionPage() {
               <p className="text-lg text-gray-600 mb-6">
                 Your manuscript has been submitted successfully and is now under review.
               </p>
-              <div className="bg-blue-50 border-1 border-[#7A0019] rounded-lg p-6 mb-8">
-                <h3 className="font-semibold text-[#7A0019] mb-2">What happens next?</h3>
-                <ul className="text-sm text-[#7A0019] space-y-2 text-left">
+              <div className="bg-blue-50 border-1 border-journal-maroon rounded-lg p-6 mb-8">
+                <h3 className="font-semibold text-journal-maroon mb-2">What happens next?</h3>
+                <ul className="text-sm text-journal-maroon space-y-2 text-left">
                   <li>• You will receive a confirmation email shortly</li>
                   <li>• Your login credentials will be sent within 24 hours</li>
                   <li>• You can track your submission status from your author dashboard</li>
@@ -383,7 +383,7 @@ export default function ManuscriptSubmissionPage() {
               </div>
               <button
                 onClick={resetForm}
-                className="inline-flex items-center gap-2 bg-[#7A0019] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#5A0A1A] transition-all"
+                className="inline-flex items-center gap-2 bg-journal-maroon text-white px-8 py-3 rounded-full font-semibold hover:bg-journal-maroon-dark transition-all"
               >
                 Submit Another Manuscript
               </button>
@@ -397,7 +397,7 @@ export default function ManuscriptSubmissionPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-[#7A0019] text-white shadow-lg sticky top-0 z-50">
+      <header className="bg-journal-maroon text-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center gap-4">
@@ -414,14 +414,14 @@ export default function ManuscriptSubmissionPage() {
                 <h1 className="text-xl font-bold tracking-tight">
                   UNIBEN Journal of Humanities
                 </h1>
-                <p className="text-sm text-[#FFE9EE] font-medium">
+                <p className="text-sm text-journal-rose font-medium">
                   Submit Your Manuscript
                 </p>
               </div>
             </div>
             <Link
               href="/submission"
-              className="text-white hover:text-[#FFE9EE] font-semibold"
+              className="text-white hover:text-journal-rose font-semibold"
             >
               ← Back
             </Link>
@@ -432,14 +432,14 @@ export default function ManuscriptSubmissionPage() {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8 max-w-5xl">
         {/* Important Notice */}
-        <div className="bg-blue-50 border-1 border-[#7A0019] rounded-lg p-6 mb-8">
+        <div className="bg-blue-50 border-1 border-journal-maroon rounded-lg p-6 mb-8">
           <div className="flex items-start gap-3">
-            <Info className="h-6 w-6 text-[#7A0019] flex-shrink-0 mt-0.5" />
+            <Info className="h-6 w-6 text-journal-maroon flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-semibold text-[#7A0019] mb-2">
+              <h3 className="font-semibold text-journal-maroon mb-2">
                 No Account Required
               </h3>
-              <p className="text-sm text-[#7A0019]">
+              <p className="text-sm text-journal-maroon">
                 You don&apos;t need to create an account to submit your manuscript. Simply fill out the form below, and an account will be automatically created for you. You&apos;ll receive your login credentials via email within 24 hours to 7 days to access your author dashboard and track your submission.
               </p>
             </div>
@@ -458,7 +458,7 @@ export default function ManuscriptSubmissionPage() {
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Manuscript Details */}
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="bg-[#7A0019] text-white px-6 py-4 flex items-center gap-3">
+            <div className="bg-journal-maroon text-white px-6 py-4 flex items-center gap-3">
               <FileText className="h-6 w-6" />
               <h2 className="text-xl font-semibold">Manuscript Details</h2>
             </div>
@@ -474,7 +474,7 @@ export default function ManuscriptSubmissionPage() {
                   name="title"
                   value={formData.title}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent ${
                     formErrors.title ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="Enter your manuscript title"
@@ -497,7 +497,7 @@ export default function ManuscriptSubmissionPage() {
                   value={formData.abstract}
                   onChange={handleInputChange}
                   rows={8}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent ${
                     formErrors.abstract ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="Enter your abstract (minimum 100 characters)"
@@ -527,7 +527,7 @@ export default function ManuscriptSubmissionPage() {
                   name="keywords"
                   value={formData.keywords}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent ${
                     formErrors.keywords ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="e.g., postcolonial literature, African philosophy, cultural studies"
@@ -544,7 +544,7 @@ export default function ManuscriptSubmissionPage() {
 
           {/* Author Information */}
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="bg-[#7A0019] text-white px-6 py-4 flex items-center gap-3">
+            <div className="bg-journal-maroon text-white px-6 py-4 flex items-center gap-3">
               <Users className="h-6 w-6" />
               <h2 className="text-xl font-semibold">Primary Author (You)</h2>
             </div>
@@ -560,7 +560,7 @@ export default function ManuscriptSubmissionPage() {
                     name="submitterName"
                     value={formData.submitterName}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent ${
                       formErrors.submitterName ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="Your full name"
@@ -582,7 +582,7 @@ export default function ManuscriptSubmissionPage() {
                     name="submitterEmail"
                     value={formData.submitterEmail}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent ${
                       formErrors.submitterEmail ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="youremail@institution.edu or youremail@gmail.com"
@@ -604,7 +604,7 @@ export default function ManuscriptSubmissionPage() {
                     name="submitterFaculty"
                     value={formData.submitterFaculty}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent ${
                       formErrors.submitterFaculty ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="e.g., Faculty of Arts, Department of English and Literature"
@@ -626,7 +626,7 @@ export default function ManuscriptSubmissionPage() {
                     name="submitterAffiliation"
                     value={formData.submitterAffiliation}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent ${
                       formErrors.submitterAffiliation ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="University of Benin, Nigeria"
@@ -650,7 +650,7 @@ export default function ManuscriptSubmissionPage() {
                   name="submitterOrcid"
                   value={formData.submitterOrcid}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent ${
                     formErrors.submitterOrcid ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="0000-0000-0000-0000"
@@ -666,7 +666,7 @@ export default function ManuscriptSubmissionPage() {
                     <strong>Don&apos;t have an ORCID iD?</strong> It&apos;s free and takes 2 minutes to register:
                   </p>
                   <ol className="text-sm text-amber-700 space-y-1 ml-4 list-decimal">
-                    <li>Visit <a href="https://orcid.org/register" target="_blank" rel="noopener noreferrer" className="text-[#7A0019] underline font-medium">https://orcid.org/register</a></li>
+                    <li>Visit <a href="https://orcid.org/register" target="_blank" rel="noopener noreferrer" className="text-journal-maroon underline font-medium">https://orcid.org/register</a></li>
                     <li>Fill in your basic information (name, email, password)</li>
                     <li>Set your visibility preferences</li>
                     <li>Copy your 16-digit ORCID iD (format: 0000-0000-0000-0000)</li>
@@ -676,7 +676,7 @@ export default function ManuscriptSubmissionPage() {
                     href="https://orcid.org/register"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 mt-3 text-sm text-[#7A0019] hover:text-[#5A0A1A] font-semibold"
+                    className="inline-flex items-center gap-2 mt-3 text-sm text-journal-maroon hover:text-journal-maroon-dark font-semibold"
                   >
                     Register for ORCID iD
                     <ExternalLink className="h-4 w-4" />
@@ -688,7 +688,7 @@ export default function ManuscriptSubmissionPage() {
 
           {/* Co-Authors Section */}
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="bg-[#7A0019] text-white px-6 py-4 flex items-center justify-between">
+            <div className="bg-journal-maroon text-white px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Users className="h-6 w-6" />
                 <h2 className="text-xl font-semibold">Co-Authors (Optional)</h2>
@@ -749,7 +749,7 @@ export default function ManuscriptSubmissionPage() {
                         name="name"
                         value={currentCoAuthor.name}
                         onChange={handleCoAuthorInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent"
                         placeholder="Co-author's full name"
                       />
                     </div>
@@ -763,7 +763,7 @@ export default function ManuscriptSubmissionPage() {
                         name="email"
                         value={currentCoAuthor.email}
                         onChange={handleCoAuthorInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent"
                         placeholder="email@institution.edu or email@gmail.com"
                       />
                     </div>
@@ -777,7 +777,7 @@ export default function ManuscriptSubmissionPage() {
                         name="faculty"
                         value={currentCoAuthor.faculty}
                         onChange={handleCoAuthorInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent"
                         placeholder="e.g., Faculty of Arts, Department of English and Literature"
                       />
                     </div>
@@ -791,7 +791,7 @@ export default function ManuscriptSubmissionPage() {
                         name="affiliation"
                         value={currentCoAuthor.affiliation}
                         onChange={handleCoAuthorInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent"
                         placeholder="Institution name"
                       />
                     </div>
@@ -805,7 +805,7 @@ export default function ManuscriptSubmissionPage() {
                         name="orcid"
                         value={currentCoAuthor.orcid}
                         onChange={handleCoAuthorInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7A0019] focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-journal-maroon focus:border-transparent"
                         placeholder="0000-0000-0000-0000"
                       />
                     </div>
@@ -815,7 +815,7 @@ export default function ManuscriptSubmissionPage() {
                     <button
                       type="button"
                       onClick={addCoAuthor}
-                      className="flex-1 bg-[#7A0019] text-white px-4 py-2 rounded-lg hover:bg-[#5A0A1A] transition-colors font-medium"
+                      className="flex-1 bg-journal-maroon text-white px-4 py-2 rounded-lg hover:bg-journal-maroon-dark transition-colors font-medium"
                     >
                       Add Co-Author
                     </button>
@@ -849,7 +849,7 @@ export default function ManuscriptSubmissionPage() {
 
           {/* File Upload Section */}
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="bg-[#7A0019] text-white px-6 py-4 flex items-center gap-3">
+            <div className="bg-journal-maroon text-white px-6 py-4 flex items-center gap-3">
               <Upload className="h-6 w-6" />
               <h2 className="text-xl font-semibold">Manuscript Upload</h2>
             </div>
@@ -857,7 +857,7 @@ export default function ManuscriptSubmissionPage() {
             <div className="p-6">
               <p className="text-gray-700 mb-4">
                 Please upload your complete manuscript in DOCX format. Ensure it follows the{' '}
-                <Link href="/for-authors" className="text-[#7A0019] underline hover:text-[#5A0A1A]">
+                <Link href="/for-authors" className="text-journal-maroon underline hover:text-journal-maroon-dark">
                   author guidelines
                 </Link>.
               </p>
@@ -865,10 +865,10 @@ export default function ManuscriptSubmissionPage() {
               <div
                 className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
                   isDragging
-                    ? 'border-[#7A0019] bg-[#FFE9EE]'
+                    ? 'border-journal-maroon bg-journal-rose'
                     : manuscriptFile
                     ? 'border-green-500 bg-green-50'
-                    : 'border-gray-300 hover:border-[#7A0019]'
+                    : 'border-gray-300 hover:border-journal-maroon'
                 }`}
                 onDragEnter={handleDragEnter}
                 onDragOver={handleDragOver}
@@ -912,7 +912,7 @@ export default function ManuscriptSubmissionPage() {
                     <div>
                       <label
                         htmlFor="manuscript-upload"
-                        className="cursor-pointer text-[#7A0019] hover:text-[#5A0A1A] font-semibold"
+                        className="cursor-pointer text-journal-maroon hover:text-journal-maroon-dark font-semibold"
                       >
                         Click to upload
                       </label>
@@ -941,16 +941,16 @@ export default function ManuscriptSubmissionPage() {
                     type="checkbox"
                     checked={agreedToTerms}
                     onChange={(e) => setAgreedToTerms(e.target.checked)}
-                    className="mt-1 h-5 w-5 text-[#7A0019] rounded focus:ring-[#7A0019]"
+                    className="mt-1 h-5 w-5 text-journal-maroon rounded focus:ring-journal-maroon"
                   />
                   <span className="text-sm text-gray-700">
                     I confirm that this manuscript is original work, has not been published elsewhere,
                     and is not under consideration by another journal. I agree to the{' '}
-                    <Link href="/policies" className="text-[#7A0019] underline hover:text-[#5A0A1A]">
+                    <Link href="/policies" className="text-journal-maroon underline hover:text-journal-maroon-dark">
                       journal policies
                     </Link>{' '}
                     and{' '}
-                    <Link href="/for-authors" className="text-[#7A0019] underline hover:text-[#5A0A1A]">
+                    <Link href="/for-authors" className="text-journal-maroon underline hover:text-journal-maroon-dark">
                       submission guidelines
                     </Link>
                     . I understand that my manuscript will undergo double-anonymous peer review.
@@ -974,7 +974,7 @@ export default function ManuscriptSubmissionPage() {
               className={`inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-lg shadow-xl transition-all ${
                 isSubmitting
                   ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-[#7A0019] hover:bg-[#5A0A1A] text-white hover:shadow-2xl'
+                  : 'bg-journal-maroon hover:bg-journal-maroon-dark text-white hover:shadow-2xl'
               }`}
             >
               {isSubmitting ? (

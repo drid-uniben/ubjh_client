@@ -94,12 +94,12 @@ export default function Header() {
   const linkClass = (path: string) =>
     `relative font-medium pb-1 border-b-2 transition-colors ${
       pathname === path
-        ? "font-bold border-[#FFE9EE] text-[#FFE9EE]"
-        : "border-transparent text-white hover:text-[#FFE9EE] hover:border-[#FFE9EE]"
+        ? "font-bold border-journal-rose text-journal-rose"
+        : "border-transparent text-white hover:text-journal-rose hover:border-journal-rose"
     }`;
 
   return (
-    <header className="bg-[#7A0019] text-white shadow-lg sticky top-0 z-50">
+    <header className="bg-journal-maroon text-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Row */}
         <div className="flex items-center justify-between h-20">
@@ -115,13 +115,13 @@ export default function Header() {
               />
             </div>
             <div className="min-w-0">
-              <div className="text-[10px] md:text-xs font-semibold text-[#FFE9EE] mb-0.5 tracking-wide">
+              <div className="text-[10px] md:text-xs font-semibold text-journal-rose mb-0.5 tracking-wide">
                 UNIVERSITY OF BENIN
               </div>
-              <h1 className="text-sm md:text-base lg:text-lg font-bold leading-tight transition-colors group-hover:text-[#FFE9EE]">
+              <h1 className="text-sm md:text-base lg:text-lg font-bold leading-tight transition-colors group-hover:text-journal-rose">
                 Journal of Humanities
               </h1>
-              <p className="text-[10px] md:text-xs text-[#FFE9EE] font-medium mt-0.5">
+              <p className="text-[10px] md:text-xs text-journal-rose font-medium mt-0.5">
                 Open Access • Peer Reviewed
               </p>
             </div>
@@ -149,7 +149,7 @@ export default function Header() {
             {/* Submit Button */}
             <Link
               href="/submission"
-              className="bg-white text-[#7A0019] px-4 py-2 rounded-full font-semibold hover:bg-[#FFE9EE] transition-all shadow-lg hover:shadow-xl hover:scale-105 whitespace-nowrap"
+              className="bg-white text-journal-maroon px-4 py-2 rounded-full font-semibold hover:bg-journal-rose transition-all shadow-lg hover:shadow-xl hover:scale-105 whitespace-nowrap"
             >
               Submit Manuscript
             </Link>
@@ -197,7 +197,7 @@ export default function Header() {
               )}
               <button
                 onClick={handleSearch}
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-[#7A0019] px-6 py-2 rounded-full font-semibold hover:bg-[#FFE9EE] transition-colors"
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-journal-maroon px-6 py-2 rounded-full font-semibold hover:bg-journal-rose transition-colors"
               >
                 Search
               </button>
@@ -217,18 +217,18 @@ export default function Header() {
                           setShowDropdown(false);
                           setSearchQuery("");
                         }}
-                        className="block p-4 hover:bg-[#FAF7F8] transition-colors group"
+                        className="block p-4 hover:bg-journal-off-white transition-colors group"
                       >
                         <div className="flex justify-between items-start gap-4">
                           <div className="flex-1">
-                            <h4 className="font-bold text-[#212121] text-sm md:text-base line-clamp-1 group-hover:text-[#7A0019] mb-1">
+                            <h4 className="font-bold text-journal-text-dark text-sm md:text-base line-clamp-1 group-hover:text-journal-maroon mb-1">
                               {article.title}
                             </h4>
                             <p className="text-xs text-gray-500 font-medium">
                               {article.author?.name} • Vol {article.volume?.volumeNumber}, Issue {article.issue?.issueNumber}
                             </p>
                           </div>
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#7A0019] bg-[#FFE9EE] px-2 py-0.5 rounded">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-journal-maroon bg-journal-rose px-2 py-0.5 rounded">
                             {article.articleType.replace("_", " ")}
                           </span>
                         </div>
@@ -236,7 +236,7 @@ export default function Header() {
                     ))}
                     <button
                       onClick={handleSearch}
-                      className="w-full p-3 text-center text-sm font-bold text-[#7A0019] hover:bg-[#FAF7F8] transition-colors"
+                      className="w-full p-3 text-center text-sm font-bold text-journal-maroon hover:bg-journal-off-white transition-colors"
                     >
                       View all results for &quot;{searchQuery}&quot;
                     </button>
@@ -254,7 +254,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-[#5A0A1A] border-t border-white/10 animate-slide-down">
+        <div className="lg:hidden bg-journal-maroon-dark border-t border-white/10 animate-slide-down">
           <nav className="flex flex-col p-6 space-y-4">
             {navLinks.map((link) => (
               <Link
@@ -273,8 +273,8 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
               className={`flex items-center gap-2 pb-1 border-b-2 ${
                 pathname === "/search"
-                  ? "font-bold border-[#FFE9EE] text-[#FFE9EE]"
-                  : "border-transparent text-white hover:text-[#FFE9EE] hover:border-[#FFE9EE]"
+                  ? "font-bold border-journal-rose text-journal-rose"
+                  : "border-transparent text-white hover:text-journal-rose hover:border-journal-rose"
               }`}
             >
               <Search size={20} /> Advanced Search
@@ -283,7 +283,7 @@ export default function Header() {
             <Link
               href="/submission"
               onClick={() => setIsMenuOpen(false)}
-              className="bg-white text-[#7A0019] px-6 py-3 rounded-full font-semibold hover:bg-[#FFE9EE] transition-all text-center shadow-lg hover:shadow-xl"
+              className="bg-white text-journal-maroon px-6 py-3 rounded-full font-semibold hover:bg-journal-rose transition-all text-center shadow-lg hover:shadow-xl"
             >
               Submit Manuscript
             </Link>

@@ -135,7 +135,7 @@ export default function SubmissionPortalPage() {
       <Header/>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#7A0019] to-[rgb(90,10,26)] text-white py-20">
+      <section className="bg-gradient-to-br from-journal-maroon to-[rgb(90,10,26)] text-white py-20">
         <div className="absolute inset-0 opacity-10">
                   {/* Placeholder for subtle pattern/texture */}
                   <Image
@@ -154,21 +154,21 @@ export default function SubmissionPortalPage() {
             <h1 className="text-5xl font-bold mb-6 leading-tight font-serif">
               Submit Your Manuscript
             </h1>
-            <p className="text-xl text-[#FFE9EE] mb-8 leading-relaxed">
+            <p className="text-xl text-journal-rose mb-8 leading-relaxed">
               Join scholars advancing knowledge in the humanities. Fast review,
               no fees, global reach.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/submit"
-                className="inline-flex items-center gap-2 bg-white text-[#7A0019] px-8 py-4 rounded-full font-bold hover:bg-[#FFE9EE] transition-all shadow-xl hover:shadow-2xl text-lg"
+                className="inline-flex items-center gap-2 bg-white text-journal-maroon px-8 py-4 rounded-full font-bold hover:bg-journal-rose transition-all shadow-xl hover:shadow-2xl text-lg"
               >
                 <Send className="h-6 w-6" />
                 Start New Submission
               </Link>
               <Link
                 href="/author/login"
-                className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-[#7A0019] transition-all text-lg"
+                className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-journal-maroon transition-all text-lg"
               >
                 <Users className="h-6 w-6" />
                 Login to Dashboard
@@ -182,7 +182,7 @@ export default function SubmissionPortalPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#7A0019] mb-4 font-serif">
+            <h2 className="text-3xl font-bold text-journal-maroon mb-4 font-serif">
               Why Publish With Us?
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -193,10 +193,10 @@ export default function SubmissionPortalPage() {
 
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-[#FFE9EE] rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="h-8 w-8 text-[#7A0019]" />
+              <div className="w-16 h-16 bg-journal-rose rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="h-8 w-8 text-journal-maroon" />
               </div>
-              <h3 className="text-xl font-bold text-[#212121] mb-2">
+              <h3 className="text-xl font-bold text-journal-text-dark mb-2">
                 No Fees
               </h3>
               <p className="text-gray-600">
@@ -205,10 +205,10 @@ export default function SubmissionPortalPage() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-[#FFE9EE] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-8 w-8 text-[#7A0019]" />
+              <div className="w-16 h-16 bg-journal-rose rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="h-8 w-8 text-journal-maroon" />
               </div>
-              <h3 className="text-xl font-bold text-[#212121] mb-2">
+              <h3 className="text-xl font-bold text-journal-text-dark mb-2">
                 Fast Review
               </h3>
               <p className="text-gray-600">
@@ -218,10 +218,10 @@ export default function SubmissionPortalPage() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-[#FFE9EE] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Globe className="h-8 w-8 text-[#7A0019]" />
+              <div className="w-16 h-16 bg-journal-rose rounded-full flex items-center justify-center mx-auto mb-4">
+                <Globe className="h-8 w-8 text-journal-maroon" />
               </div>
-              <h3 className="text-xl font-bold text-[#212121] mb-2">
+              <h3 className="text-xl font-bold text-journal-text-dark mb-2">
                 Global Reach
               </h3>
               <p className="text-gray-600">
@@ -231,10 +231,10 @@ export default function SubmissionPortalPage() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-[#FFE9EE] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-8 w-8 text-[#7A0019]" />
+              <div className="w-16 h-16 bg-journal-rose rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="h-8 w-8 text-journal-maroon" />
               </div>
-              <h3 className="text-xl font-bold text-[#212121] mb-2">
+              <h3 className="text-xl font-bold text-journal-text-dark mb-2">
                 You Keep Rights
               </h3>
               <p className="text-gray-600">
@@ -246,10 +246,10 @@ export default function SubmissionPortalPage() {
       </section>
 
       {/* Submission Process */}
-      <section className="py-16 bg-[#FAF7F8]">
+      <section className="py-16 bg-journal-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#7A0019] mb-4 font-serif">
+            <h2 className="text-3xl font-bold text-journal-maroon mb-4 font-serif">
               Submission Process
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -259,7 +259,7 @@ export default function SubmissionPortalPage() {
 
           <div className="relative">
             {/* Connecting Line */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-12 bottom-12 w-1 bg-[#EAD3D9]"></div>
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-12 bottom-12 w-1 bg-journal-mauve"></div>
 
             <div className="space-y-12">
               {submissionSteps.map((step, idx) => (
@@ -271,27 +271,27 @@ export default function SubmissionPortalPage() {
                 >
                   {/* Step Content */}
                   <div
-                    className={`flex-1 bg-white border-2 border-[#EAD3D9] rounded-xl p-6 hover:shadow-xl transition-all ${
+                    className={`flex-1 bg-white border-2 border-journal-mauve rounded-xl p-6 hover:shadow-xl transition-all ${
                       idx % 2 === 0 ? "md:text-right" : "md:text-left"
                     }`}
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <step.icon className="h-6 w-6 text-[#7A0019]" />
-                      <h3 className="text-xl font-bold text-[#212121]">
+                      <step.icon className="h-6 w-6 text-journal-maroon" />
+                      <h3 className="text-xl font-bold text-journal-text-dark">
                         {step.title}
                       </h3>
                     </div>
                     <p className="text-gray-700 leading-relaxed mb-3">
                       {step.description}
                     </p>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FFE9EE] border border-[#E6B6C2] text-[#5A0A1A] rounded-full text-xs font-semibold">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-journal-rose border border-[#E6B6C2] text-journal-maroon-dark rounded-full text-xs font-semibold">
                       <Clock className="h-3 w-3" />
                       {step.duration}
                     </div>
                   </div>
 
                   {/* Step Number */}
-                  <div className="flex-shrink-0 w-16 h-16 bg-[#7A0019] rounded-full flex items-center justify-center text-white font-bold text-2xl z-10 shadow-lg">
+                  <div className="flex-shrink-0 w-16 h-16 bg-journal-maroon rounded-full flex items-center justify-center text-white font-bold text-2xl z-10 shadow-lg">
                     {step.number}
                   </div>
 
@@ -308,7 +308,7 @@ export default function SubmissionPortalPage() {
             </p>
             <Link
               href="/submit"
-              className="inline-flex items-center gap-2 bg-[#7A0019] text-white px-8 py-4 rounded-full font-bold hover:bg-[#5A0A1A] transition-all shadow-xl text-lg"
+              className="inline-flex items-center gap-2 bg-journal-maroon text-white px-8 py-4 rounded-full font-bold hover:bg-journal-maroon-dark transition-all shadow-xl text-lg"
             >
               Begin Submission Process
               <ArrowRight className="h-5 w-5" />
@@ -322,7 +322,7 @@ export default function SubmissionPortalPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-[#7A0019] mb-4 font-serif">
+              <h2 className="text-3xl font-bold text-journal-maroon mb-4 font-serif">
                 Submission Requirements
               </h2>
               <p className="text-gray-600">
@@ -330,7 +330,7 @@ export default function SubmissionPortalPage() {
               </p>
             </div>
 
-            <div className="bg-[#FAF7F8] border-2 border-[#EAD3D9] rounded-xl p-8">
+            <div className="bg-journal-off-white border-2 border-journal-mauve rounded-xl p-8">
               <div className="space-y-4">
                 {requirements.map((req, idx) => (
                   <div
@@ -343,7 +343,7 @@ export default function SubmissionPortalPage() {
                       <AlertCircle className="h-6 w-6 text-yellow-600 flex-shrink-0 mt-0.5" />
                     )}
                     <div className="flex-1">
-                      <h3 className="font-bold text-[#212121] mb-1">
+                      <h3 className="font-bold text-journal-text-dark mb-1">
                         {req.title}
                       </h3>
                       <p className="text-sm text-gray-600">{req.description}</p>
@@ -357,19 +357,19 @@ export default function SubmissionPortalPage() {
                 ))}
               </div>
 
-              <div className="mt-8 pt-8 border-t-2 border-[#EAD3D9]">
-                <h3 className="font-bold text-[#212121] mb-4 flex items-center gap-2">
-                  <Download className="h-5 w-5 text-[#7A0019]" />
+              <div className="mt-8 pt-8 border-t-2 border-journal-mauve">
+                <h3 className="font-bold text-journal-text-dark mb-4 flex items-center gap-2">
+                  <Download className="h-5 w-5 text-journal-maroon" />
                   Helpful Resources
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <a
                     href="/files/UNIBEN_Journal_Of_Humanities_Templates.docx"
-                    className="flex items-center gap-3 p-4 bg-white border-2 border-[#EAD3D9] rounded-lg hover:border-[#7A0019] transition-colors"
+                    className="flex items-center gap-3 p-4 bg-white border-2 border-journal-mauve rounded-lg hover:border-journal-maroon transition-colors"
                   >
-                    <FileText className="h-5 w-5 text-[#7A0019]" />
+                    <FileText className="h-5 w-5 text-journal-maroon" />
                     <div>
-                      <div className="font-semibold text-[#212121] text-sm">
+                      <div className="font-semibold text-journal-text-dark text-sm">
                         Manuscript Template
                       </div>
                       <div className="text-xs text-gray-600">DOCX format</div>
@@ -377,11 +377,11 @@ export default function SubmissionPortalPage() {
                   </a>
                   <a
                     href="/files/UBJH_Author_Guidelines.pdf"
-                    className="flex items-center gap-3 p-4 bg-white border-2 border-[#EAD3D9] rounded-lg hover:border-[#7A0019] transition-colors"
+                    className="flex items-center gap-3 p-4 bg-white border-2 border-journal-mauve rounded-lg hover:border-journal-maroon transition-colors"
                   >
-                    <FileText className="h-5 w-5 text-[#7A0019]" />
+                    <FileText className="h-5 w-5 text-journal-maroon" />
                     <div>
-                      <div className="font-semibold text-[#212121] text-sm">
+                      <div className="font-semibold text-journal-text-dark text-sm">
                         Author Guidelines
                       </div>
                       <div className="text-xs text-gray-600">PDF format</div>
@@ -395,10 +395,10 @@ export default function SubmissionPortalPage() {
       </section>
 
       {/* FAQs */}
-      <section className="py-16 bg-[#FAF7F8]">
+      <section className="py-16 bg-journal-off-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#7A0019] mb-4 font-serif">
+            <h2 className="text-3xl font-bold text-journal-maroon mb-4 font-serif">
               Frequently Asked Questions
             </h2>
             <p className="text-gray-600">
@@ -410,17 +410,17 @@ export default function SubmissionPortalPage() {
             {faqs.map((faq, idx) => (
               <div
                 key={idx}
-                className="bg-white border-2 border-[#EAD3D9] rounded-xl overflow-hidden"
+                className="bg-white border-2 border-journal-mauve rounded-xl overflow-hidden"
               >
                 <button
                   onClick={() =>
                     setExpandedFAQ(expandedFAQ === idx ? null : idx)
                   }
-                  className="w-full flex items-center justify-between p-6 text-left hover:bg-[#FAF7F8] transition-colors"
+                  className="w-full flex items-center justify-between p-6 text-left hover:bg-journal-off-white transition-colors"
                 >
                   <div className="flex items-start gap-3 flex-1">
-                    <HelpCircle className="h-5 w-5 text-[#7A0019] flex-shrink-0 mt-0.5" />
-                    <h3 className="font-bold text-[#212121]">{faq.question}</h3>
+                    <HelpCircle className="h-5 w-5 text-journal-maroon flex-shrink-0 mt-0.5" />
+                    <h3 className="font-bold text-journal-text-dark">{faq.question}</h3>
                   </div>
                   <ArrowRight
                     className={`h-5 w-5 text-gray-400 flex-shrink-0 transition-transform ${
@@ -443,7 +443,7 @@ export default function SubmissionPortalPage() {
             <p className="text-gray-600 mb-4">Still have questions?</p>
             <Link
               href="/for-authors"
-              className="inline-flex items-center gap-2 text-[#7A0019] hover:text-[#5A0A1A] font-semibold"
+              className="inline-flex items-center gap-2 text-journal-maroon hover:text-journal-maroon-dark font-semibold"
             >
               View Full Author Guidelines
               <ArrowRight className="h-4 w-4" />
@@ -457,13 +457,13 @@ export default function SubmissionPortalPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Technical Support */}
-            <div className="border-2 bg-[#FFE9EE] border-[#EAD3D9] rounded-xl p-8">
+            <div className="border-2 bg-journal-rose border-journal-mauve rounded-xl p-8">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#7A0019] rounded-full flex items-center justify-center flex-shrink-0">
-                  <HelpCircle className="h-6 w-6 text-[#EAD3D9]" />
+                <div className="w-12 h-12 bg-journal-maroon rounded-full flex items-center justify-center flex-shrink-0">
+                  <HelpCircle className="h-6 w-6 text-journal-mauve" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#7A0019] mb-3">
+                  <h3 className="text-xl font-bold text-journal-maroon mb-3">
                     Technical Support
                   </h3>
                   <p className="text-gray-700 mb-4">
@@ -473,7 +473,7 @@ export default function SubmissionPortalPage() {
                   </p>
                   <a
                     href="mailto:support@uniben.edu"
-                    className="inline-flex items-center gap-2 text-[#7A0019] hover:text-[#7a0018ea] font-semibold"
+                    className="inline-flex items-center gap-2 text-journal-maroon hover:text-[#7a0018ea] font-semibold"
                   >
                     <Mail className="h-4 w-4" />
                     drid@uniben.edu
@@ -483,13 +483,13 @@ export default function SubmissionPortalPage() {
             </div>
 
             {/* Editorial Office */}
-            <div className="border-4 bg-[#7A0019] border-[#EAD3D9] rounded-lg p-8">
+            <div className="border-4 bg-journal-maroon border-journal-mauve rounded-lg p-8">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#EAD3D9] rounded-full flex items-center justify-center flex-shrink-0">
-                  <Mail className="h-6 w-6 text-[#7A0019]" />
+                <div className="w-12 h-12 bg-journal-mauve rounded-full flex items-center justify-center flex-shrink-0">
+                  <Mail className="h-6 w-6 text-journal-maroon" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#EAD3D9] mb-3">
+                  <h3 className="text-xl font-bold text-journal-mauve mb-3">
                     Editorial Office
                   </h3>
                   <p className="text-white mb-4">
@@ -498,7 +498,7 @@ export default function SubmissionPortalPage() {
                   </p>
                   <a
                     href="mailto:journalhumanities@uniben.edu"
-                    className="inline-flex items-center gap-2 text-[#EAD3D9] hover:text-purple-900 font-semibold"
+                    className="inline-flex items-center gap-2 text-journal-mauve hover:text-purple-900 font-semibold"
                   >
                     <Mail className="h-4 w-4" />
                     journalhumanities@uniben.edu
@@ -511,27 +511,27 @@ export default function SubmissionPortalPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-gradient-to-br from-[#7A0019] to-[#5A0A1A] py-20">
+      <section className="bg-gradient-to-br from-journal-maroon to-journal-maroon-dark py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <BookOpen className="h-16 w-16 text-white mx-auto mb-6" />
           <h2 className="text-4xl font-bold text-white mb-6 font-serif">
             Ready to Share Your Research?
           </h2>
-          <p className="text-xl text-[#FFE9EE] mb-8 leading-relaxed">
+          <p className="text-xl text-journal-rose mb-8 leading-relaxed">
             Join scholars from across Africa and beyond in advancing humanities
             knowledge through rigorous, open access scholarship.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/submit"
-              className="inline-flex items-center gap-2 bg-white text-[#7A0019] px-8 py-4 rounded-full font-bold hover:bg-[#FFE9EE] transition-all shadow-xl text-lg"
+              className="inline-flex items-center gap-2 bg-white text-journal-maroon px-8 py-4 rounded-full font-bold hover:bg-journal-rose transition-all shadow-xl text-lg"
             >
               <Send className="h-6 w-6" />
               Start Your Submission
             </Link>
             <Link
               href="/for-authors"
-              className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-[#7A0019] transition-all text-lg"
+              className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-journal-maroon transition-all text-lg"
             >
               <FileText className="h-6 w-6" />
               Read Guidelines First
@@ -542,19 +542,19 @@ export default function SubmissionPortalPage() {
             <div className="grid md:grid-cols-3 gap-8 text-left">
               <div>
                 <div className="text-3xl text-white font-bold mb-2">0 NGN</div>
-                <div className="text-sm text-[#FFE9EE]">
+                <div className="text-sm text-journal-rose">
                   Article Processing Charges
                 </div>
               </div>
               <div>
                 <div className="text-3xl text-white font-bold mb-2">3-6 Weeks</div>
-                <div className="text-sm text-[#FFE9EE]">
+                <div className="text-sm text-journal-rose">
                   Average Review Time
                 </div>
               </div>
               <div>
                 <div className="text-3xl text-white font-bold mb-2">CC BY 4.0</div>
-                <div className="text-sm text-[#FFE9EE]">
+                <div className="text-sm text-journal-rose">
                   Open Access License
                 </div>
               </div>

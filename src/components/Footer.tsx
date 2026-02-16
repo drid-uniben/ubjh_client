@@ -51,11 +51,11 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-[#FAF7F8] to-white border-t-2 border-[#EAD3D9]">
+    <footer className="bg-gradient-to-br from-journal-off-white to-white border-t-2 border-journal-mauve">
       {/* Indexing & Trust Indicators */}
-      <section className="py-12 border-b border-[#EAD3D9]">
+      <section className="py-12 border-b border-journal-mauve">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="text-center text-sm font-bold text-[#7A0019] mb-2 tracking-wide">
+          <h3 className="text-center text-sm font-bold text-journal-maroon mb-2 tracking-wide">
             INDEXED & PRESERVED BY
           </h3>
           <p className="text-center text-xs text-gray-600 mb-8">
@@ -70,7 +70,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="group relative"
               >
-                <div className="bg-white border-2 border-[#EAD3D9] rounded-xl p-4 h-24 flex items-center justify-center transition-all group-hover:border-[#7A0019] group-hover:shadow-lg group-hover:-translate-y-1">
+                <div className="bg-white border-2 border-journal-mauve rounded-xl p-4 h-24 flex items-center justify-center transition-all group-hover:border-journal-maroon group-hover:shadow-lg group-hover:-translate-y-1">
                   <div className="relative w-full h-full">
                     <Image
                       src={platform.logo}
@@ -85,7 +85,7 @@ export default function Footer() {
                     </span>
                   )}
                 </div>
-                <p className="text-center text-xs font-medium text-gray-700 mt-2 group-hover:text-[#7A0019] transition-colors">
+                <p className="text-center text-xs font-medium text-gray-700 mt-2 group-hover:text-journal-maroon transition-colors">
                   {platform.name}
                 </p>
               </a>
@@ -99,8 +99,8 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-8">
             <div className="text-center">
-              <div className="flex items-center gap-2 bg-white border-2 border-[#EAD3D9] rounded-lg px-6 py-3">
-                <div className="text-[#7A0019]">
+              <div className="flex items-center gap-2 bg-white border-2 border-journal-mauve rounded-lg px-6 py-3">
+                <div className="text-journal-maroon">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
                     <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3z" clipRule="evenodd"/>
@@ -108,21 +108,21 @@ export default function Footer() {
                 </div>
                 <div className="text-left">
                   <div className="text-xs font-semibold text-gray-600">Print ISSN</div>
-                  <div className="text-sm font-bold text-[#7A0019]">2734-3278</div>
+                  <div className="text-sm font-bold text-journal-maroon">2734-3278</div>
                 </div>
               </div>
             </div>
 
             <div className="text-center">
-              <div className="flex items-center gap-2 bg-white border-2 border-[#EAD3D9] rounded-lg px-6 py-3">
-                <div className="text-[#7A0019]">
+              <div className="flex items-center gap-2 bg-white border-2 border-journal-mauve rounded-lg px-6 py-3">
+                <div className="text-journal-maroon">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clipRule="evenodd"/>
                   </svg>
                 </div>
                 <div className="text-left">
                   <div className="text-xs font-semibold text-gray-600">e-ISSN (Online)</div>
-                  <div className="text-sm font-bold text-[#7A0019]">3121-763X</div>
+                  <div className="text-sm font-bold text-journal-maroon">3121-763X</div>
                 </div>
               </div>
             </div>
@@ -142,7 +142,7 @@ export default function Footer() {
             </div>
 
             <div className="text-center">
-              <div className="flex items-center gap-2 bg-white border-2 border-[#EAD3D9] rounded-lg px-6 py-3">
+              <div className="flex items-center gap-2 bg-white border-2 border-journal-mauve rounded-lg px-6 py-3">
                 <div className="relative w-18 h-18">
                   <Image
                     src="/indexing/open_access.png"
@@ -177,7 +177,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="font-bold text-[#7A0019] mb-4 text-sm tracking-wide">
+              <h3 className="font-bold text-journal-maroon mb-4 text-sm tracking-wide">
                 QUICK LINKS
               </h3>
               <ul className="space-y-2">
@@ -190,9 +190,9 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-gray-600 hover:text-[#7A0019] transition-colors text-sm inline-flex items-center gap-1 group"
+                      className="text-gray-600 hover:text-journal-maroon transition-colors text-sm inline-flex items-center gap-1 group"
                     >
-                      <span className="w-0 group-hover:w-2 h-0.5 bg-[#7A0019] transition-all" />
+                      <span className="w-0 group-hover:w-2 h-0.5 bg-journal-maroon transition-all" />
                       {link.label}
                     </Link>
                   </li>
@@ -201,7 +201,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="font-bold text-[#7A0019] mb-4 text-sm tracking-wide">
+              <h3 className="font-bold text-journal-maroon mb-4 text-sm tracking-wide">
                 ABOUT
               </h3>
               <ul className="space-y-2">
@@ -213,9 +213,9 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-gray-600 hover:text-[#7A0019] transition-colors text-sm inline-flex items-center gap-1 group"
+                      className="text-gray-600 hover:text-journal-maroon transition-colors text-sm inline-flex items-center gap-1 group"
                     >
-                      <span className="w-0 group-hover:w-2 h-0.5 bg-[#7A0019] transition-all" />
+                      <span className="w-0 group-hover:w-2 h-0.5 bg-journal-maroon transition-all" />
                       {link.label}
                     </Link>
                   </li>
@@ -224,7 +224,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="font-bold text-[#7A0019] mb-4 text-sm tracking-wide">
+              <h3 className="font-bold text-journal-maroon mb-4 text-sm tracking-wide">
                 RESOURCES
               </h3>
               <ul className="space-y-2">
@@ -236,9 +236,9 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-gray-600 hover:text-[#7A0019] transition-colors text-sm inline-flex items-center gap-1 group"
+                      className="text-gray-600 hover:text-journal-maroon transition-colors text-sm inline-flex items-center gap-1 group"
                     >
-                      <span className="w-0 group-hover:w-2 h-0.5 bg-[#7A0019] transition-all" />
+                      <span className="w-0 group-hover:w-2 h-0.5 bg-journal-maroon transition-all" />
                       {link.label}
                     </Link>
                   </li>
@@ -247,21 +247,21 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="font-bold text-[#7A0019] mb-4 text-sm tracking-wide">
+              <h3 className="font-bold text-journal-maroon mb-4 text-sm tracking-wide">
                 CONTACT
               </h3>
               <ul className="space-y-3 text-sm">
                 <li className="flex items-start gap-2 text-gray-600">
-                  <Mail className="h-4 w-4 text-[#7A0019] mt-0.5 flex-shrink-0" />
+                  <Mail className="h-4 w-4 text-journal-maroon mt-0.5 flex-shrink-0" />
                   <a
                     href="mailto:journalhumanities@uniben.edu"
-                    className="hover:text-[#7A0019] transition-colors"
+                    className="hover:text-journal-maroon transition-colors"
                   >
                     journalhumanities@uniben.edu
                   </a>
                 </li>
                 <li className="flex items-start gap-2 text-gray-600">
-                  <MapPin className="h-4 w-4 text-[#7A0019] mt-0.5 flex-shrink-0" />
+                  <MapPin className="h-4 w-4 text-journal-maroon mt-0.5 flex-shrink-0" />
                   <span>
                     University of Benin<br />
                     Ugbowo Campus, PMB 1154<br />
@@ -272,7 +272,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="border-t-2 border-[#EAD3D9] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-600">
+          <div className="border-t-2 border-journal-mauve pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-600">
             <p>
               © {new Date().getFullYear()} University of Benin — UNIBEN Journal of Humanities
             </p>

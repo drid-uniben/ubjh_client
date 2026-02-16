@@ -298,7 +298,7 @@ export default function AuthorInvitationsPage() {
     return (
       <AdminLayout>
         <div className="flex justify-center items-center h-64">
-          <RefreshCw className="h-8 w-8 animate-spin text-[#7A0019]" />
+          <RefreshCw className="h-8 w-8 animate-spin text-journal-maroon" />
         </div>
       </AdminLayout>
     );
@@ -320,7 +320,7 @@ export default function AuthorInvitationsPage() {
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
             <Button 
               onClick={() => setShowInviteDialog(true)}
-              className="bg-[#7A0019] hover:bg-[#5A0A1A] text-white"
+              className="bg-journal-maroon hover:bg-journal-maroon-dark text-white"
             >
               <Mail className="mr-2 h-4 w-4" />
               Invite Author
@@ -329,7 +329,7 @@ export default function AuthorInvitationsPage() {
             <Button 
               onClick={() => setShowAddAuthorDialog(true)}
               variant="outline"
-              className="border-[#7A0019] text-[#7A0019] hover:bg-[#FFE9EE]"
+              className="border-journal-maroon text-journal-maroon hover:bg-journal-rose"
             >
               <UserPlus className="mr-2 h-4 w-4" />
               Add Author
@@ -339,9 +339,9 @@ export default function AuthorInvitationsPage() {
 
         {/* Invitations Card */}
         <Card className="shadow-lg border border-gray-200">
-          <CardHeader className="bg-gradient-to-r from-[#FAF7F8] to-white border-b border-gray-200">
+          <CardHeader className="bg-gradient-to-r from-journal-off-white to-white border-b border-gray-200">
             <CardTitle className="text-xl text-gray-900 flex items-center gap-2">
-              <Mail className="h-5 w-5 text-[#7A0019]" />
+              <Mail className="h-5 w-5 text-journal-maroon" />
               Author Invitations
             </CardTitle>
           </CardHeader>
@@ -367,7 +367,7 @@ export default function AuthorInvitationsPage() {
                     </tr>
                   ) : (
                     invitations.map((invitation) => (
-                      <tr key={invitation?.id} className="border-b hover:bg-[#FFE9EE] transition-colors">
+                      <tr key={invitation?.id} className="border-b hover:bg-journal-rose transition-colors">
                         <td className="px-4 py-3 font-medium text-gray-900">{invitation?.email}</td>
                         <td className="px-4 py-3">
                           <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusBadgeClass(invitation?.status)}`}>
@@ -381,7 +381,7 @@ export default function AuthorInvitationsPage() {
                         <td className="px-4 py-3 text-gray-600 hidden sm:table-cell">{invitation?.expires || 'N/A'}</td>
                         <td className="px-4 py-3">
                           {invitation?.assignedFaculty ? (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#FFE9EE] text-[#7A0019]">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-journal-rose text-journal-maroon">
                               {invitation.assignedFaculty}
                             </span>
                           ) : (
@@ -467,7 +467,7 @@ export default function AuthorInvitationsPage() {
                 <Button type="button" variant="outline" onClick={() => setShowInviteDialog(false)}>
                   Cancel
                 </Button>
-                <Button type="submit" disabled={isSubmitting} className="bg-[#7A0019] hover:bg-[#5A0A1A]">
+                <Button type="submit" disabled={isSubmitting} className="bg-journal-maroon hover:bg-journal-maroon-dark">
                   {isSubmitting ? "Sending..." : "Send Invitation"}
                 </Button>
               </DialogFooter>
@@ -567,7 +567,7 @@ export default function AuthorInvitationsPage() {
                     <strong>Don&apos;t have an ORCID iD?</strong> It&apos;s free and takes 2 minutes to register:
                   </p>
                   <ol className="text-sm text-amber-700 space-y-1 ml-4 list-decimal">
-                    <li>Visit <a href="https://orcid.org/register" target="_blank" rel="noopener noreferrer" className="text-[#7A0019] underline font-medium">https://orcid.org/register</a></li>
+                    <li>Visit <a href="https://orcid.org/register" target="_blank" rel="noopener noreferrer" className="text-journal-maroon underline font-medium">https://orcid.org/register</a></li>
                     <li>Fill in your basic information (name, email, password)</li>
                     <li>Set your visibility preferences</li>
                     <li>Copy your 16-digit ORCID iD (format: 0000-0000-0000-0000)</li>
@@ -577,7 +577,7 @@ export default function AuthorInvitationsPage() {
                     href="https://orcid.org/register"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 mt-3 text-sm text-[#7A0019] hover:text-[#5A0A1A] font-semibold"
+                    className="inline-flex items-center gap-2 mt-3 text-sm text-journal-maroon hover:text-journal-maroon-dark font-semibold"
                   >
                     Register for ORCID iD
                     <ExternalLink className="h-4 w-4" />
@@ -588,7 +588,7 @@ export default function AuthorInvitationsPage() {
                 <Button type="button" variant="outline" onClick={() => setShowAddAuthorDialog(false)}>
                   Cancel
                 </Button>
-                <Button type="submit" disabled={isSubmitting} className="bg-[#7A0019] hover:bg-[#5A0A1A]">
+                <Button type="submit" disabled={isSubmitting} className="bg-journal-maroon hover:bg-journal-maroon-dark">
                   {isSubmitting ? "Creating..." : "Create Profile"}
                 </Button>
               </DialogFooter>
@@ -608,7 +608,7 @@ export default function AuthorInvitationsPage() {
           <DialogContent className="sm:max-w-2xl max-h-[80vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
-                <Building2 className="h-5 w-5 text-[#7A0019]" />
+                <Building2 className="h-5 w-5 text-journal-maroon" />
                 Assign Faculty
               </DialogTitle>
               <DialogDescription>
@@ -629,7 +629,7 @@ export default function AuthorInvitationsPage() {
                 {facultiesForAssign.map((faculty) => (
                   <div
                     key={faculty.faculty}
-                    className="border border-gray-200 rounded-lg overflow-hidden hover:border-[#7A0019] transition-colors"
+                    className="border border-gray-200 rounded-lg overflow-hidden hover:border-journal-maroon transition-colors"
                   >
                     <div className="flex items-center justify-between p-4 bg-white">
                       <div className="flex-1">
@@ -647,7 +647,7 @@ export default function AuthorInvitationsPage() {
                             handleAssignFaculty(faculty.faculty);
                           }}
                           disabled={assigningFaculty}
-                          className="bg-[#7A0019] hover:bg-[#5A0A1A] text-white text-sm"
+                          className="bg-journal-maroon hover:bg-journal-maroon-dark text-white text-sm"
                           size="sm"
                         >
                           {assigningFaculty && selectedFacultyForAssign === faculty.faculty ? (
@@ -665,7 +665,7 @@ export default function AuthorInvitationsPage() {
                           )}
                           variant="outline"
                           size="sm"
-                          className="text-gray-600 hover:text-[#7A0019]"
+                          className="text-gray-600 hover:text-journal-maroon"
                         >
                           {expandedFaculty === faculty.faculty ? (
                             <ChevronDown className="h-4 w-4" />
@@ -687,7 +687,7 @@ export default function AuthorInvitationsPage() {
                               key={idx}
                               className="text-xs text-gray-600 flex items-center gap-2"
                             >
-                              <span className="w-1.5 h-1.5 bg-[#7A0019] rounded-full"></span>
+                              <span className="w-1.5 h-1.5 bg-journal-maroon rounded-full"></span>
                               {dept}
                             </li>
                           ))}
