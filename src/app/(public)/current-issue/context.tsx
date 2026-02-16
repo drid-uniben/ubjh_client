@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { publicationApi, PublishedArticle } from "@/services/api";
+import { publicationApi, PublishedArticle, getErrorMessage, BackendError } from "@/services/api";
 import NoCurrentIssue from "@/components/NoCurrentIssue";
 import { AxiosError } from "axios";
 
@@ -51,12 +51,12 @@ export default function CurrentIssuePage() {
           // If API returns success:false but no data, treat as a generic error
           setError("Failed to fetch current issue.");
         }
-      } catch (err) {
+      } catch (err: unknown) {
         console.error("Error fetching current issue:", err);
-        if (err instanceof AxiosError && err.response?.status === 404 && err.response?.data?.message === "No published issue found") {
+        if (err instanceof AxiosError && err.response?.status === 404 && (err.response?.data as BackendError)?.message === "No published issue found") {
           setNoIssueFound(true);
         } else {
-          setError("Error loading current issue. Please try again later.");
+          setError(getErrorMessage(err, "Error loading current issue. Please try again later."));
         }
       } finally {
         setIsLoading(false);
@@ -136,7 +136,7 @@ export default function CurrentIssuePage() {
     return sum;
   }, 0);
 
-  const totalViews = articles.reduce((sum, article) => sum + (article.viewers?.count || 0), 0);
+  const totalViews = articles.reduce((sum, article) => sum + (article.views?.count || 0), 0);
 
   const publishYear = new Date(issue.publishDate).getFullYear();
   const publishMonthYear = new Date(issue.publishDate).toLocaleDateString("en-US", {

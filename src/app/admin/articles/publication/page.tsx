@@ -8,6 +8,7 @@ import {
   Volume,
   Issue,
   PublishedArticle,
+  getErrorMessage,
 } from "@/services/api";
 import { AdminLayout } from '@/components/admin/AdminLayout';
 import { useAuth } from '@/contexts/AuthContext';
@@ -48,6 +49,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { PublicationConfirmationModals } from "@/components/admin/PublicationConfirmationModals";
 
 const ARTICLE_TYPES = [
   { value: "research_article", label: "Research Article" },
@@ -78,6 +80,13 @@ export default function PublicationsManagementPage() {
     pageEnd: "",
     publishDate: new Date().toISOString().split("T")[0],
     customDOI: "",
+  });
+
+  const [showConfirmationModals, setShowConfirmationModals] = useState(false);
+  const [publicationOptions, setPublicationOptions] = useState({
+    doiEnabled: false,
+    internetArchiveEnabled: false,
+    emailNotificationEnabled: false,
   });
 
   useEffect(() => {
@@ -130,30 +139,57 @@ export default function PublicationsManagementPage() {
       publishDate: new Date().toISOString().split("T")[0],
       customDOI: "",
     });
+    // Reset publication options
+    setPublicationOptions({
+      doiEnabled: false,
+      internetArchiveEnabled: false,
+      emailNotificationEnabled: false,
+    });
     setError("");
     setShowPublishDialog(true);
   };
 
-  const handlePublish = async (e: React.FormEvent) => {
+  const handlePublishInitial = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!selectedArticle) return;
+
+    // Validate required fields
+    if (!publishForm.volumeId || !publishForm.issueId) {
+      const msg = "Volume and Issue are required";
+      setError(msg);
+      toast.error(msg);
+      return;
+    }
+
+    setShowPublishDialog(false);
+    setShowConfirmationModals(true);
+  };
+
+  const handlePublishConfirmed = async (options: typeof publicationOptions) => {
     if (!selectedArticle) return;
 
     setError("");
     setIsSubmitting(true);
 
     try {
-      const data: { 
-        volumeId: string; 
-        issueId: string; 
-        articleType: string; 
-        publishDate: string; 
-        pages?: { start: number; end: number }; 
-        customDOI?: string; 
+      const data: {
+        volumeId: string;
+        issueId: string;
+        articleType: string;
+        publishDate: string;
+        pages?: { start: number; end: number };
+        customDOI?: string;
+        doiEnabled: boolean;
+        internetArchiveEnabled: boolean;
+        emailNotificationEnabled: boolean;
       } = {
         volumeId: publishForm.volumeId,
         issueId: publishForm.issueId,
         articleType: publishForm.articleType,
         publishDate: publishForm.publishDate,
+        doiEnabled: options.doiEnabled,
+        internetArchiveEnabled: options.internetArchiveEnabled,
+        emailNotificationEnabled: options.emailNotificationEnabled,
       };
 
       if (publishForm.pageStart && publishForm.pageEnd) {
@@ -169,13 +205,15 @@ export default function PublicationsManagementPage() {
 
       await publicationApi.publishArticle(selectedArticle._id, data);
       toast.success("Article published successfully!");
-      setShowPublishDialog(false);
+      setShowConfirmationModals(false);
       fetchData();
     } catch (error: unknown) {
-      const errorMsg =
-        error instanceof Error ? error.message : "Failed to publish article";
-      setError(errorMsg);
-      toast.error(errorMsg);
+      console.error("Publication error:", error);
+      const errorMessage = getErrorMessage(error, "Failed to publish article");
+      setError(errorMessage);
+      toast.error(errorMessage);
+      setShowConfirmationModals(false);
+      setShowPublishDialog(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -288,7 +326,7 @@ export default function PublicationsManagementPage() {
                     old system
                   </p>
                   <Button
-                    onClick={() => router.push("/admin/publications/manual")}
+                    onClick={() => router.push("/admin/articles/publication/manual")}
                     className="bg-gradient-to-r from-[#7A0019] to-[#5A0A1A] hover:from-[#5A0A1A] hover:to-[#7A0019] text-white"
                   >
                     <Upload className="mr-2 h-4 w-4" />
@@ -323,7 +361,7 @@ export default function PublicationsManagementPage() {
             </div>
           )}
 
-          <form onSubmit={handlePublish} className="space-y-4">
+          <form onSubmit={handlePublishInitial} className="space-y-4">
             {error && (
               <Alert variant="destructive" className="border-red-200 bg-red-50">
                 <AlertCircle className="h-4 w-4" />
@@ -477,8 +515,90 @@ export default function PublicationsManagementPage() {
                 className="border-[#7A0019]/20"
               />
               <p className="text-xs text-gray-500">
-                Leave empty for automatic DOI generation via Zenodo
+                Leave empty for optional automatic DOI generation via Crossref
               </p>
+            </div>
+
+            {/* NEW: Publication Options Section */}
+            <div className="border-t pt-4">
+              <h3 className="font-semibold text-gray-900 mb-3">Publication Options</h3>
+              
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="doiEnabled"
+                    checked={publicationOptions.doiEnabled}
+                    onChange={(e) =>
+                      setPublicationOptions((prev) => ({
+                        ...prev,
+                        doiEnabled: e.target.checked,
+                      }))
+                    }
+                    className="mt-1"
+                  />
+                  <div className="flex-1">
+                    <label htmlFor="doiEnabled" className="font-medium text-sm cursor-pointer">
+                      Register DOI with Crossref
+                    </label>
+                    <p className="text-xs text-gray-600">
+                      Recommended for all peer-reviewed articles
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="archiveEnabled"
+                    checked={publicationOptions.internetArchiveEnabled}
+                    onChange={(e) =>
+                      setPublicationOptions((prev) => ({
+                        ...prev,
+                        internetArchiveEnabled: e.target.checked,
+                      }))
+                    }
+                    className="mt-1"
+                  />
+                  <div className="flex-1">
+                    <label htmlFor="archiveEnabled" className="font-medium text-sm cursor-pointer">
+                      Upload to Internet Archive
+                    </label>
+                    <p className="text-xs text-gray-600">
+                      Ensures long-term preservation
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="emailEnabled"
+                    checked={publicationOptions.emailNotificationEnabled}
+                    onChange={(e) =>
+                      setPublicationOptions((prev) => ({
+                        ...prev,
+                        emailNotificationEnabled: e.target.checked,
+                      }))
+                    }
+                    className="mt-1"
+                  />
+                  <div className="flex-1">
+                    <label htmlFor="emailEnabled" className="font-medium text-sm cursor-pointer">
+                      Notify Subscribers via Email
+                    </label>
+                    <p className="text-xs text-gray-600">
+                      Send publication announcement to all subscribers
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-green-50 border border-green-200 p-3 rounded">
+                  <p className="text-xs text-green-800">
+                    ✓ Metadata generation (Google Scholar, BASE, CORE, SEO) is always enabled
+                  </p>
+                </div>
+              </div>
             </div>
 
             <DialogFooter className="gap-2">
@@ -486,32 +606,38 @@ export default function PublicationsManagementPage() {
                 type="button"
                 variant="outline"
                 onClick={() => setShowPublishDialog(false)}
-                className="border-[#7A0019]/20"
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-gradient-to-r from-[#7A0019] to-[#5A0A1A] hover:from-[#5A0A1A] hover:to-[#7A0019] text-white"
+                className="bg-gradient-to-r from-[#7A0019] to-[#5A0A1A]"
               >
-                {isSubmitting ? (
-                  <>
-                    <RefreshCw className="animate-spin mr-2 h-4 w-4" />
-                    Publishing...
-                  </>
-                ) : (
-                  <>
-                    <Upload className="mr-2 h-4 w-4" />
-                    Publish Article
-                  </>
-                )}
+                Continue to Confirmation
               </Button>
             </DialogFooter>
           </form>
         </DialogContent>
       </Dialog>
     </div>
+
+    {/* NEW: Confirmation Modals */}
+      {selectedArticle && (
+        <PublicationConfirmationModals
+          isOpen={showConfirmationModals}
+          onClose={() => setShowConfirmationModals(false)}
+          onConfirm={handlePublishConfirmed}
+          options={publicationOptions}
+          articleDetails={{
+            title: selectedArticle.title,
+            author: selectedArticle.author?.name || "Unknown Author",
+            volume: volumes.find((v) => v._id === publishForm.volumeId)?.volumeNumber || 0,
+            issue: issues.find((i) => i._id === publishForm.issueId)?.issueNumber || 0,
+            articleType: ARTICLE_TYPES.find((t) => t.value === publishForm.articleType)?.label || publishForm.articleType,
+          }}
+        />
+      )}
     </AdminLayout>
   );
 }

@@ -75,6 +75,8 @@ export default function FailedJobsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedJob, setSelectedJob] = useState<FailedJob | null>(null);
   const [showDetailsDialog, setShowDetailsDialog] = useState(false);
+  const [showRetryAllDialog, setShowRetryAllDialog] = useState(false);
+  const [showDeleteResolvedDialog, setShowDeleteResolvedDialog] = useState(false);
   const [isRetrying, setIsRetrying] = useState(false);
 
   // Filters
@@ -141,9 +143,12 @@ export default function FailedJobsPage() {
     }
   };
 
-  const handleRetryAll = async () => {
-    if (!confirm("Are you sure you want to retry all failed jobs?")) return;
+  const handleRetryAll = () => {
+    setShowRetryAllDialog(true);
+  };
 
+  const confirmRetryAll = async () => {
+    setShowRetryAllDialog(false);
     try {
       setIsRetrying(true);
       const response = await failedJobsApi.retryAllFailedJobs();
@@ -176,9 +181,12 @@ export default function FailedJobsPage() {
     }
   };
 
-  const handleDeleteResolved = async () => {
-    if (!confirm("Are you sure you want to delete all resolved jobs?")) return;
+  const handleDeleteResolved = () => {
+    setShowDeleteResolvedDialog(true);
+  };
 
+  const confirmDeleteResolved = async () => {
+    setShowDeleteResolvedDialog(false);
     try {
       const response = await failedJobsApi.deleteResolvedJobs();
       toast.success(`${response.deletedCount} resolved jobs deleted`);
@@ -646,6 +654,58 @@ export default function FailedJobsPage() {
                 className="border-[#7A0019]/20"
               >
                 Close
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        {/* Retry All Confirmation Dialog */}
+        <Dialog open={showRetryAllDialog} onOpenChange={setShowRetryAllDialog}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Retry All Failed Jobs?</DialogTitle>
+              <DialogDescription>
+                This will attempt to re-run all currently failed background jobs.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <Button
+                variant="outline"
+                onClick={() => setShowRetryAllDialog(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                className="bg-[#7A0019] text-white hover:bg-[#5A0A1A]"
+                onClick={confirmRetryAll}
+              >
+                Retry All
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        {/* Delete Resolved Confirmation Dialog */}
+        <Dialog open={showDeleteResolvedDialog} onOpenChange={setShowDeleteResolvedDialog}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Clean Up Resolved Jobs?</DialogTitle>
+              <DialogDescription>
+                This will permanently delete all jobs that have been marked as resolved.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <Button
+                variant="outline"
+                onClick={() => setShowDeleteResolvedDialog(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                variant="destructive"
+                onClick={confirmDeleteResolved}
+              >
+                Clean Up
               </Button>
             </DialogFooter>
           </DialogContent>

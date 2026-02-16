@@ -14,6 +14,8 @@
   --color-journal-blush: var(--journal-blush);
   --color-journal-rose: var(--journal-rose);
   --color-journal-mauve: var(--journal-mauve);
+  --color-journal-off-white: var(--journal-off-white);
+  --color-journal-text-dark: var(--journal-text-dark);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
@@ -92,6 +94,8 @@
   --journal-blush: #F2E9EC;
   --journal-rose: #FFE9EE;
   --journal-mauve: #EAD3D9;
+  --journal-off-white: #FAF7F8;
+  --journal-text-dark: #212121;
   --success: #0F7B3F;
   --warning: #F59E0B;
   --error: #DC2626;
@@ -136,6 +140,8 @@
   --journal-blush: #F2E9EC;
   --journal-rose: #FFE9EE;
   --journal-mauve: #EAD3D9;
+  --journal-off-white: #FAF7F8;
+  --journal-text-dark: #212121;
   --success: #0F7B3F;
   --warning: #F59E0B;
   --error: #DC2626;

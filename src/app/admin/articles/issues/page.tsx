@@ -44,6 +44,8 @@ export default function IssuesManagementPage() {
   const [selectedVolume, setSelectedVolume] = useState<string>("all");
   const [isLoading, setIsLoading] = useState(true);
   const [showDialog, setShowDialog] = useState(false);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [deletingIssueId, setDeletingIssueId] = useState<string | null>(null);
   const [editingIssue, setEditingIssue] = useState<Issue | null>(null);
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -153,17 +155,25 @@ export default function IssuesManagementPage() {
     setShowDialog(true);
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this issue?")) return;
+  const handleDelete = (id: string) => {
+    setDeletingIssueId(id);
+    setShowDeleteDialog(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!deletingIssueId) return;
 
     try {
-      await issueApi.deleteIssue(id);
+      await issueApi.deleteIssue(deletingIssueId);
       toast.success("Issue deleted successfully");
       fetchIssues();
     } catch (error: unknown) {
       const errorMsg =
         error instanceof Error ? error.message : "Failed to delete issue";
       toast.error(errorMsg);
+    } finally {
+      setShowDeleteDialog(false);
+      setDeletingIssueId(null);
     }
   };
 
@@ -412,6 +422,29 @@ export default function IssuesManagementPage() {
                 </Button>
               </DialogFooter>
             </form>
+          </DialogContent>
+        </Dialog>
+
+        {/* Delete Confirmation Dialog */}
+        <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Are you sure?</DialogTitle>
+              <DialogDescription>
+                This action cannot be undone. This will permanently delete this issue and all its associations.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <Button
+                variant="outline"
+                onClick={() => setShowDeleteDialog(false)}
+              >
+                Cancel
+              </Button>
+              <Button variant="destructive" onClick={confirmDelete}>
+                Delete
+              </Button>
+            </DialogFooter>
           </DialogContent>
         </Dialog>
       </div>

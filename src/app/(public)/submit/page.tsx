@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { manuscriptApi } from '@/services/api';
 import Footer from '@/components/Footer';
+import { toast, Toaster } from 'sonner';
 
 interface CoAuthor {
   id: string;
@@ -94,7 +95,7 @@ export default function ManuscriptSubmissionPage() {
     if (
       !currentCoAuthor.name
     ) {
-      alert('Please fill in the required fields for the co-author');
+      toast.error('Please fill in the name for the co-author');
       return;
     }
 
@@ -994,6 +995,7 @@ export default function ManuscriptSubmissionPage() {
 
       {/* Footer */}
       <Footer/>
+      <Toaster position="top-center" richColors />
     </div>
   );
 }

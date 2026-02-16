@@ -1,31 +1,78 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X, Search, Loader2 } from "lucide-react";
+import { publicationApi, PublishedArticle } from "@/services/api";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<PublishedArticle[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const searchContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
+        setShowDropdown(false);
+      }
+    };
+    
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setIsSearchOpen(false);
         setIsMenuOpen(false);
+        setShowDropdown(false);
       }
     };
+    
+    document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
   }, []);
+
+  // Live search logic
+  useEffect(() => {
+    if (searchQuery.trim().length < 2) {
+      setSearchResults([]);
+      setShowDropdown(false);
+      return;
+    }
+
+    const delayDebounceFn = setTimeout(async () => {
+      setIsSearching(true);
+      try {
+        const response = await publicationApi.searchArticles({
+          query: searchQuery.trim(),
+          limit: 6,
+        });
+        setSearchResults(response.data || []);
+        setShowDropdown(true);
+      } catch (error) {
+        console.error("Search error:", error);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 300);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery]);
 
   const handleSearch = () => {
     if (searchQuery.trim()) {
+      setShowDropdown(false);
+      setIsSearchOpen(false);
       window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`;
     }
   };
@@ -131,18 +178,23 @@ export default function Header() {
 
         {/* Search Bar */}
         {!isHomePage && isSearchOpen && (
-          <div className="pb-4 animate-fade-in">
+          <div className="pb-4 animate-fade-in relative" ref={searchContainerRef}>
             <div className="relative">
               <input
                 type="search"
                 placeholder="Search articles, authors, keywords..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyPress={handleKeyPress}
+                onKeyDown={handleKeyPress}
+                onFocus={() => searchQuery.length >= 2 && setShowDropdown(true)}
                 className="w-full px-6 py-3 pl-12 rounded-full border-2 border-white/20 bg-white/10 text-white placeholder-white/60 focus:outline-none focus:border-white focus:bg-white/20 transition-all"
                 autoFocus
               />
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
+              {isSearching ? (
+                <Loader2 className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60 animate-spin" />
+              ) : (
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
+              )}
               <button
                 onClick={handleSearch}
                 className="absolute right-2 top-1/2 -translate-y-1/2 bg-white text-[#7A0019] px-6 py-2 rounded-full font-semibold hover:bg-[#FFE9EE] transition-colors"
@@ -150,6 +202,52 @@ export default function Header() {
                 Search
               </button>
             </div>
+
+            {/* Results Dropdown - Full Width */}
+            {showDropdown && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-[60]">
+                {searchResults.length > 0 ? (
+                  <div className="divide-y divide-gray-100">
+                    {searchResults.map((article) => (
+                      <Link
+                        key={article._id}
+                        href={`/articles/${article._id}`}
+                        onClick={() => {
+                          setIsSearchOpen(false);
+                          setShowDropdown(false);
+                          setSearchQuery("");
+                        }}
+                        className="block p-4 hover:bg-[#FAF7F8] transition-colors group"
+                      >
+                        <div className="flex justify-between items-start gap-4">
+                          <div className="flex-1">
+                            <h4 className="font-bold text-[#212121] text-sm md:text-base line-clamp-1 group-hover:text-[#7A0019] mb-1">
+                              {article.title}
+                            </h4>
+                            <p className="text-xs text-gray-500 font-medium">
+                              {article.author?.name} • Vol {article.volume?.volumeNumber}, Issue {article.issue?.issueNumber}
+                            </p>
+                          </div>
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#7A0019] bg-[#FFE9EE] px-2 py-0.5 rounded">
+                            {article.articleType.replace("_", " ")}
+                          </span>
+                        </div>
+                      </Link>
+                    ))}
+                    <button
+                      onClick={handleSearch}
+                      className="w-full p-3 text-center text-sm font-bold text-[#7A0019] hover:bg-[#FAF7F8] transition-colors"
+                    >
+                      View all results for &quot;{searchQuery}&quot;
+                    </button>
+                  </div>
+                ) : (
+                  <div className="p-8 text-center">
+                    <p className="text-gray-500 italic">No articles found matching &quot;{searchQuery}&quot;</p>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>

@@ -121,7 +121,7 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div className="text-left">
-                  <div className="text-xs font-semibold text-gray-600">Online ISSN</div>
+                  <div className="text-xs font-semibold text-gray-600">e-ISSN (Online)</div>
                   <div className="text-sm font-bold text-[#7A0019]">3121-763X</div>
                 </div>
               </div>

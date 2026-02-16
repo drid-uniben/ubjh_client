@@ -578,6 +578,7 @@ export interface Issue {
   publishDate: string;
   description?: string;
   isActive: boolean;
+  articleCount?: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -594,8 +595,14 @@ export interface PublishedArticle {
   abstract: string;
   keywords: string[];
   pdfFile: string;
+  pdfUrl?: string;
   author: AuthorSummary;
   coAuthors: AuthorSummary[];
+  affiliations?: string[];
+  correspondingAuthor?: string;
+  funding?: string;
+  conflictsOfInterest?: string;
+  references?: string[];
   manuscriptId?: string;
   publishDate: string;
   doi?: string;
@@ -603,8 +610,19 @@ export interface PublishedArticle {
   issue: Issue;
   articleType: string;
   pages?: { start: number; end: number };
-  viewers: { count: number; viewers: string[] };
+  views: { count: number; viewers: string[] };
   downloads: { count: number; downloaders: string[] };
+  citations?: number;
+  archiveUrls?: {
+    internetArchive?: string;
+    [key: string]: string | undefined;
+  };
+  license?: string;
+  publicationOptions: {
+    doiEnabled: boolean;
+    internetArchiveEnabled: boolean;
+    emailNotificationEnabled: boolean;
+  };
   createdAt: string;
   updatedAt: string;
 }
@@ -705,6 +723,40 @@ export interface OverrideStatusResponse {
     reason: string;
   };
 }
+
+export interface BackendError {
+  message?: string;
+  error?: {
+    errors?: Record<string, { message: string }>;
+  };
+  errors?: Array<{ msg?: string; message?: string }>;
+}
+
+export const getErrorMessage = (error: unknown, defaultMessage: string): string => {
+  if (error instanceof AxiosError) {
+    const data = error.response?.data as BackendError;
+    
+    if (data?.message) return data.message;
+    
+    if (data?.error?.errors) {
+      const messages = Object.values(data.error.errors)
+        .map((err) => err.message)
+        .filter(Boolean);
+      if (messages.length > 0) return messages.join(", ");
+    }
+    
+    if (Array.isArray(data?.errors)) {
+      const messages = data.errors.map((err) => err.msg || err.message).filter(Boolean);
+      if (messages.length > 0) return messages.join(", ");
+    }
+    
+    return error.message;
+  }
+  
+  if (error instanceof Error) return error.message;
+  
+  return defaultMessage;
+};
 
 // Create API instance
 const createApi = (baseURL: string): AxiosInstance => {
@@ -2045,6 +2097,20 @@ export const publicationApi = {
   // Get archives (public)
   getArchives: async () => {
     const response = await api.get("/publication/archives");
+    return response.data;
+  },
+
+  // Search articles
+  searchArticles: async (params: {
+    query: string;
+    limit?: number;
+    volumeId?: string;
+    issueId?: string;
+    volumeNumber?: string;
+    issueNumber?: string;
+    articleType?: string;
+  }) => {
+    const response = await api.get("/publication/articles/search", { params });
     return response.data;
   },
 };

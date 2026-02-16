@@ -3,10 +3,9 @@
 import { useState, useEffect, Suspense, useCallback } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import { manuscriptAdminApi, type Manuscript, type ExistingReviewForReassignment } from '@/services/api';
+import { manuscriptAdminApi, type Manuscript, type ExistingReviewForReassignment, type EligibleReviewer, getErrorMessage } from '@/services/api';
 import { AdminLayout } from '@/components/admin/AdminLayout';
 import { Loader2, FileText, Filter, ArrowUpDown, Eye, RefreshCw, MoreVertical, User, Users, Search, CheckCircle, UserPlus, AlertCircle, Building2, ChevronDown, ChevronRight } from 'lucide-react';
-import { EligibleReviewer } from '@/services/api';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Toaster, toast } from "sonner";
@@ -226,9 +225,10 @@ const [showSearchResults, setShowSearchResults] = useState(false);
       } else {
         toast.error("Failed to assign faculty");
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Failed to assign faculty:", error);
-      toast.error("Error while assigning faculty");
+      const errorMessage = getErrorMessage(error, "Error while assigning faculty");
+      toast.error(errorMessage);
     } finally {
       setAssigningFaculty(false);
     }
@@ -258,9 +258,10 @@ const [showSearchResults, setShowSearchResults] = useState(false);
       } else {
         toast.error("Failed to edit manuscript");
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Failed to edit manuscript:", error);
-      toast.error("Error while editing manuscript");
+      const errorMessage = getErrorMessage(error, "Error while editing manuscript");
+      toast.error(errorMessage);
     } finally {
       setEditingManuscript(false);
       setSelectedFile(null);
@@ -292,9 +293,10 @@ const [showSearchResults, setShowSearchResults] = useState(false);
       } else {
         toast.error("Failed to edit revised manuscript");
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Failed to edit revised manuscript:", error);
-      toast.error("Error while editing revised manuscript");
+      const errorMessage = getErrorMessage(error, "Error while editing revised manuscript");
+      toast.error(errorMessage);
     } finally {
       setEditingRevisedManuscript(false);
       setSelectedRevisedFile(null);
@@ -431,9 +433,10 @@ const [showSearchResults, setShowSearchResults] = useState(false);
       } else {
         toast.error(response.message || "Failed to assign reviewer");
       }
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Failed to assign reviewer:", err);
-      toast.error("Error while assigning reviewer.");
+      const errorMessage = getErrorMessage(err, "Error while assigning reviewer.");
+      toast.error(errorMessage);
     } finally {
       setAssignReviewerLoading(false);
     }
