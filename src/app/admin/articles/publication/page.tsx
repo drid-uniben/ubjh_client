@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   publicationApi,
   volumeApi,
@@ -46,6 +46,8 @@ import {
   AlertCircle,
   Calendar,
   Users,
+  Trash2,
+  Edit,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -89,20 +91,25 @@ export default function PublicationsManagementPage() {
     emailNotificationEnabled: false,
   });
 
-  useEffect(() => {
-    if (!isAuthenticated) return; // Added
-    fetchData();
-  }, [isAuthenticated]); // Added isAuthenticated to dependency array
+  const [manualArticles, setManualArticles] = useState<PublishedArticle[]>([]);
+const [isLoadingManual, setIsLoadingManual] = useState(false);
+const [showEditDialog, setShowEditDialog] = useState(false);
+const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+const [editingArticle, setEditingArticle] = useState<PublishedArticle | null>(null);
+const [deletingArticleId, setDeletingArticleId] = useState<string | null>(null);
+const [editPdfFile, setEditPdfFile] = useState<File | null>(null);
+const [isEditSubmitting, setIsEditSubmitting] = useState(false);
+const [editForm, setEditForm] = useState({
+  title: "",
+  abstract: "",
+  keywords: "",
+  articleType: "research_article",
+  pageStart: "",
+  pageEnd: "",
+  publishDate: "",
+});
 
-  useEffect(() => {
-    if (publishForm.volumeId) {
-      fetchIssuesForVolume(publishForm.volumeId);
-    } else {
-      setIssues([]);
-    }
-  }, [publishForm.volumeId]);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       setIsLoading(true);
       const [articlesRes, volumesRes] = await Promise.all([
@@ -117,7 +124,21 @@ export default function PublicationsManagementPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+    fetchManualArticles();
+  }, []);
+
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    fetchData();
+  }, [fetchData, isAuthenticated]);
+
+  useEffect(() => {
+    if (publishForm.volumeId) {
+      fetchIssuesForVolume(publishForm.volumeId);
+    } else {
+      setIssues([]);
+    }
+  }, [publishForm.volumeId]);
 
   const fetchIssuesForVolume = async (volumeId: string) => {
     try {
@@ -219,6 +240,77 @@ export default function PublicationsManagementPage() {
     }
   };
 
+  const fetchManualArticles = async () => {
+  try {
+    setIsLoadingManual(true);
+    const res = await publicationApi.getManualArticles();
+    setManualArticles(res.data || []);
+  } catch {
+    toast.error("Failed to load manual articles");
+  } finally {
+    setIsLoadingManual(false);
+  }
+};
+
+const handleEditClick = (article: PublishedArticle) => {
+  setEditingArticle(article);
+  setEditPdfFile(null);
+  setEditForm({
+    title: article.title,
+    abstract: article.abstract,
+    keywords: (article.keywords || []).join(", "),
+    articleType: article.articleType,
+    pageStart: article.pages?.start?.toString() || "",
+    pageEnd: article.pages?.end?.toString() || "",
+    publishDate: article.publishDate?.split("T")[0] || "",
+  });
+  setShowEditDialog(true);
+};
+
+const handleSaveEdit = async () => {
+  if (!editingArticle) return;
+  setIsEditSubmitting(true);
+  try {
+    const data = new FormData();
+    data.append("title", editForm.title);
+    data.append("abstract", editForm.abstract);
+    data.append("keywords", editForm.keywords);
+    data.append("articleType", editForm.articleType);
+    data.append("publishDate", editForm.publishDate);
+    if (editForm.pageStart) data.append("pageStart", editForm.pageStart);
+    if (editForm.pageEnd) data.append("pageEnd", editForm.pageEnd);
+    if (editPdfFile) data.append("pdfFile", editPdfFile);
+
+    await publicationApi.updateManualArticle(editingArticle._id, data);
+    toast.success("Article updated successfully");
+    setShowEditDialog(false);
+    fetchManualArticles();
+  } catch (error: unknown) {
+    toast.error(getErrorMessage(error, "Failed to update article"));
+  } finally {
+    setIsEditSubmitting(false);
+  }
+};
+
+const handleDeleteClick = (id: string) => {
+  setDeletingArticleId(id);
+  setShowDeleteDialog(true);
+};
+
+const confirmDelete = async () => {
+  if (!deletingArticleId) return;
+  try {
+    await publicationApi.deleteManualArticle(deletingArticleId);
+    toast.success("Article deleted");
+    setManualArticles((prev) => prev.filter((a) => a._id !== deletingArticleId));
+  } catch (error: unknown) {
+    toast.error(getErrorMessage(error, "Failed to delete article"));
+  } finally {
+    setShowDeleteDialog(false);
+    setDeletingArticleId(null);
+  }
+};
+
   if (isLoading) {
     return (
       <AdminLayout> 
@@ -244,10 +336,11 @@ export default function PublicationsManagementPage() {
 
         {/* Tabs */}
         <Tabs defaultValue="pending" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 lg:w-[400px]">
-            <TabsTrigger value="pending">Pending Publications</TabsTrigger>
-            <TabsTrigger value="manual">Manual Upload</TabsTrigger>
-          </TabsList>
+          <TabsList className="grid w-full grid-cols-3 lg:w-[540px]">
+  <TabsTrigger value="pending">Pending</TabsTrigger>
+  <TabsTrigger value="manual">New Upload</TabsTrigger>
+  <TabsTrigger value="published" onClick={fetchManualArticles}>Manual Articles</TabsTrigger>
+</TabsList>
 
           {/* Pending Articles */}
           <TabsContent value="pending" className="space-y-4">
@@ -336,6 +429,69 @@ export default function PublicationsManagementPage() {
               </CardContent>
             </Card>
           </TabsContent>
+
+          <TabsContent value="published" className="space-y-4">
+  {isLoadingManual ? (
+    <div className="flex justify-center py-12">
+      <RefreshCw className="h-8 w-8 animate-spin text-journal-maroon" />
+    </div>
+  ) : manualArticles.length === 0 ? (
+    <Card className="border-journal-maroon/20">
+      <CardContent className="text-center py-12">
+        <FileText className="h-16 w-16 text-gray-300 mx-auto mb-4" />
+        <p className="text-gray-500">No manually published articles yet</p>
+      </CardContent>
+    </Card>
+  ) : (
+    <div className="grid gap-3">
+      {manualArticles.map((article) => (
+        <Card key={article._id} className="border-journal-maroon/20 hover:shadow-md transition-shadow">
+          <CardContent className="p-4">
+            <div className="flex flex-col sm:flex-row gap-3 justify-between">
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-2 mb-1">
+                  <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-journal-rose text-journal-maroon border border-journal-mauve">
+                    Vol {article.volume?.volumeNumber}, Iss {article.issue?.issueNumber}
+                  </span>
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+                    article.pdfFile ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+                  }`}>
+                    {article.pdfFile ? "✓ Has PDF" : "✗ No PDF"}
+                  </span>
+                </div>
+                <p className="font-semibold text-journal-text-dark text-sm line-clamp-2 mb-1">
+                  {article.title}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {article.author?.name} •{" "}
+                  {new Date(article.publishDate).toLocaleDateString("en-US", { year: "numeric", month: "short" })}
+                </p>
+              </div>
+              <div className="flex sm:flex-col gap-2 flex-shrink-0">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => handleEditClick(article)}
+                  className="border-journal-maroon text-journal-maroon hover:bg-journal-rose"
+                >
+                  <Edit className="h-3 w-3 mr-1" /> Edit
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => handleDeleteClick(article._id)}
+                  className="border-red-500 text-red-500 hover:bg-red-50"
+                >
+                  <Trash2 className="h-3 w-3" />
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  )}
+</TabsContent>
         </Tabs>
 
         {/* Publish Dialog */}
@@ -620,6 +776,87 @@ export default function PublicationsManagementPage() {
           </form>
         </DialogContent>
       </Dialog>
+
+      {/* Edit Dialog */}
+<Dialog open={showEditDialog} onOpenChange={setShowEditDialog}>
+  <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+    <DialogHeader>
+      <DialogTitle className="bg-gradient-to-r from-journal-maroon to-purple-600 bg-clip-text text-transparent">
+        Edit Article
+      </DialogTitle>
+      <DialogDescription>Update article metadata or upload the PDF file.</DialogDescription>
+    </DialogHeader>
+    <div className="space-y-4 py-2">
+      <div className="space-y-1">
+        <Label>Title *</Label>
+        <Input value={editForm.title} onChange={(e) => setEditForm((p) => ({ ...p, title: e.target.value }))} className="border-journal-maroon/20" />
+      </div>
+      <div className="space-y-1">
+        <Label>Abstract *</Label>
+        <textarea value={editForm.abstract} onChange={(e) => setEditForm((p) => ({ ...p, abstract: e.target.value }))}
+          className="w-full min-h-[100px] rounded-md border border-journal-maroon/20 p-2 text-sm focus:outline-none focus:ring-2 focus:ring-journal-maroon" />
+      </div>
+      <div className="space-y-1">
+        <Label>Keywords (comma-separated)</Label>
+        <Input value={editForm.keywords} onChange={(e) => setEditForm((p) => ({ ...p, keywords: e.target.value }))} className="border-journal-maroon/20" />
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-1">
+          <Label>Article Type</Label>
+          <Select value={editForm.articleType} onValueChange={(v) => setEditForm((p) => ({ ...p, articleType: v }))}>
+            <SelectTrigger className="border-journal-maroon/20"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              {ARTICLE_TYPES.map((t) => <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>)}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="space-y-1">
+          <Label>Publish Date</Label>
+          <Input type="date" value={editForm.publishDate} onChange={(e) => setEditForm((p) => ({ ...p, publishDate: e.target.value }))} className="border-journal-maroon/20" />
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-1">
+          <Label>Start Page</Label>
+          <Input type="number" value={editForm.pageStart} onChange={(e) => setEditForm((p) => ({ ...p, pageStart: e.target.value }))} className="border-journal-maroon/20" />
+        </div>
+        <div className="space-y-1">
+          <Label>End Page</Label>
+          <Input type="number" value={editForm.pageEnd} onChange={(e) => setEditForm((p) => ({ ...p, pageEnd: e.target.value }))} className="border-journal-maroon/20" />
+        </div>
+      </div>
+      <div className="space-y-1">
+        <Label>PDF File {editingArticle?.pdfFile ? "(replace existing)" : "(upload — required for public download)"}</Label>
+        <Input type="file" accept="application/pdf"
+          onChange={(e) => setEditPdfFile(e.target.files?.[0] || null)}
+          className="border-journal-maroon/20" />
+        {editPdfFile && <p className="text-xs text-green-700 mt-1">✓ {editPdfFile.name}</p>}
+        {!editPdfFile && editingArticle?.pdfFile && <p className="text-xs text-gray-500 mt-1">Current PDF will be kept</p>}
+      </div>
+    </div>
+    <DialogFooter>
+      <Button variant="outline" onClick={() => setShowEditDialog(false)}>Cancel</Button>
+      <Button onClick={handleSaveEdit} disabled={isEditSubmitting}
+        className="bg-gradient-to-r from-journal-maroon to-journal-maroon-dark text-white">
+        {isEditSubmitting ? <><RefreshCw className="animate-spin mr-2 h-4 w-4" />Saving...</> : "Save Changes"}
+      </Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+
+{/* Delete Confirmation Dialog */}
+<Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Delete Article?</DialogTitle>
+      <DialogDescription>This will permanently delete the article and its PDF. This cannot be undone.</DialogDescription>
+    </DialogHeader>
+    <DialogFooter>
+      <Button variant="outline" onClick={() => setShowDeleteDialog(false)}>Cancel</Button>
+      <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
     </div>
 
     {/* NEW: Confirmation Modals */}

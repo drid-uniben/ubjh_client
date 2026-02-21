@@ -564,6 +564,7 @@ export interface Volume {
   volumeNumber: number;
   year: number;
   coverImage?: string;
+  coverImageIssue2?: string;
   description?: string;
   publishDate: string;
   isActive: boolean;
@@ -732,29 +733,34 @@ export interface BackendError {
   errors?: Array<{ msg?: string; message?: string }>;
 }
 
-export const getErrorMessage = (error: unknown, defaultMessage: string): string => {
+export const getErrorMessage = (
+  error: unknown,
+  defaultMessage: string,
+): string => {
   if (error instanceof AxiosError) {
     const data = error.response?.data as BackendError;
-    
+
     if (data?.message) return data.message;
-    
+
     if (data?.error?.errors) {
       const messages = Object.values(data.error.errors)
         .map((err) => err.message)
         .filter(Boolean);
       if (messages.length > 0) return messages.join(", ");
     }
-    
+
     if (Array.isArray(data?.errors)) {
-      const messages = data.errors.map((err) => err.msg || err.message).filter(Boolean);
+      const messages = data.errors
+        .map((err) => err.msg || err.message)
+        .filter(Boolean);
       if (messages.length > 0) return messages.join(", ");
     }
-    
+
     return error.message;
   }
-  
+
   if (error instanceof Error) return error.message;
-  
+
   return defaultMessage;
 };
 
@@ -2111,6 +2117,27 @@ export const publicationApi = {
     articleType?: string;
   }) => {
     const response = await api.get("/publication/articles/search", { params });
+    return response.data;
+  },
+
+  getManualArticles: async () => {
+    const response = await api.get("/publication/admin/articles");
+    return response.data;
+  },
+
+  updateManualArticle: async (id: string, formData: FormData) => {
+    const response = await api.patch(
+      `/publication/admin/articles/${id}`,
+      formData,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      },
+    );
+    return response.data;
+  },
+
+  deleteManualArticle: async (id: string) => {
+    const response = await api.delete(`/publication/admin/articles/${id}`);
     return response.data;
   },
 };

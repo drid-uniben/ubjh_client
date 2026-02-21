@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import { publicationApi, issueApi, PublishedArticle, Issue, Volume } from "@/services/api";
 import NoCurrentIssue from "@/components/NoCurrentIssue";
 import { toast, Toaster } from "sonner";
+import { getVolumeImage } from "@/utils/volumeImageHelper";
 
 interface CurrentIssueClientProps {
   issueId?: string;
@@ -148,12 +149,12 @@ export default function CurrentIssueClient({ issueId, volumeId }: CurrentIssueCl
             <div className="md:col-span-1">
               <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
                 <Image
-                  src={volume?.coverImage || "/issue-cover.png"}
-                  alt={`Volume ${volume?.volumeNumber || '?'}, Issue ${issue.issueNumber} Cover`}
-                  width={400}
-                  height={600}
-                  className="w-full h-auto"
-                />
+  src={getVolumeImage(volume, issue.issueNumber)}
+  alt={`Volume ${volume?.volumeNumber || '?'}, Issue ${issue.issueNumber} Cover`}
+  width={400}
+  height={600}
+  className="w-full h-auto"
+/>
               </div>
             </div>
             <div className="md:col-span-2">

@@ -14,28 +14,19 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { publicationApi } from "@/services/api";
+import { publicationApi, Volume, Issue } from "@/services/api";
+import { getVolumeImage } from "@/utils/volumeImageHelper";
 
-interface Issue {
-  _id: string;
-  issueNumber: number;
-  publishDate: string;
-  description?: string;
+interface LocalIssue extends Issue {
   articleCount: number;
 }
 
-interface Volume {
-  _id: string;
-  volumeNumber: number;
-  year: number;
-  coverImage?: string;
-  description?: string;
-  publishDate: string;
-  issues: Issue[];
+interface LocalVolume extends Volume {
+  issues: LocalIssue[];
 }
 
 export default function ArchivesPage() {
-  const [volumes, setVolumes] = useState<Volume[]>([]);
+  const [volumes, setVolumes] = useState<LocalVolume[]>([]);
   const [expandedYear, setExpandedYear] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [totalArticles, setTotalArticles] = useState(0);
@@ -56,9 +47,9 @@ export default function ArchivesPage() {
       // Calculate totals
       let articles = 0;
       let issuesCount = 0;
-      volumesData.forEach((volume: Volume) => {
+      volumesData.forEach((volume: LocalVolume) => {
         issuesCount += volume.issues.length;
-        volume.issues.forEach((issue: Issue) => {
+        volume.issues.forEach((issue: LocalIssue) => {
           articles += issue.articleCount || 0;
         });
       });
@@ -80,12 +71,6 @@ export default function ArchivesPage() {
     setExpandedYear(expandedYear === year ? null : year);
   };
 
-  const getImageUrl = (url: string | undefined) => {
-    if (!url) return "/issue-cover.png";
-    if (url.startsWith("http")) return url;
-    return url;
-  };
-
   // Group volumes by year
   const volumesByYear = volumes.reduce((acc, volume) => {
     const year = volume.year;
@@ -94,7 +79,7 @@ export default function ArchivesPage() {
     }
     acc[year].push(volume);
     return acc;
-  }, {} as Record<number, Volume[]>);
+  }, {} as Record<number, LocalVolume[]>);
 
   const years = Object.keys(volumesByYear)
     .map(Number)
@@ -242,11 +227,11 @@ export default function ArchivesPage() {
                               <div className="flex flex-col sm:flex-row gap-6 p-6">
                                 <div className="relative w-full sm:w-48 h-64 flex-shrink-0 rounded-xl overflow-hidden shadow-lg bg-gray-100">
                                   <Image
-                                    src={getImageUrl(volume.coverImage)}
-                                    alt={`Volume ${volume.volumeNumber}, Issue ${issue.issueNumber}`}
-                                    fill
-                                    className="object-cover"
-                                  />
+  src={getVolumeImage(volume, issue.issueNumber)}
+  alt={`Volume ${volume.volumeNumber}, Issue ${issue.issueNumber}`}
+  fill
+  className="object-cover"
+/>
                                 </div>
 
                                 <div className="flex-1">

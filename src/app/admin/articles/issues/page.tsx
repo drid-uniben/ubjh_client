@@ -77,10 +77,6 @@ export default function IssuesManagementPage() {
     fetchIssues();
   }, [isAuthenticated, fetchIssues]);
 
-  useEffect(() => {
-    fetchIssues();
-  }, [selectedVolume, fetchIssues]);
-
   const fetchVolumes = async () => {
     try {
       const response = await volumeApi.getVolumes();
@@ -227,6 +223,7 @@ export default function IssuesManagementPage() {
                   <SelectValue placeholder="Select volume" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="all">All Volumes</SelectItem>
                   {volumes.map((volume) => (
                     <SelectItem key={volume._id} value={volume._id}>
                       Volume {volume.volumeNumber} ({volume.year})

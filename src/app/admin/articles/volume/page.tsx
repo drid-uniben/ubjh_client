@@ -43,6 +43,8 @@ export default function VolumesManagementPage() {
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
+  const [coverPreview2, setCoverPreview2] = useState<string | null>(null);
+
 
   const [formData, setFormData] = useState({
     volumeNumber: "",
@@ -50,6 +52,7 @@ export default function VolumesManagementPage() {
     description: "",
     publishDate: new Date().toISOString().split("T")[0],
     coverImage: null as File | null,
+    coverImageIssue2: null as File | null,
   });
 
   useEffect(() => {
@@ -89,6 +92,16 @@ export default function VolumesManagementPage() {
     }
   };
 
+  const handleFileChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const file = e.target.files?.[0];
+  if (file) {
+    setFormData((prev) => ({ ...prev, coverImageIssue2: file }));
+    const reader = new FileReader();
+    reader.onloadend = () => setCoverPreview2(reader.result as string);
+    reader.readAsDataURL(file);
+  }
+};
+
   const resetForm = () => {
     setFormData({
       volumeNumber: "",
@@ -96,8 +109,10 @@ export default function VolumesManagementPage() {
       description: "",
       publishDate: new Date().toISOString().split("T")[0],
       coverImage: null,
+      coverImageIssue2: null,
     });
     setCoverPreview(null);
+    setCoverPreview2(null);
     setEditingVolume(null);
     setError("");
   };
@@ -114,6 +129,7 @@ export default function VolumesManagementPage() {
       if (formData.description) data.append("description", formData.description);
       data.append("publishDate", formData.publishDate);
       if (formData.coverImage) data.append("coverImage", formData.coverImage);
+      if (formData.coverImageIssue2) data.append("coverImageIssue2", formData.coverImageIssue2);
 
       if (editingVolume) {
         await volumeApi.updateVolume(editingVolume._id, data);
@@ -144,9 +160,13 @@ export default function VolumesManagementPage() {
       description: volume.description || "",
       publishDate: volume.publishDate.split("T")[0],
       coverImage: null,
+      coverImageIssue2: null,
     });
     if (volume.coverImage) {
       setCoverPreview(volume.coverImage);
+    }
+    if (volume.coverImageIssue2) {
+      setCoverPreview2(volume.coverImageIssue2);
     }
     setShowDialog(true);
   };
@@ -224,19 +244,28 @@ export default function VolumesManagementPage() {
               >
                 <CardContent className="p-0">
                   <div className="aspect-[3/4] bg-gradient-to-br from-journal-maroon/10 to-purple-100 relative overflow-hidden">
-                    {volume.coverImage ? (
-                      <Image
-                        src={volume.coverImage}
-                        alt={`Volume ${volume.volumeNumber}`}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <BookOpen className="h-24 w-24 text-journal-maroon/30" />
-                      </div>
-                    )}
-                  </div>
+  {volume.coverImageIssue2 ? (
+    // Show both covers side by side
+    <div className="flex h-full">
+      <div className="relative flex-1">
+        <Image src={volume.coverImage || ''} alt={`Vol ${volume.volumeNumber} Issue 1`} fill className="object-cover" />
+      </div>
+      <div className="relative flex-1 border-l-2 border-white/50">
+        <Image src={volume.coverImageIssue2} alt={`Vol ${volume.volumeNumber} Issue 2`} fill className="object-cover" />
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 flex text-[10px] text-white font-bold">
+        <span className="flex-1 text-center bg-black/40 py-0.5">Iss. 1</span>
+        <span className="flex-1 text-center bg-black/40 py-0.5">Iss. 2</span>
+      </div>
+    </div>
+  ) : volume.coverImage ? (
+    <Image src={volume.coverImage} alt={`Volume ${volume.volumeNumber}`} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+  ) : (
+    <div className="w-full h-full flex items-center justify-center">
+      <BookOpen className="h-24 w-24 text-journal-maroon/30" />
+    </div>
+  )}
+</div>
 
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-journal-maroon mb-2">
@@ -359,46 +388,53 @@ export default function VolumesManagementPage() {
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="coverImage">Cover Image</Label>
-                <div className="flex items-center gap-4">
-                  <Input
-                    id="coverImage"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    className="hidden"
-                  />
-                  <label
-                    htmlFor="coverImage"
-                    className="cursor-pointer px-4 py-2 border-2 border-journal-maroon/20 rounded-md text-sm flex items-center hover:bg-journal-maroon/5 transition-colors"
-                  >
-                    <ImageIcon className="mr-2 h-4 w-4" />
-                    {formData.coverImage ? "Change Image" : "Upload Image"}
-                  </label>
-                  {coverPreview && (
-                    <div className="relative">
-                      <Image
-                        src={coverPreview}
-                        alt="Cover preview"
-                        width={80}
-                        height={100}
-                        className="object-cover rounded-lg border-2 border-journal-maroon/20"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setFormData((prev) => ({ ...prev, coverImage: null }));
-                          setCoverPreview(null);
-                        }}
-                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
-                      >
-                        <X className="h-3 w-3" />
-                      </button>
-                    </div>
-                  )}
-                </div>
-              </div>
+              {/* Cover Image — Issue 1 */}
+<div className="space-y-2">
+  <Label htmlFor="coverImage">
+    Cover Image — Issue 1 (First Half of Year)
+  </Label>
+  <p className="text-xs text-gray-500">Displayed for Issue 1 of this volume</p>
+  <div className="flex items-center gap-4">
+    <Input id="coverImage" type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
+    <label htmlFor="coverImage" className="cursor-pointer px-4 py-2 border-2 border-journal-mauve rounded-md text-sm flex items-center hover:bg-journal-rose transition-colors">
+      <ImageIcon className="mr-2 h-4 w-4" />
+      {formData.coverImage ? "Change" : "Upload"} Issue 1 Cover
+    </label>
+    {coverPreview && (
+      <div className="relative">
+        <Image src={coverPreview} alt="Issue 1 cover" width={60} height={80} className="object-cover rounded-lg border-2 border-journal-mauve" />
+        <button type="button" onClick={() => { setFormData((p) => ({ ...p, coverImage: null })); setCoverPreview(null); }}
+          className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600">
+          <X className="h-3 w-3" />
+        </button>
+      </div>
+    )}
+  </div>
+</div>
+
+{/* Cover Image — Issue 2 */}
+<div className="space-y-2">
+  <Label htmlFor="coverImageIssue2">
+    Cover Image — Issue 2 (Second Half of Year) <span className="text-gray-400 font-normal">(Optional)</span>
+  </Label>
+  <p className="text-xs text-gray-500">Displayed for Issue 2 of this volume. Falls back to Issue 1 cover if not set.</p>
+  <div className="flex items-center gap-4">
+    <Input id="coverImageIssue2" type="file" accept="image/*" onChange={handleFileChange2} className="hidden" />
+    <label htmlFor="coverImageIssue2" className="cursor-pointer px-4 py-2 border-2 border-journal-mauve rounded-md text-sm flex items-center hover:bg-journal-rose transition-colors">
+      <ImageIcon className="mr-2 h-4 w-4" />
+      {formData.coverImageIssue2 ? "Change" : "Upload"} Issue 2 Cover
+    </label>
+    {coverPreview2 && (
+      <div className="relative">
+        <Image src={coverPreview2} alt="Issue 2 cover" width={60} height={80} className="object-cover rounded-lg border-2 border-journal-mauve" />
+        <button type="button" onClick={() => { setFormData((p) => ({ ...p, coverImageIssue2: null })); setCoverPreview2(null); }}
+          className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600">
+          <X className="h-3 w-3" />
+        </button>
+      </div>
+    )}
+  </div>
+</div>
 
               <DialogFooter className="gap-2">
                 <Button
