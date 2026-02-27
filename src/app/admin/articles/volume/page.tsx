@@ -351,7 +351,7 @@ export default function VolumesManagementPage() {
                     id="year"
                     name="year"
                     type="number"
-                    min="2020"
+                    min="2000"
                     max="2100"
                     placeholder={new Date().getFullYear().toString()}
                     value={formData.year}
