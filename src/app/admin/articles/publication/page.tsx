@@ -48,6 +48,7 @@ import {
   Users,
   Trash2,
   Edit,
+  Search,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -109,15 +110,17 @@ const [editForm, setEditForm] = useState({
   publishDate: "",
 });
 
+const [pendingSearch, setPendingSearch] = useState("");
+const [manualSearch, setManualSearch] = useState("");
   const fetchData = useCallback(async () => {
     try {
       setIsLoading(true);
       const [articlesRes, volumesRes] = await Promise.all([
-        publicationApi.getPendingPublications(),
+        publicationApi.getPendingPublications({ limit: 1000 }),
         volumeApi.getVolumes(),
       ]);
-      setPendingArticles(articlesRes.data);
-      setVolumes(volumesRes.data);
+      setPendingArticles(articlesRes.data || []);
+      setVolumes(volumesRes.data || []);
     } catch (error) {
       console.error("Error fetching data:", error);
       toast.error("Failed to load data");
@@ -126,6 +129,18 @@ const [editForm, setEditForm] = useState({
     }
     fetchManualArticles();
   }, []);
+
+  const filteredPending = pendingArticles.filter(a => 
+    a.title.toLowerCase().includes(pendingSearch.toLowerCase()) ||
+    a.author?.name.toLowerCase().includes(pendingSearch.toLowerCase())
+  );
+
+  const filteredManual = manualArticles.filter(a => 
+    a.title.toLowerCase().includes(manualSearch.toLowerCase()) ||
+    a.author?.name.toLowerCase().includes(manualSearch.toLowerCase()) ||
+    `Vol ${a.volume?.volumeNumber}`.toLowerCase().includes(manualSearch.toLowerCase()) ||
+    `Iss ${a.issue?.issueNumber}`.toLowerCase().includes(manualSearch.toLowerCase())
+  );
 
   useEffect(() => {
     if (!isAuthenticated) return;
@@ -241,16 +256,16 @@ const [editForm, setEditForm] = useState({
   };
 
   const fetchManualArticles = async () => {
-  try {
-    setIsLoadingManual(true);
-    const res = await publicationApi.getManualArticles();
-    setManualArticles(res.data || []);
-  } catch {
-    toast.error("Failed to load manual articles");
-  } finally {
-    setIsLoadingManual(false);
-  }
-};
+    try {
+      setIsLoadingManual(true);
+      const res = await publicationApi.getManualArticles({ limit: 1000 });
+      setManualArticles(res.data || []);
+    } catch {
+      toast.error("Failed to load manual articles");
+    } finally {
+      setIsLoadingManual(false);
+    }
+  };
 
 const handleEditClick = (article: PublishedArticle) => {
   setEditingArticle(article);
@@ -344,19 +359,28 @@ const confirmDelete = async () => {
 
           {/* Pending Articles */}
           <TabsContent value="pending" className="space-y-4">
-            {pendingArticles.length === 0 ? (
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Input
+                placeholder="Search pending manuscripts..."
+                value={pendingSearch}
+                onChange={(e) => setPendingSearch(e.target.value)}
+                className="pl-10 border-journal-maroon/20"
+              />
+            </div>
+            {filteredPending.length === 0 ? (
               <Card className="border-journal-maroon/20">
                 <CardContent className="text-center py-12">
                   <CheckCircle className="h-16 w-16 text-gray-300 mx-auto mb-4" />
                   <p className="text-gray-500 text-lg">No pending publications</p>
                   <p className="text-gray-400 text-sm mt-1">
-                    All approved articles have been published
+                    {pendingSearch ? "No manuscripts match your search" : "All approved articles have been published"}
                   </p>
                 </CardContent>
               </Card>
             ) : (
               <div className="grid gap-4">
-                {pendingArticles.map((article) => (
+                {filteredPending.map((article) => (
                   <Card
                     key={article._id}
                     className="border-journal-maroon/20 hover:shadow-lg transition-shadow"
@@ -431,20 +455,29 @@ const confirmDelete = async () => {
           </TabsContent>
 
           <TabsContent value="published" className="space-y-4">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Input
+                placeholder="Search manual articles by title, author, volume or issue..."
+                value={manualSearch}
+                onChange={(e) => setManualSearch(e.target.value)}
+                className="pl-10 border-journal-maroon/20"
+              />
+            </div>
   {isLoadingManual ? (
     <div className="flex justify-center py-12">
       <RefreshCw className="h-8 w-8 animate-spin text-journal-maroon" />
     </div>
-  ) : manualArticles.length === 0 ? (
+  ) : filteredManual.length === 0 ? (
     <Card className="border-journal-maroon/20">
       <CardContent className="text-center py-12">
         <FileText className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-        <p className="text-gray-500">No manually published articles yet</p>
+        <p className="text-gray-500">{manualSearch ? "No manual articles match your search" : "No manually published articles yet"}</p>
       </CardContent>
     </Card>
   ) : (
     <div className="grid gap-3">
-      {manualArticles.map((article) => (
+      {filteredManual.map((article) => (
         <Card key={article._id} className="border-journal-maroon/20 hover:shadow-md transition-shadow">
           <CardContent className="p-4">
             <div className="flex flex-col sm:flex-row gap-3 justify-between">

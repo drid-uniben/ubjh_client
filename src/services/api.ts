@@ -2120,8 +2120,8 @@ export const publicationApi = {
     return response.data;
   },
 
-  getManualArticles: async () => {
-    const response = await api.get("/publication/admin/articles");
+  getManualArticles: async (params?: { page?: number; limit?: number }) => {
+    const response = await api.get("/publication/admin/articles", { params });
     return response.data;
   },
 
